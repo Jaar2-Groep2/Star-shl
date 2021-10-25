@@ -1,17 +1,16 @@
 <template>
         <div class="login"></div>
         <img src="../assets/star-shl.jpg" />
-        <link rel="stylesheet" href="css.css">
         <div class="main_box">
             <div class="box">
                 <div class="heading">
                     <h1>Login</h1>
                 </div>
                 <div class="form">
-                    <input class="int" type="text" placeholder="Login" />
-                    <input class="int" type="password" placeholder="Password" />
+                    <input type="text" name="username" v-model="input.username" placeholder="Username" />
+                    <input type="password" name="password" v-model="input.password" placeholder="Password" />
                 </div>
-                <button class="btn">Submit</button>
+                <button class="btn" v-on:click="login()">Login</button>
             </div>
         </div>
     </template>
@@ -19,6 +18,7 @@
     <script>
         export default {
             name: 'Login',
+            emits: ["authenticated", "setAuthenticated"],
             data() {
                 return {
                     input: {
@@ -30,9 +30,12 @@
             methods: {
                 login() {
                     if (this.input.username != "" && this.input.password != "") {
-                        if (this.input.username == this.$parent.mockAccount.username && this.input.password == this.$parent.mockAccount.password) {
+                        //if (this.input.username == this.$parent.mockAccount.username && this.input.password == this.$parent.mockAccount.password) {
+                            //this.$emit("authenticated", true);
+                            //this.$router.replace({ name: "Secure" });                                 
+                        if (this.input.username == "admin" && this.input.password == "admin") {
                             this.$emit("authenticated", true);
-                            this.$router.replace({ name: "secure" });
+                            this.$router.replace({ name: "Secure" });
                         } else {
                             console.log("The username and / or password is incorrect");
                         }

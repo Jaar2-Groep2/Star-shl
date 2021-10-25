@@ -1,13 +1,19 @@
 <template>
-  <nav-menu></nav-menu>
-  <router-view />
+    <div id="app">
+        <div id="nav">
+            <router-link v-if="authenticated" to="/login" v-on:click="logout()" replace>Logout</router-link>
+        </div>
+        <nav-menu></nav-menu>
+        <router-view @authenticated="setAuthenticated" />
+    </div>
 </template>
 
 <script>
     import NavMenu from './components/NavMenu.vue'
 
 export default {
-  name: 'App',
+        name: 'App',
+        emits: ["authenticated" , "setAuthenticated"],
   components: {
       NavMenu
         },
@@ -15,14 +21,14 @@ export default {
             return {
                 authenticated: false,
                 mockAccount: {
-                    username: "nraboy",
-                    password: "password"
+                    username: "Test",
+                    password: "Test"
                 }
             }
         },
         mounted() {
             if (!this.authenticated) {
-                this.$router.replace({ name: "login" });
+                this.$router.replace({ name: "Login" });
             }
         },
         methods: {

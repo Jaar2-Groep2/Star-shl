@@ -1,15 +1,18 @@
 <template>
     <div id="Secure">
-        <h1>Secure Area</h1>
+        <h1>Medewerkersportaal</h1>
         <p>
-            This is a Secure area
+            Medewerkersportaal Star-shl
         </p>
+
     </div>
+    <img src="../assets/star-shl.jpg" />
 </template>
 
 <script>
     export default {
         name: 'Secure',
+        emits: ["authenticated", "setAuthenticated"],
         data() {
             return {};
         }
@@ -17,7 +20,7 @@
 </script>
 
 <style scoped>
-    #secure {
+    #Secure {
         background-color: #FFFFFF;
         border: 1px solid #CCCCCC;
         padding: 20px;
