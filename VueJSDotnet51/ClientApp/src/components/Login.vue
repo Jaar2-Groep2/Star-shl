@@ -1,14 +1,18 @@
 <template>
         <div class="login"></div>
-        <img src="../assets/star-shl.jpg" />
+
+        <div class="plaatje">
+            <img src="../assets/star-shl.jpg" />
+        </div>
+
         <div class="main_box">
             <div class="box">
                 <div class="heading">
                     <h1>Login</h1>
                 </div>
                 <div class="form">
-                    <input type="text" name="username" v-model="input.username" placeholder="Username" />
-                    <input type="password" name="password" v-model="input.password" placeholder="Password" />
+                    <input type="text" name="username" v-model="input.username" placeholder="Gebruikersnaam" />
+                    <input type="password" name="password" v-model="input.password" placeholder="Wachtwoord" />
                 </div>
                 <button class="btn" v-on:click="login()">Login</button>
             </div>
@@ -49,30 +53,33 @@
 
     <style scoped>
         body {
-            background: radial-gradient(rgb(122, 122, 122), rgb(59, 59, 59));
+            background: #142d49;
             width: 100%;
             height: 100vh;
             overflow: hidden;
         }
-
+        .plaatje {
+            max-width: 100%;
+            height: auto;
+        }
         .main_box {
-            margin: 0;
+            margin-top: 200px;
             position: absolute;
             top: 50%;
             left: 50%;
             -ms-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
-            max-width: 350px;
+            max-width: 775px;
             height: 350px;
             /* padding: 1rem; */
             position: relative;
-            background: linear-gradient(to right, red, purple);
+            background: #79b9d5;
             padding: 3px;
             border-radius: 20px;
         }
 
         .box {
-            background: #222;
+            background: #142d49;
             color: white;
             padding: 2rem;
             display: flex;
@@ -111,9 +118,9 @@
         .btn {
             font-size: 20px;
             color: white;
-            background: red;
-            border-color: red;
-            margin-top: 80px;
+            background: #e7334c;
+            border-color: #121212;
+            margin-top: 100px;
         }
 
         #login {

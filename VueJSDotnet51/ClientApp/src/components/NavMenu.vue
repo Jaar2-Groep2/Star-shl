@@ -34,14 +34,14 @@
         text-align: center;
         word-break: break-all;
     }
-
+    
     html {
-        font-size: 14px;
+        font-size: 24px;
     }
 
     @media (min-width: 768px) {
         html {
-            font-size: 16px;
+            font-size: 24px;
         }
     }
 
@@ -49,6 +49,7 @@
         box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
     }
 </style>
+
 <script>
     export default {
         name: "NavMenu",
