@@ -1,5 +1,5 @@
 <template>
-        <div class="home"></div>
+        <div class="login"></div>
         <img src="../assets/star-shl.jpg" />
         <link rel="stylesheet" href="css.css">
         <div class="main_box">
