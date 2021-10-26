@@ -3,12 +3,13 @@
         <img src="../assets/star-shl.jpg" />
         <h1>Medewerkersportaal</h1>
         <p>
-            Medewerkersportaal Star-shl
+            Welkom Admin!
         </p>
 
     </div>
 
 </template>
+
 
 <script>
     export default {
