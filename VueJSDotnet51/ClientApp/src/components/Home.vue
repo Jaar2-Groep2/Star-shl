@@ -1,6 +1,6 @@
 <template>
     <div class="home">
-        <div class="plaatje">
+        <div class="img">
             <img src="../assets/star-shl.jpg" />
         </div>
         <h1>Hoofdscherm</h1>
@@ -20,7 +20,7 @@
 </script>
 
 <style scoped>
-    .plaatje {
+    .img {
         max-width: 100%;
         height: auto;
     }
