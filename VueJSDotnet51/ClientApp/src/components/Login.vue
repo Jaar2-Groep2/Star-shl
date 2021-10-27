@@ -108,6 +108,18 @@
             transform: translate(-50%, -50%);
         }
 
+        .form input {
+            margin: 5px 0;
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid white;
+            color: white;
+        }
+
+        .form input::placeholder {
+            color: white;
+        }
+
         .int {
             border-radius: 5px;
             font-size: 17px;
@@ -126,7 +138,7 @@
         #login {
             width: 500px;
             border: 1px solid #CCCCCC;
-            background-color: #FFFFFF;
+            background-color: white;
             margin: auto;
             margin-top: 200px;
             padding: 20px;
