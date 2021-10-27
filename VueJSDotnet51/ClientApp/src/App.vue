@@ -1,12 +1,18 @@
 <template>
     <div id="app">
         <div id="nav">
-            <router-link v-if="authenticated" to="/login" v-on:click="logout()" replace>Logout</router-link>
+            <router-link v-if="authenticated" to="/login" v-on:click="logout()" replace>
+                <button class="btn">
+                    Logout
+                </button>
+            </router-link>
         </div>
         <nav-menu></nav-menu>
         <router-view @authenticated="setAuthenticated" />
     </div>
 </template>
+
+<!-- <button class="btn" v-on:click="login()">Login</button> -->
 
 <script>
     import NavMenu from './components/NavMenu.vue'
@@ -43,7 +49,13 @@ export default {
 </script>
 
 <style>
-
+    .btn {
+        font-size: 20px;
+        color: white;
+        background: #e7334c;
+        border-color: #121212;
+        margin-top: 100px;
+    }
     #app {
         font-family: Avenir, Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
