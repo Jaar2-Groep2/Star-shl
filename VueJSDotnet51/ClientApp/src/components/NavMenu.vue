@@ -2,7 +2,6 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand">Vue JS Template for .NET 5</a>
                 <button class="navbar-toggler"
                         type="button"
                         data-toggle="collapse"
@@ -16,13 +15,9 @@
                     <ul class="navbar-nav flex-grow">
                         <li class="nav-item">
                             <router-link :to="{ name: 'Home' }" class="nav-link text-dark">Home</router-link>
-                           
                         </li>
                         <li class="nav-item">
-                            <router-link :to="{ name: 'Counter' }" class="nav-link text-dark">Counter</router-link>
-                        </li>
-                        <li class="nav-item">
-                            <router-link :to="{ name: 'FetchData' }" class="nav-link text-dark">Fetch Data</router-link>
+                            <router-link :to="{ name: 'Login' }" class="nav-link text-dark">Login</router-link>
                         </li>
                     </ul>
                 </div>
@@ -40,12 +35,13 @@
     }
 
     html {
-        font-size: 14px;
+        font-size: 24px;
+        background-color: #e0edf5;
     }
 
     @media (min-width: 768px) {
         html {
-            font-size: 16px;
+            font-size: 24px;
         }
     }
 
@@ -53,6 +49,7 @@
         box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
     }
 </style>
+
 <script>
     export default {
         name: "NavMenu",
