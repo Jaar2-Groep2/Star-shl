@@ -117,7 +117,7 @@
         }
 
         .form input::placeholder {
-            color: white;
+            color: gray;
         }
 
         .int {
