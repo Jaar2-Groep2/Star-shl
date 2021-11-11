@@ -28,12 +28,12 @@
         name: "Database",
         data() {
             return {
-                forecasts: []
+                databases: []
             }
         },
         methods: {
             getDatabase() {
-                axios.get('/Sqltest')
+                axios.get('/Database')
                     .then((response) => {
                         this.databases = response.data;
                     })
