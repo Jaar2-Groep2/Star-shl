@@ -1,52 +1,24 @@
-<template>
-    <div id="app">
-        <div id="nav">
-            <router-link v-if="authenticated" to="/login" v-on:click="logout()" replace>
-                <button class="btn">
-                    Logout
-                </button>
-            </router-link>
-        </div>
-        <nav-menu></nav-menu>
-        <router-view @authenticated="setAuthenticated" />
-    </div>
-</template>
+
 
 <!-- <button class="btn" v-on:click="login()">Login</button> -->
 
 <script>
-    import NavMenu from './components/NavMenu.vue'
-
-export default {
-        name: 'App',
-        emits: ["authenticated" , "setAuthenticated"],
-  components: {
-      NavMenu
-        },
-        data() {
-            return {
-                authenticated: false,
-                mockAccount: {
-                    username: "Test",
-                    password: "Test"
-                }
-            }
-        },
-        mounted() {
-            if (!this.authenticated) {
-                this.$router.replace({ name: "Login" });
-            }
-        },
-        methods: {
-            setAuthenticated(status) {
-                this.authenticated = status;
-            },
-            logout() {
-                this.authenticated = false;
-            }
+    import Sidebar from './components/Sidebar.vue'
+    import { sidebarWidth } from './components/state'
+    export default {
+        components: { Sidebar },
+        setup() {
+            return { sidebarWidth }
         }
     }
 </script>
+
+<template>
+    <Sidebar />
+    <div :style="{ 'margin-left': sidebarWidth }">
+        <router-view />
+    </div>
+</template>
 
 <style>
     .btn {
@@ -62,7 +34,9 @@ export default {
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
         color: #2c3e50;
-        margin-top: 60px;
+        margin-top: 20px;
+        margin-left: 110px;
+        margin-right: 20px;
         background-color: #e0edf5;
     }
     
