@@ -23,6 +23,12 @@
             reservering annueleren<i class="material-icons">create</i>
         </a>
     </div>
+
+    <div class="Edit_page">
+        <a class="waves-effect waves-light btn pink lighten-2 white-text hoverable">
+            pagina bewerken<i class="material-icons">create</i>
+        </a>
+    </div>
 </template>
 
 
@@ -41,6 +47,13 @@
 
     }
     .ContinueButton a {
+        font-size: 15px;
+        margin-top: 5%;
+        width: 15%;
+        border-radius: 7px;
+    }
+
+    .Edit_page{
         font-size: 15px;
         margin-top: 5%;
         width: 15%;
