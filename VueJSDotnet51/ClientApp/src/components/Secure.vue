@@ -1,26 +1,26 @@
 <template>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <div id="Secure">
         <img src="../assets/star-shl.jpg" />
         <h1>Medewerkersportaal</h1>
         <p>
             Welkom Admin!
         </p>
-
     </div>
 
-    <!-- Compiled and minified JavaScript -->
-    <div class="ContinueButton">
-        <a class="waves-effect waves-light btn pink lighten-2 white-text hoverable">
-            reservering toevoegen<i class="material-icons">create</i>
+    <div class="Reservations">
+        <a class="add waves-effect waves-light btn pink lighten-2 white-text hoverable">
+            <i class="material-icons">create</i> Reservering toevoegen
         </a>
-    </div>
 
-    <div class="ContinueButton">
-        <a class="waves-effect waves-light btn pink lighten-2 white-text hoverable">
-            reservering annueleren<i class="material-icons">create</i>
+        <a class="remove waves-effect waves-light btn pink lighten-2 white-text hoverable">
+            <i class="material-icons">create</i> Reservering verwijderen
+        </a>
+
+        <a class="see waves-effect waves-light btn pink lighten-2 white-text hoverable">
+            <i class="material-icons">create</i> Reserveringen inzien
         </a>
     </div>
 
@@ -44,13 +44,17 @@
 
 <style scoped>
     #Secure {
-
     }
-    .ContinueButton a {
+
+    .Reservations a {
         font-size: 15px;
-        margin-top: 5%;
-        width: 15%;
-        border-radius: 7px;
+        margin: 3%; 
+        width: 20%;
+        border-radius:10px;
+    }
+
+    .Reservations a i {
+        font-size: 15px;
     }
 
     .Edit_page{
