@@ -5,6 +5,10 @@
         <p>
             Welkom Admin!
         </p>
+        <button class="btn"> <!-- button to swith to Admindashboard-->
+            <v-btn></v-btn>
+            <router-link to="Admindashboard">Admindashboard</router-link>
+        </button>
 
     </div>
 
