@@ -1,17 +1,28 @@
 <template>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <div id="Secure">
         <img src="../assets/star-shl.jpg" />
         <h1>Medewerkersportaal</h1>
         <p>
             Welkom Admin!
         </p>
-        <button class="btn"> <!-- button to swith to Admindashboard-->
-            <v-btn></v-btn>
-            <router-link to="Admindashboard">Admindashboard</router-link>
-        </button>
 
     </div>
 
+    <!-- Compiled and minified JavaScript -->
+    <div class="ContinueButton">
+        <a class="waves-effect waves-light btn pink lighten-2 white-text hoverable">
+            reservering toevoegen<i class="material-icons">create</i>
+        </a>
+    </div>
+
+    <div class="ContinueButton">
+        <a class="waves-effect waves-light btn pink lighten-2 white-text hoverable">
+            reservering annueleren<i class="material-icons">create</i>
+        </a>
+    </div>
 </template>
 
 
@@ -27,5 +38,12 @@
 
 <style scoped>
     #Secure {
+
+    }
+    .ContinueButton a {
+        font-size: 15px;
+        margin-top: 5%;
+        width: 15%;
+        border-radius: 7px;
     }
 </style>
