@@ -50,7 +50,7 @@
         font-size: 15px;
         margin: 3%; 
         width: 20%;
-        border-radius:10px;
+        border-radius: 15px;
     }
 
     .Reservations a i {
