@@ -19,6 +19,9 @@
                         <li class="nav-item">
                             <router-link :to="{ name: 'Login' }" class="nav-link text-dark">Login</router-link>
                         </li>
+                        <li class="nav-item">
+                            <router-link :to="{ name: 'PDF' }" class="nav-link text-dark">Bloedprik certificaat</router-link>
+                        </li>
                     </ul>
                 </div>
             </div>
