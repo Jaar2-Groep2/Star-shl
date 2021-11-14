@@ -15,7 +15,7 @@
         <tbody>
             <tr v-for="database of databases" v-bind:key="database">
                 <td>{{ database.username }}</td>
-                <td>{{ database.passwords }}</td>
+                <td>{{ database.password }}</td>
             </tr>
         </tbody>
     </table>
@@ -32,7 +32,7 @@
             }
         },
         methods: {
-            getDatabase() {
+            getDatabases() {
                 axios.get('/Database')
                     .then((response) => {
                         this.databases = response.data;
@@ -43,7 +43,7 @@
             }
         },
         mounted() {
-            this.getDatabase();
+            this.getDatabases();
         }
     }
 </script>
