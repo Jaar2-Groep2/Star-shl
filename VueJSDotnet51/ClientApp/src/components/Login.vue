@@ -62,6 +62,13 @@
             max-width: 100%;
             height: auto;
         }
+        img {
+            vertical-align: middle;
+            border-style: none;
+            width: 60%;
+        }
+
+
         .main_box {
             margin-top: 200px;
             position: absolute;
