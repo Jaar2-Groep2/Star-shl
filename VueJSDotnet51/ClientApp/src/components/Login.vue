@@ -65,7 +65,7 @@
         img {
             vertical-align: middle;
             border-style: none;
-            width: 60%;
+            width: 70%;
         }
 
 
