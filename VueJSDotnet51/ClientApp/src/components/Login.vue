@@ -1,23 +1,24 @@
 <template>
-        <div class="login"></div>
+    <div class="login"></div>
 
-        <div class="plaatje">
-            <img src="../assets/star-shl.jpg" />
-        </div>
+    <div class="plaatje">
+        <img src="../assets/star-shl.jpg" />
+    </div>
 
-        <div class="main_box">
-            <div class="box">
-                <div class="heading">
-                    <h1>Login</h1>
-                </div>
-                <div class="form">
-                    <input type="text" name="username" v-model="input.username" placeholder="Gebruikersnaam" />
-                    <input type="password" name="password" v-model="input.password" placeholder="Wachtwoord" />
-                </div>
-                <button class="btn" v-on:click="login()">Login</button>
+    <div class="main_box">
+        <div class="box">
+            <div class="heading">
+                <h1>Login</h1>
             </div>
+            <div class="form">
+                <input type="text" name="username" v-model="input.username" placeholder="Gebruikersnaam" />
+                <input type="password" name="password" v-model="input.password" placeholder="Wachtwoord" />
+            </div>
+            <button class="btn" v-on:click="login()">Login</button>
         </div>
-    </template>
+    </div>
+
+</template>
 
     <script>
         export default {
@@ -61,6 +62,12 @@
         .plaatje {
             max-width: 100%;
             height: auto;
+        }
+        img {
+
+            vertical-align: middle;
+            border-style: none;
+            width: 60%;
         }
         .main_box {
             margin-top: 200px;
