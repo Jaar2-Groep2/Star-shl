@@ -2,7 +2,12 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+
+    <!-- DEZE FUCKT UP MET DROPDOWN MENU
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    -->
     <div class="headline">
         <h2 style="font-size:7vw">Medewerkersportaal</h2>
     </div>
