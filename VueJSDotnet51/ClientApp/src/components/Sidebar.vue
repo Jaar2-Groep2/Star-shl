@@ -12,14 +12,16 @@
 </script>
 
 <template>
-    <div id="sidebar" :style="{ width: sidebarWidth }">
+    <div class="sidebar" :style="{ width: sidebarWidth }"
+         @click.self="toggleSidebar">
 
         <h1>
-            <span v-if="collapsed">
+        <span v-if="collapsed">
 
-            </span>
-            <span v-else>Menu</span>
+        </span>
+        <span v-else></span>
         </h1>
+        
 
         <SidebarLink to="/" icon="fas fa-home fa-2x">Home</SidebarLink>
         <SidebarLink to="/login" icon="fas fa-key fa-2x">Login</SidebarLink>
@@ -29,7 +31,7 @@
 
         <span class="collapse-icon"
               :class="{ 'rotate-180': collapsed }"
-              @click="toggleSidebar">
+                @click="toggleSidebar">
             <i class="fas fa-angle-double-left"></i>
         </span>
     </div>
@@ -40,6 +42,9 @@
         --sidebar-bg-color: #002c40;
         --sidebar-item-hover: #4abad7;
         --sidebar-item-active: #fd334b;
+    }
+    .sidebar    {
+        position: fixed;
     }
 </style>
 
@@ -65,7 +70,7 @@
 
     .collapse-icon {
         position: absolute;
-        bottom: 0;
+        top: 5px;
         padding: 0.75em;
         margin-left: 20px;
         color: rgba(255, 255, 255, 0.7);
