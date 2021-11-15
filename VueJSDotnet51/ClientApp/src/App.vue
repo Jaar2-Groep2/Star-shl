@@ -1,14 +1,14 @@
 <template>
     <div id="app">
         <div id="nav">
-            <router-link v-if="authenticated" to="/login" v-on:click="logout()" replace>
-                <button class="btn">
-                    Logout
-                </button>
-            </router-link>
         </div>
         <nav-menu></nav-menu>
         <router-view @authenticated="setAuthenticated" />
+        <router-link v-if="authenticated" to="/login" v-on:click="logout()" replace>
+            <button class="btn">
+                Logout
+            </button>
+        </router-link>
     </div>
 </template>
 
