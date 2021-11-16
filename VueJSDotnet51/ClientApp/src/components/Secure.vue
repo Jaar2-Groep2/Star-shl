@@ -47,12 +47,12 @@
 
 
 <script>
-    //materialise code voor dropdown button niet toegepast
-    document.addEventListener('DOMContentLoaded', function () {
-        var elems = document.querySelectorAll('.dropdown-trigger');
-        var options = {alignment: 'left'}
-        this.Dropdown.init(elems, options);
-    });
+    ////materialise code voor dropdown button niet toegepast
+    //document.addEventListener('DOMContentLoaded', function () {
+    //    var elems = document.querySelectorAll('.dropdown-trigger');
+    //    var options = {alignment: 'left'}
+    //    this.Dropdown.init(elems, options);
+    //});
 
 
 </script>

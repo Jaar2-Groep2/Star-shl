@@ -26,7 +26,7 @@
         <a class="homeButtons blue btn">Contact</a>
     </div>
 
-    <div class="ExtraInfo">
+    <footer>
         <p class="text-white">
             <strong>Etten-Leur</strong><br>
             Bredaseweg 165, 4872 LA<br>
@@ -36,13 +36,20 @@
             Vlambloem 21, 3068 JE<br>
             Postbus 8661, 3009 AR<br>
         </p>
-    </div>
+    </footer>
 </template>
 
 
 <script>
-
+    
 </script>
+
+<style>
+    .btn:hover {
+        opacity: 0.6;
+        color: white;
+    }
+</style>
 
 <style scoped>
     .img {
@@ -106,19 +113,14 @@
         background: #2C2B64;
     }
 
-    .btn:hover {
-        opacity: 0.6;
-        color: white;
-    }
-
-    .ExtraInfo {
+    footer {
         margin-top: 5%;
         background: #2C2B64;
         padding: 5%;
         padding-left: 8%;
     }
 
-    .ExtraInfo p {
+    footer p {
         text-align: left;
         font-size: 50%;
     }
