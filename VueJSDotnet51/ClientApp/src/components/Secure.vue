@@ -85,6 +85,5 @@
 
     .btn {
         opacity: 0.6;
-        color: white;
     }
 </style>

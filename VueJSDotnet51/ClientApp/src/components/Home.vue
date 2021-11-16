@@ -48,6 +48,10 @@
     .btn:hover {
         opacity: 0.6;
     }
+
+    .btn {
+        color: white;
+    }
 </style>
 
 <style scoped>

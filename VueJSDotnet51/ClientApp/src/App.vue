@@ -53,7 +53,7 @@
 
 </script>
 
-<style>
+<style scoped>
     .btn {
         font-size: 20px;
         color: white;
