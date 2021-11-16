@@ -3,47 +3,51 @@
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
 
-    <!-- DEZE FUCKT UP MET DROPDOWN MENU
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-    -->
-    <div class="headline">
-        <h2 style="font-size:7vw">Medewerkersportaal</h2>
-    </div>
-    <div id="Secure">
+    <div id="Secure">   <!-- star shl banner-->
         <img src="../assets/star-shl.jpg" />
-
     </div>
-    <div class="Reservations">
-        <a class="add waves-effect waves-light btn pink lighten-2 white-text hoverable">
+    
+    <div class="headline">  <!-- Headline text-->
+        <h2 style="font-size:6vw">Medewerkersportaal</h2>
+    </div>
+    
+    <div class="Reservation_add Reservations">  <!-- Reservation add-->
+        <a class="btn">
             <i class="material-icons">add_circle</i> Reservering toevoegen
         </a>
+    </div>
 
-        <a class="remove waves-effect waves-light btn pink lighten-2 white-text hoverable">
+    <div class="Reservation_delete Reservations">   <!-- Reservation delete-->
+        <a class="btn">
             <i class="material-icons">delete</i> Reservering verwijderen
         </a>
+    </div>
 
-        <a class="see waves-effect waves-light btn pink lighten-2 white-text hoverable">
+    <div class="reservation_check Reservations">    <!-- Reservation check-->
+        <a class="btn">
             <i class="material-icons">visibility</i> Reserveringen inzien
         </a>
     </div>
 
-    <div class="Editable_pages">
-        <a class="see waves-effect waves-light btn green lighten-2 white-text hoverable">
-            <p>Informatiepagina bewerken</p>
-        </a>
-        <a class="see waves-effect waves-light btn green lighten-2 white-text hoverable">
-            Homepagina bewerken
-        </a>
-    </div>
+
+        <div class="Editable_infopage Reservations">    <!-- Information page edit button -->
+            <a class="btn">
+                <i class="material-icons">edit</i>Informatiepagina bewerken
+            </a>
+        </div>
+
+        <div class="Editable_homepage Reservations">    <!-- Home page edit button -->
+            <a class="btn">
+                <i class="material-icons">edit</i>Homepagina bewerken
+            </a>
+        </div>
 
 
 </template>
 
 
 <script>
-
+    //materialise code voor dropdown button niet toegepast
     document.addEventListener('DOMContentLoaded', function () {
         var elems = document.querySelectorAll('.dropdown-trigger');
         var options = {alignment: 'left'}
@@ -60,34 +64,36 @@
         vertical-align: middle;
         border-style: none;
         width: 60%;
-    }
-
-    .Reservations a {
-        font-size: 70%;
-        margin: 3%; 
-        width: 60%;
-        border-radius: 15px;
+        margin-bottom: 3%
     }
 
     .Reservations a i {
         font-size: 16px;
     }
+
+    .Reservations a {
+        background: #e91e63;
+        border: hidden;
+        padding: 15px;
+        font-size: 50%;
+        border-radius: 15px;
+        width: 60%;
+        margin: 1.5%;
+    }
+    .Reservation_add{
+        opacity: 0.2;
+    }
+    .Reservation_delete{
+        opacity: 0.2;
+    }
+    .Editable_homepage a {
     
-    .a j {
-        font-size: 20px;
+        opacity: 0.2;
+        background: #00c853;
     }
 
-    .Edit_page_Button a {
-        font-size: 7vw;
-        margin: 3%;
-        width: 10%;
-        border-radius: 15px;
+    .Editable_infopage a {
+        opacity: 0.2;
+        background: #00c853;
     }
-    .Editable_pages a {
-        font-size: 70%;
-        margin: 3%;
-        width:60%;
-        border-radius: 15px;
-    }
-
 </style>

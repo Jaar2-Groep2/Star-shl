@@ -57,7 +57,7 @@
     .btn {
         font-size: 20px;
         color: white;
-        background: #e7334c;
+        background: #00b0ff;
         border-color: #121212;
         margin-top: 100px;
     }
