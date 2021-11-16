@@ -6,7 +6,7 @@ import PDF from "../components/PDF.vue";
 
 const routes = [
     {
-        path: "/",
+        path: "/Home",
         name: "Home",
         component: Home,
     },
