@@ -123,6 +123,7 @@
             border: none;
             border-bottom: 1px solid white;
             color: white;
+            text-align: center;
         }
 
         .form input::placeholder {

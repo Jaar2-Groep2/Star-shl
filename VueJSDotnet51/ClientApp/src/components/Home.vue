@@ -21,8 +21,14 @@
 
 <style scoped>
     .img {
-        max-width: 100%;
-        height: auto;
+        vertical-align: middle;
+        border-style: none;
+    }
+    img {
+        vertical-align: middle;
+        border-style: none;
+        width: 800px;
+        max-width: 90%;
     }
 </style>
 

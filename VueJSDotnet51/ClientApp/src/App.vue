@@ -54,7 +54,7 @@ export default {
         color: white;
         background: #e7334c;
         border-color: #121212;
-        margin-top: 100px;
+        margin-top: 140px;
     }
     #app {
         font-family: Avenir, Helvetica, Arial, sans-serif;
