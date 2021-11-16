@@ -6,10 +6,13 @@
                     <h1>Certificaat</h1>
                 </div>
                 <div class="form">
-                    <input type="text" v-on:keyup="countup" v-model="name" placeholder="Wat is je naam?" data-v-ef68022e />
+                    <input v-model="message" v-on:keyup="charCount()" maxlength="24" placeholder="Wat is je naam?" data-v-ef68022e />
                     <button class="btn" @click="downloadPDF">Download Certificaat</button>
                 </div>
             </div>
+            <span>{{ totalcharacter }} / 24 letters</span>
+            <br>
+            <span> {{ message_error }} </span>
         </div>
     </div>
 </template>
@@ -19,13 +22,30 @@
     export default {
 
         name: 'pdf',
-        data() {
+        data: function () {
             return {
-
+                message: "",
+                totalcharacter: 0
             }
         },
 
         methods: {
+
+            charCount: function () {
+
+                this.totalcharacter = this.message.length;
+
+                if (this.message.length <= 24) {
+                    this.message_error = "";
+                }
+                
+                if (this.message.length > 24) {
+                    this.message = "";
+                    this.message_error = "Naam is te lang!";
+                }
+
+            },
+
             downloadPDF() {
 
 
@@ -60,7 +80,7 @@
        
                 pdf.setFontSize(30);
                 //whatever text will be in the pdf (this.name refers to the v-model input)
-                pdf.text(this.name, 100, 100);
+                pdf.text(this.message, 80, 100);
 
                 //save the pdf
                 pdf.save('Certificaat.pdf');
