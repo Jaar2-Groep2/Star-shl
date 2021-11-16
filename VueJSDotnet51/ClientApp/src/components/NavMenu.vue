@@ -31,6 +31,15 @@
 
 
 <style>
+    .nav-item   {
+        min-width: 100px;
+    }
+
+    /* This is the color that is used when hovering over a menu item */
+    .nav-item:hover {
+        background-color:#fd334b;
+    }
+
     a.navbar-brand {
         white-space: normal;
         text-align: center;

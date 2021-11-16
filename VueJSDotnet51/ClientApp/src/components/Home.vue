@@ -3,8 +3,7 @@
         <div class="img">
             <img src="../assets/star-shl.jpg" />
         </div>
-        <h1>Hoofdscherm</h1>
-        <video width="320" height="240" controls="controls" preload="metadata">
+        <video controls="controls" preload="metadata">
             <source src="../assets/WatGebeurtErMetBloed.mp4#t=3.5" type="video/mp4">
             Your browser does not support the video tag.
         </video>
@@ -69,5 +68,21 @@
         margin-left:15%;
         margin-right:15%;
     }
+
+    video {
+        margin-top: 10px;
+        width: 640px;
+        height: 360px;
+    }   
+
+
+    @media screen and (max-width: 700px) {
+        video {
+            width: 320px;
+            margin-top: 10px;
+            height: 240px;
+        }
+    }
+
 </style>
 
