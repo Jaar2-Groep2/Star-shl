@@ -47,13 +47,11 @@
 <style>
     .btn:hover {
         opacity: 0.6;
-        color: white;
     }
 </style>
 
 <style scoped>
     .img {
-
         max-width: 100%;
         height: auto;
     }
@@ -123,6 +121,10 @@
     footer p {
         text-align: left;
         font-size: 50%;
+    }
+
+    .btn {
+        opacity: 0.6;
     }
 
 </style>

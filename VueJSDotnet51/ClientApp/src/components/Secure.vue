@@ -29,19 +29,17 @@
         </a>
     </div>
 
+    <div class="Editable Reservations">    <!-- Information page edit button -->
+        <a class="btn">
+            <i class="material-icons">edit</i>Informatiepagina bewerken
+        </a>
+    </div>
 
-        <div class="Editable_infopage Reservations">    <!-- Information page edit button -->
-            <a class="btn">
-                <i class="material-icons">edit</i>Informatiepagina bewerken
-            </a>
-        </div>
-
-        <div class="Editable_homepage Reservations">    <!-- Home page edit button -->
-            <a class="btn">
-                <i class="material-icons">edit</i>Homepagina bewerken
-            </a>
-        </div>
-
+    <div class="Editable Reservations">    <!-- Home page edit button -->
+        <a class="btn">
+            <i class="material-icons">edit</i>Homepagina bewerken
+        </a>
+    </div>
 
 </template>
 
@@ -80,20 +78,12 @@
         width: 60%;
         margin: 1.5%;
     }
-    .Reservation_add{
-        opacity: 0.2;
-    }
-    .Reservation_delete{
-        opacity: 0.2;
-    }
-    .Editable_homepage a {
-    
-        opacity: 0.2;
+
+    .Editable a {
         background: #00c853;
     }
 
-    .Editable_infopage a {
-        opacity: 0.2;
-        background: #00c853;
+    .btn {
+        opacity: 0.6;
     }
 </style>
