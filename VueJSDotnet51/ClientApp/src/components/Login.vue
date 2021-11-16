@@ -67,7 +67,8 @@
 
             vertical-align: middle;
             border-style: none;
-            width: 70%;
+            width: 800px;
+            max-width: 80%;
         }
         .main_box {
             margin-top: 200px;

@@ -37,7 +37,7 @@
 
     /* This is the color that is used when hovering over a menu item */
     .nav-item:hover {
-        background-color:#fd334b;
+        background-color:#4abad7
     }
 
     a.navbar-brand {
