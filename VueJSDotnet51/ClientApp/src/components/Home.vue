@@ -67,12 +67,13 @@
 
     .text_homepage p {
         cursor: pointer;
-        padding: 1%;
+        padding: 4%;
         margin-right: 10%;
         margin-left: 10%;
         margin-bottom: 12%;
         border-radius: 15px;
         box-shadow: 0 0 10px 1px black;
+        text-align: left;
     }
 
     video {
@@ -102,6 +103,11 @@
 
     .blue {
         background: #2C2B64;
+    }
+
+    .btn:hover {
+        opacity: 0.6;
+        color: white;
     }
 
     .ExtraInfo {
