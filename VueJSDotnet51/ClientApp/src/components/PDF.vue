@@ -11,8 +11,6 @@
                 </div>
             </div>
             <span>{{ totalcharacter }} / 24 letters</span>
-            <br>
-            <span> {{ message_error }} </span>
         </div>
     </div>
 </template>
@@ -34,16 +32,6 @@
             charCount: function () {
 
                 this.totalcharacter = this.message.length;
-
-                if (this.message.length <= 24) {
-                    this.message_error = "";
-                }
-                
-                if (this.message.length > 24) {
-                    this.message = "";
-                    this.message_error = "Naam is te lang!";
-                }
-
             },
 
             downloadPDF() {
