@@ -8,14 +8,22 @@
     <table class='table table-striped' aria-labelledby="tableLabel" v-if="databases">
         <thead>
             <tr>
-                <th>Username</th>
-                <th>Passwords</th>
+                <th>City</th>
+                <th>Location Name</th>
+                <th>Address</th>
+                <th>Postal Code</th>
+                <th>Open</th>
+                <th>Additional</th>
             </tr>
         </thead>
         <tbody>
             <tr v-for="database of databases" v-bind:key="database">
-                <td>{{ database.username }}</td>
-                <td>{{ database.password }}</td>
+                <td>{{ database.city }}</td>
+                <td>{{ database.locname }}</td>
+                <td>{{ database.address }}</td>
+                <td>{{ database.postalCode }}</td>
+                <td>{{ database.openTimes }}</td>
+                <td>{{ database.additional }}</td>
             </tr>
         </tbody>
     </table>
