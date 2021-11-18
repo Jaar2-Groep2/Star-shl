@@ -1,14 +1,43 @@
 
-
 <!-- <button class="btn" v-on:click="login()">Login</button> -->
-
+    var example1 = new Vue({
+        el: '#example-1',
+        data: {
+            counter: 0
+        }
+    })
 <script>
     import Sidebar from './components/Sidebar.vue'
-
-
     export default {
-        components: { Sidebar },
+        name: 'App',
+        emits: ["authenticated", "setAuthenticated"],
+        components: {
+            Sidebar
+        },
+        data() {
+            return {
+                authenticated: false,
+                mockAccount: {
+                    username: "Test",
+                    password: "Test"
+                }
+            }
+        },
+        mounted() {
+            if (!this.authenticated) {
+                this.$router.replace({ name: "Login" });
+            }
+        },
+        methods: {
+            setAuthenticated(status) {
+                this.authenticated = status;
+            },
+            logout() {
+                this.authenticated = false;
+            }
+        },
     }
+
 </script>
 
 <template>
@@ -26,6 +55,8 @@
         border-color: #121212;
         margin-top: 140px;
     }
+
+
     #app {
         font-family: Avenir, Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
