@@ -69,7 +69,8 @@
             left: 50%;
             -ms-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
-            max-width: 775px;
+            width: 800px;
+            max-width: 90%;
             height: 350px;
             /* padding: 1rem; */
             position: relative;
@@ -86,7 +87,7 @@
             flex-direction: column;
             align-items: center;
             border-radius: 20px;
-            height: 81.5%;
+            height: 100%;
         }
 
         h1 {
@@ -142,5 +143,12 @@
             margin: auto;
             margin-top: 200px;
             padding: 20px;
+        }
+        img {
+            vertical-align: middle;
+            border-style: none;
+            width: 60%;
+            width: 800px;
+            max-width: 90%;
         }
     </style>

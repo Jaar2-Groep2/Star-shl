@@ -1,40 +1,73 @@
 <script>
-    import SidebarLink from './SidebarLink'
-    import { collapsed, toggleSidebar, sidebarWidth } from './state'
-
     export default {
-        props: {},
-        components: { SidebarLink },
-        setup() {
-            return { collapsed, toggleSidebar, sidebarWidth }
+        name: "sidebar",
+            data() {
+                return {
+                    scrollPosition: null,
+                    mobile: true,
+                    mobileNav: true,
+                    windowWidth: null,
+                    width: 0,
+                    height: 0,
+                };
+            },
+
+            created() {
+                window.addEventListener("resize", this.checkScreen);
+                this.checkScreen();
+            },
+
+            methods: {
+                toggleMobileNav: function()   {
+                    this.mobileNav = !this.mobileNav;
+                },
+
+                checkScreen: function()   {
+                    this.windowWidth = window.innerWidth;
+                    this.width = window.innerWidth;
+                    this.height = window.innerHeight;
+                    if (this.windowWidth <= 750) {
+                        this.mobile = true;
+                        this.mobileNav = false;
+                        return;
+                    }
+                    this.mobile = false;
+                    this.mobileNav = false;
+                    return;
+                },
+
+                show: function () {
+                    return "Welcome!"
+                }
         }
-    }
+    };
+
+
 </script>
 
 <template>
-    <div class="sidebar" :style="{ width: sidebarWidth }"
-         @click.self="toggleSidebar">
+    <!--idebarLink to="/" icon="fas fa-home fa-2x">Home</SidebarLink>
+    <SidebarLink to="/login" icon="fas fa-key fa-2x">Login</SidebarLink>
+    <SidebarLink to="/analytics" icon="fas fa-chart-bar fa-2x">Analytics</SidebarLink>
+    <SidebarLink to="/friends" icon="fas fa-user-friends fa-2x">Friends</SidebarLink>
+    <SidebarLink to="/image" icon="fas fa-images fa-2x">Images</SidebarLink>-->
+    <header :class="{ 'scrolled-nav' : scrollPosition}">
+        <ul v-show="!mobile" class="nav">
+            <li><router-link class="link" :to="{name: 'Home'}">Home</router-link></li>
+            <li><router-link class="link" :to="{name: 'Login'}">Login</router-link></li>
+        </ul>
+        <div class="toggle">
+            <i v-on:click=toggleMobileNav() v-show="mobile" class="fas fa-bars fa-2x" style="color: white" v-bind:class="{ 'toggle-active': mobileNav}"></i>
+        </div>
+        <transition name="slide">
+            <ul v-show="mobileNav" class="nav-dropdown">
+                <!--v-on:click=toggleMobileNav()-->
+                <li><router-link class="link2" :to="{name: 'Home'}">Home</router-link></li>
+                <li><router-link class="link2" :to="{name: 'Login'}">Login</router-link></li>
+            </ul>
+        </transition>
+    </header>
 
-        <h1>
-        <span v-if="collapsed">
-
-        </span>
-        <span v-else></span>
-        </h1>
-        
-
-        <SidebarLink to="/" icon="fas fa-home fa-2x">Home</SidebarLink>
-        <SidebarLink to="/login" icon="fas fa-key fa-2x">Login</SidebarLink>
-        <SidebarLink to="/analytics" icon="fas fa-chart-bar fa-2x">Analytics</SidebarLink>
-        <SidebarLink to="/friends" icon="fas fa-user-friends fa-2x">Friends</SidebarLink>
-        <SidebarLink to="/image" icon="fas fa-images fa-2x">Images</SidebarLink>
-
-        <span class="collapse-icon"
-              :class="{ 'rotate-180': collapsed }"
-                @click="toggleSidebar">
-            <i class="fas fa-angle-double-left"></i>
-        </span>
-    </div>
 </template>
 
 <style>
@@ -49,36 +82,118 @@
 </style>
 
 <style scoped>
-    .sidebar {
-        color: white;
-        background-color: var(--sidebar-bg-color);
-        float: left;
+
+
+    header{
+        background-color: black;
+        z-index: 99;
+        width: 110%;
         position: fixed;
-        z-index: 1;
+        transition: 0.5s ease all;
+        color: white;
         top: 0;
-        left: 0;
-        bottom: 0;
-        padding: 0.4em;
-        transition: 0.3s ease;
+    }
+
+    .nav {
+        display: flex;
+        flex-direction: row;
+        padding: 12px 0;
+        transition: 0.5s ease all;
+        width: 90%;
+        margin: 0 auto;
+        align-items: center;
+    }
+
+
+    .nav-dropdown {
         display: flex;
         flex-direction: column;
+        position: fixed;
+        width: 100%;
+        max-width: 200px;
+        height: 100%;
+        background-color: white;
+        top: 34px
     }
 
-        .sidebar h1 {
-            height: 2.5em;
+    ul {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    li {
+        text-align: center;
+        background-clip: content-box;
+        box-sizing: content-box;
+        align-items: center;
+        transition: 0.5s ease all;
+        padding-right: 20px;
+        
+    }
+
+        li :hover {
+            background-color: #fd334b;
         }
 
-    .collapse-icon {
-        position: absolute;
-        top: 5px;
-        padding: 0.75em;
-        margin-left: 20px;
-        color: rgba(255, 255, 255, 0.7);
-        transition: 0.2s linear;
+    .slide-enter-active,
+    .slide-leave-active{
+        transition: 0.6s ease all;
     }
 
-    .rotate-180 {
-        transform: rotate(180deg);
-        transition: 0.2s linear;
+    .slide-enter-from,
+    .slide-leave-to{
+        transform: translateX(-250px);
     }
+
+    .slide-enter-to {
+        transform: translateX(0);
+    }
+
+    .link {
+        display: block;
+        font-weight: 500;
+        font: 12px;
+        color: white;
+        list-style: none;
+        text-decoration: none;
+        font-size: 14px;
+        transition: 0.5s ease all;
+        text-align: center;
+        vertical-align: middle;
+        padding-top: 20px;
+        width: 200px;
+        padding: 20px 0;
+    }
+
+    .link2 {
+        display: block;
+        font-weight: 500;
+        font: 12px;
+        color: black;
+        list-style: none;
+        text-decoration: none;
+        font-size: 14px;
+        transition: 0.5s ease all;
+        text-align: center;
+        vertical-align: middle;
+        padding-top: 20px;
+        width: 200px;
+        padding: 20px 0;
+    }
+
+    
+
+    .toggle {
+        float: left;
+        margin-left: 10px;
+        cursor: pointer;
+        transition: 1s ease all;
+    }
+
+    .toggle-active {
+        transition: 1s ease all;
+        transform: scale(1);
+    }
+
+ 
 </style>

@@ -4,18 +4,16 @@
 
 <script>
     import Sidebar from './components/Sidebar.vue'
-    import { sidebarWidth } from './components/state'
+
+
     export default {
         components: { Sidebar },
-        setup() {
-            return { sidebarWidth }
-        }
     }
 </script>
 
 <template>
     <Sidebar />
-    <div :style="{ 'margin-left': sidebarWidth }">
+    <div>
         <router-view />
     </div>
 </template>
@@ -26,7 +24,7 @@
         color: white;
         background: #e7334c;
         border-color: #121212;
-        margin-top: 100px;
+        margin-top: 140px;
     }
     #app {
         font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -34,10 +32,19 @@
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
         color: #2c3e50;
-        margin-top: 20px;
-        margin-left: 110px;
-        margin-right: 20px;
         background-color: #e0edf5;
+    }
+    body {
+        padding-top: 100px;
+        background-color: #e0edf5;
+    }
+
+    @media only screen and (max-width: 600px) {
+        body {
+            padding-top: 50px;
+            background-color: #e0edf5;
+        }
+
     }
     
 </style>
