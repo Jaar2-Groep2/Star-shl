@@ -8,24 +8,24 @@
     </div>
     
     <div class="headline">  <!-- Headline text-->
-        <h2 style="font-size:6vw">Medewerkersportaal</h2>
+        <h2 style="font-size:6vw">Medewerkersportaal</h2><br>
     </div>
     
     <div class="Reservation_add Reservations">  <!-- Reservation add-->
         <a class="btn">
-            <i class="material-icons">add_circle</i> Reservering toevoegen
+            <i class="material-icons">add_circle</i> Afspraak toevoegen
         </a>
     </div>
 
     <div class="Reservation_delete Reservations">   <!-- Reservation delete-->
         <a class="btn">
-            <i class="material-icons">delete</i> Reservering verwijderen
+            <i class="material-icons">delete</i> Afspraak verwijderen
         </a>
     </div>
 
     <div class="reservation_check Reservations">    <!-- Reservation check-->
         <a class="btn">
-            <i class="material-icons">visibility</i> Reserveringen inzien
+            <i class="material-icons">visibility</i> Afspraak inzien
         </a>
     </div>
 
@@ -73,7 +73,7 @@
         background: #e91e63;
         border: hidden;
         padding: 15px;
-        font-size: 50%;
+        font-size: 60%;
         border-radius: 15px;
         width: 60%;
         margin: 1.5%;

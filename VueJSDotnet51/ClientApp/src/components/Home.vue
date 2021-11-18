@@ -111,7 +111,7 @@
         background: #E91E63;
         border: hidden;
         padding: 2%;
-        font-size: 50%;
+        font-size: 60%;
         border-radius: 15px;
         width: 60%;
         margin: 1.5%;
