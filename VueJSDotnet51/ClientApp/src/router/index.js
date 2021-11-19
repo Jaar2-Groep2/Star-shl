@@ -1,6 +1,7 @@
 ﻿import { createWebHistory, createRouter } from "vue-router";
 import Home from "@/components/Home.vue";
 import Login from "@/components/Login.vue";
+import Database from "@/components/Database.vue";
 import SecureComponent from "@/components/Secure.vue"
 import PDF from "../components/PDF.vue";
 
@@ -19,12 +20,16 @@ const routes = [
         path: "/PDF",
         name: "PDF",
         component: PDF,
+
     },
     {
         path: "/Secure",
         name: "Secure",
         component: SecureComponent
-    }
+    },
+        path: "/Database",
+        name: "Database",
+        component: Database
 ];
 
 const router = createRouter({
