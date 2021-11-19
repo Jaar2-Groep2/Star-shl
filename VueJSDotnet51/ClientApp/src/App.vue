@@ -1,16 +1,3 @@
-<template>
-    <div id="app">
-        <div id="nav">
-        </div>
-        <nav-menu></nav-menu>
-        <router-view @authenticated="setAuthenticated" />
-        <router-link v-if="authenticated" to="/login" v-on:click="logout()" replace>
-            <button class="btn">
-                Logout
-            </button>
-        </router-link>
-    </div>
-</template>
 
 <!-- <button class="btn" v-on:click="login()">Login</button> -->
     var example1 = new Vue({
@@ -20,12 +7,12 @@
         }
     })
 <script>
-    import NavMenu from './components/NavMenu.vue'
+    import Sidebar from './components/Sidebar.vue'
     export default {
         name: 'App',
         emits: ["authenticated", "setAuthenticated"],
         components: {
-            NavMenu
+            Sidebar
         },
         data() {
             return {
@@ -53,7 +40,14 @@
 
 </script>
 
-<style scoped>
+<template>
+    <Sidebar />
+    <div>
+        <router-view />
+    </div>
+</template>
+
+<style>
     .btn {
         font-size: 20px;
         color: white;
@@ -69,7 +63,19 @@
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
         color: #2c3e50;
-        
         background-color: #e0edf5;
     }
+    body {
+        padding-top: 100px;
+        background-color: #e0edf5;
+    }
+
+    @media only screen and (max-width: 600px) {
+        body {
+            padding-top: 50px;
+            background-color: #e0edf5;
+        }
+
+    }
+    
 </style>

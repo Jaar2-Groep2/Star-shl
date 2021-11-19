@@ -153,4 +153,11 @@
             margin-top: 200px;
             padding: 20px;
         }
+        img {
+            vertical-align: middle;
+            border-style: none;
+            width: 60%;
+            width: 800px;
+            max-width: 90%;
+        }
     </style>
