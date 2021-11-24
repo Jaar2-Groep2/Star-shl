@@ -13,7 +13,7 @@ const routes = [
     {
         path: "/Login",
         name: "Login",
-        component: Login,
+        component: Login, 
     },
     {
         path: "/Database",
