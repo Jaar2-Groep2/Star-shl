@@ -25,11 +25,13 @@ const routes = [
     {
         path: "/Secure",
         name: "Secure",
-        component: SecureComponent
+        component: SecureComponent,
     },
+    {
         path: "/Database",
         name: "Database",
-        component: Database
+        component: Database,
+    }
 ];
 
 const router = createRouter({
