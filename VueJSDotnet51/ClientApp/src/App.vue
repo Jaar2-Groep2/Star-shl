@@ -1,27 +1,18 @@
-<template>
-    <div id="app">
-        <div id="nav">
-            <router-link v-if="authenticated" to="/login" v-on:click="logout()" replace>
-                <button class="btn">
-                    Logout
-                </button>
-            </router-link>
-        </div>
-        <nav-menu></nav-menu>
-        <router-view @authenticated="setAuthenticated" />
-    </div>
-</template>
 
 <!-- <button class="btn" v-on:click="login()">Login</button> -->
-
+    var example1 = new Vue({
+        el: '#example-1',
+        data: {
+            counter: 0
+        }
+    })
 <script>
-    import NavMenu from './components/NavMenu.vue'
-
-export default {
+    import Sidebar from './components/Sidebar.vue'
+    export default {
         name: 'App',
-        emits: ["authenticated" , "setAuthenticated"],
-  components: {
-      NavMenu
+        emits: ["authenticated", "setAuthenticated"],
+        components: {
+            Sidebar
         },
         data() {
             return {
@@ -44,9 +35,17 @@ export default {
             logout() {
                 this.authenticated = false;
             }
-        }
+        },
     }
+
 </script>
+
+<template>
+    <Sidebar />
+    <div>
+        <router-view />
+    </div>
+</template>
 
 <style>
     .btn {
@@ -54,16 +53,29 @@ export default {
         color: white;
         background: #e7334c;
         border-color: #121212;
-        margin-top: 100px;
+        margin-top: 140px;
     }
+
+
     #app {
         font-family: Avenir, Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
         color: #2c3e50;
-        margin-top: 60px;
         background-color: #e0edf5;
+    }
+    body {
+        padding-top: 100px;
+        background-color: #e0edf5;
+    }
+
+    @media only screen and (max-width: 600px) {
+        body {
+            padding-top: 50px;
+            background-color: #e0edf5;
+        }
+
     }
     
 </style>

@@ -20,6 +20,9 @@
                             <router-link :to="{ name: 'Login' }" class="nav-link text-dark">Login</router-link>
                         </li>
                         <li class="nav-item">
+                            <router-link :to="{ name: 'PDF' }" class="nav-link text-dark">Bloedprik certificaat</router-link>
+                        </li>
+                        <li class="nav-item">
                             <router-link :to="{ name: 'Database' }" class="nav-link text-dark">Database</router-link>
                         </li>
                     </ul>
@@ -31,6 +34,15 @@
 
 
 <style>
+    .nav-item   {
+        min-width: 100px;
+    }
+
+    /* This is the color that is used when hovering over a menu item */
+    .nav-item:hover {
+        background-color:#4abad7
+    }
+
     a.navbar-brand {
         white-space: normal;
         text-align: center;
