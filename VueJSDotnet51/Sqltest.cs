@@ -25,5 +25,15 @@ namespace VueJSDotnet51
             this.OpenTimes = opentimes;
             if (additional != null) this.Additional = additional;
         }
+
+        public Sqltest(String city, String locname, string address, string postalcode, string opentimes, string additional)
+        {
+            this.City = city;
+            this.Locname = locname;
+            this.Address = address;
+            this.PostalCode = postalcode;
+            this.OpenTimes = opentimes;
+            if (additional != null) this.Additional = additional;
+        }
     }
 }

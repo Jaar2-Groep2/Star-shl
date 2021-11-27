@@ -24,7 +24,7 @@ namespace VueJSDotnet51.Controllers
         }
         //Please place the used query in commentary here and call in Database_Handling.Database
         //Like this:
-        //"select username, h_pword from Admins"
+        //"select * from locations"
         [HttpGet]
         public IEnumerable<Sqltest> Get()
         {

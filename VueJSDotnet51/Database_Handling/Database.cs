@@ -92,7 +92,7 @@ namespace VueJSDotnet51.Database_Handling
             while (reader.Read())
             {
                 //Gets the output per row
-                Sqltest value = new(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetString(6));
+                Sqltest value = new(reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5));
                 //Use this as break point, value should have the requested data
                 returner.Add(value);
             }
@@ -104,6 +104,6 @@ namespace VueJSDotnet51.Database_Handling
         }
 
         //Excecuted query, for clarity I expect all Sql statements in this class
-        public static List<Sqltest> ExampleQuery() => P_ExampleQuery("select * from locations");
+        public static List<Sqltest> ExampleQuery() => P_ExampleQuery("select distinct city,name,address,postalcode,opentimes,additional from locations order by name");
     }
 }
