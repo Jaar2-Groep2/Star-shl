@@ -40,7 +40,7 @@
                             //this.$router.replace({ name: "Secure" });                                 
                         if (this.input.username == "admin" && this.input.password == "admin") {
                             this.$emit("authenticated", true);
-                            this.$router.replace({ name: "Secure" });   //changes webpage to /Secure
+                            this.$router.replace({ name: "Edit" });   //changes webpage to /Secure
                         } else {
                             console.log("The username and / or password is incorrect");
                         }

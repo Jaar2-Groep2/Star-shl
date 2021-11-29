@@ -6,8 +6,14 @@
             counter: 0
         }
     })
+
+
 <script>
     import Sidebar from './components/Sidebar.vue'
+    //import Tiptap from './components/Tiptap.vue'
+    //import Quill from "@/components/Quill.vue";
+
+
     export default {
         name: 'App',
         emits: ["authenticated", "setAuthenticated"],
@@ -41,10 +47,11 @@
 </script>
 
 <template>
-    <Sidebar />
+    <Sidebar></Sidebar>
     <div>
         <router-view />
     </div>
+    
 </template>
 
 <style>
