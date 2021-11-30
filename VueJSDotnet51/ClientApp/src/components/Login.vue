@@ -21,6 +21,8 @@
 </template>
 
     <script>
+        import axios from 'axios'
+
         export default {
             name: 'Login',
             emits: ["authenticated", "setAuthenticated"],
@@ -50,6 +52,58 @@
                 }
             }
         }
+        /**
+         *         export default {
+            name: 'Login',
+            emits: ["authenticated", "setAuthenticated"],
+            data() {
+                return {
+                    input: {
+                        username: "",
+                        password: ""
+                    }
+                }
+            },
+            methods: {
+                login() {
+                    if (this.input.username != "" && this.input.password != "") {
+                        //if (this.input.username == this.$parent.mockAccount.username && this.input.password == this.$parent.mockAccount.password) {
+                            //this.$emit("authenticated", true);
+                            //this.$router.replace({ name: "Secure" });
+                        if (this.input.username == "admin" && this.input.password == "admin") {
+                            this.$emit("authenticated", true);
+                            this.$router.replace({ name: "Secure" });   //changes webpage to /Secure
+                        } else {
+                            console.log("The username and / or password is incorrect");
+                        }
+                    } else {
+                        console.log("A username and password must be present");
+                    }
+                }
+            }
+        }
+
+		export default {
+			name:'Login',
+			emits: ["authenticated", "setAuthenticated"],
+			data() {
+				return {
+                    input: {
+                        username: "",
+                        password: ""
+                    }
+				}
+			},
+			methods: {
+				login() {
+						axios.get('/Login', {
+							input.username,
+							input.password
+						})
+				}
+			}
+		}
+         ** /
     </script>
 
     <style scoped>

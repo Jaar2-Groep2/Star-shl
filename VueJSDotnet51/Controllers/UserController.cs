@@ -8,8 +8,11 @@ using VueJSDotnet51.UserHandling;
 
 namespace VueJSDotnet51.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class UserController : Controller
     {
+        //disabled atm
         [HttpPost]
         public IActionResult Register(User user)
         {
@@ -40,6 +43,12 @@ namespace VueJSDotnet51.Controllers
         }
         
          */
+
+        [HttpPost]
+        public bool Login(string username, string password)
+        {
+            return Database_Handling.Database.Login(username,password);
+        }
         public static HashSalt EncryptPassword(string password)
         {
             byte[] salt = new byte[128 / 8]; // Generate a 128-bit salt using a secure PRNG
