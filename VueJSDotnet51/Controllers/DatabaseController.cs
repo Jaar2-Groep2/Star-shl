@@ -24,7 +24,7 @@ namespace VueJSDotnet51.Controllers
         }
         //Please place the used query in commentary here and call in Database_Handling.Database
         //Like this:
-        //"select * from locations"
+        //"select distinct city,name,address,postalcode,opentimes,additional from locations order by name"
         [HttpGet]
         public IEnumerable<Sqltest> Get()
         {
