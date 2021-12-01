@@ -55,6 +55,7 @@
         <ul v-show="!mobile" class="nav">
             <li><router-link class="link" :to="{name: 'Home'}">Home</router-link></li>
             <li><router-link class="link" :to="{name: 'Login'}">Login</router-link></li>
+            <li><router-link class="link" :to="{name: 'Info'}">Informatie</router-link></li>
         </ul>
         <div class="toggle">
             <i v-on:click=toggleMobileNav() v-show="mobile" class="fas fa-bars fa-2x" style="color: white" v-bind:class="{ 'toggle-active': mobileNav}"></i>
@@ -64,6 +65,7 @@
                 <!--v-on:click=toggleMobileNav()-->
                 <li><router-link class="link2" :to="{name: 'Home'}">Home</router-link></li>
                 <li><router-link class="link2" :to="{name: 'Login'}">Login</router-link></li>
+                <li><router-link class="link2" :to="{name: 'Info'}">Informatie</router-link></li>
             </ul>
         </transition>
     </header>

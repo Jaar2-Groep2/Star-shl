@@ -1,7 +1,8 @@
 ﻿import { createWebHistory, createRouter } from "vue-router";
 import Home from "@/components/Home.vue";
 import Login from "@/components/Login.vue";
-import SecureComponent from "@/components/Secure.vue"
+import SecureComponent from "@/components/Secure.vue";
+import Info from "@/components/Info.vue"
 import PDF from "../components/PDF.vue";
 
 const routes = [
@@ -24,6 +25,11 @@ const routes = [
         path: "/Secure",
         name: "Secure",
         component: SecureComponent
+    },
+    {
+        path: "/Info",
+        name: "Info",
+        component: Info,
     }
 ];
 
