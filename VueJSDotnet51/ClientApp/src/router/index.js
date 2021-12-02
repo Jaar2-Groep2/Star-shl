@@ -4,9 +4,6 @@ import Login from "@/components/Login.vue";
 import Database from "@/components/Database.vue";
 import SecureComponent from "@/components/Secure.vue"
 import PDF from "../components/PDF.vue";
-//import Quill from "@/components/Quill.vue";
-//import Tiptap from "@/components/Tiptap.vue";
-import Edit from "@/components/Edit.vue";
 
 
 const routes = [
@@ -35,11 +32,6 @@ const routes = [
         path: "/Database",
         name: "Database",
         component: Database,
-    },
-    {
-        path: "/Edit",
-        name: "Edit",
-        component: Edit
     }
 ];
 

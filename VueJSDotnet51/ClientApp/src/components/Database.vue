@@ -40,7 +40,7 @@
             }
         },
         methods: {
-            getDatabases() {
+            GetLocations() {
                 axios.get('/Database')
                     .then((response) => {
                         this.databases = response.data;
@@ -51,7 +51,7 @@
             }
         },
         mounted() {
-            this.getDatabases();
+            this.GetLocations();
         }
     }
 </script>
