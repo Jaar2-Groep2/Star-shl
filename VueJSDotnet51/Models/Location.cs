@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-
+using Microsoft.Extensions.Configuration;
 
 namespace VueJSDotnet51.Models
 {
@@ -41,7 +41,15 @@ namespace VueJSDotnet51.Models
     {
         
         public DbSet<Location> Locations { get; set; }
-        
+
+        private readonly LocationsContext _context;
+        private readonly IConfiguration _configuration;
+
+        public LocationsContext(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //here we define the name of our database (make sure to put the correct password)
