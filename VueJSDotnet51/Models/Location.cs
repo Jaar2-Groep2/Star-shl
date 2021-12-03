@@ -23,17 +23,29 @@ namespace VueJSDotnet51.Models
         public double lon { get; set; }
     }
 
-    public partial class SimpleModelsAndRelationsContext : DbContext
+    //public partial class SimpleModelsAndRelationsContext : DbContext
+    //{
+    //    public DbSet<Location> Locations { get; set; }
+
+    //    public SimpleModelsAndRelationsContext(DbContextOptions<SimpleModelsAndRelationsContext> options) : base(options) { }
+
+    //    //protected override void OnModelCreating(ModelBuilder modelBuilder)
+    //    //{
+    //    //    modelBuilder.Entity<Location> ()
+    //    //        .HasKey(c => new { c.ProductId, c.OrderId });
+    //    //}
+
+    //}
+
+    public class LocationsContext : DbContext
     {
-        public DbSet<Location> Locations { get; set; }
-
-        public SimpleModelsAndRelationsContext(DbContextOptions<SimpleModelsAndRelationsContext> options) : base(options) { }
-
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<Location> ()
-        //        .HasKey(c => new { c.ProductId, c.OrderId });
-        //}
         
+        public DbSet<Location> Locations { get; set; }
+        
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            //here we define the name of our database (make sure to put the correct password)
+            optionsBuilder.UseNpgsql(@"Server=145.24.222.238;Port=8001;User Id=postgres;Password=Star-Shl;Database=postgres;");
+        }
     }
 }

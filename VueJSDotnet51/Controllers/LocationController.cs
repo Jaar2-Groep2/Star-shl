@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+using Npgsql;
 using VueJSDotnet51.Models;
 
 
@@ -15,10 +16,10 @@ namespace VueJSDotnet51.Controllers
     }
 
     [Route("[controller]")]
-
+    [ApiController]
     public partial class LocationController : Controller
     {
-        private readonly SimpleModelsAndRelationsContext _context;
+        private readonly LocationsContext _context;
         private readonly ProjectNameOptions _projectNameOptions;
 
         // !!! FOR ADDING A PRODUCT TO THE DATABASE !!!
@@ -41,6 +42,8 @@ namespace VueJSDotnet51.Controllers
         //    }
 
 
+
+
         [HttpGet("GetLocations")]
         public IActionResult GetLocations()
         {
@@ -50,6 +53,7 @@ namespace VueJSDotnet51.Controllers
                                select new
                                {
                                    LocationCity = l.city,
+                                   LocationName = l.locname,
                                    LocationStreet = l.address,
                                    LocationPostalcode = l.postalCode,
                                    LocationOpenTimes = l.openTimes,

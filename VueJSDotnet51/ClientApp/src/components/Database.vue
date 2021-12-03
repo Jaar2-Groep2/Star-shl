@@ -18,12 +18,12 @@
         </thead>
         <tbody>
             <tr v-for="database of databases" v-bind:key="database">
-                <td>{{ database.city }}</td>
-                <td>{{ database.locname }}</td>
-                <td>{{ database.address }}</td>
-                <td>{{ database.postalCode }}</td>
-                <td>{{ database.openTimes }}</td>
-                <td>{{ database.additional }}</td>
+                <td>{{ databases.city }}</td>
+                <td>{{ databases.locname }}</td>
+                <td>{{ databases.address }}</td>
+                <td>{{ databases.postalCode }}</td>
+                <td>{{ databases.openTimes }}</td>
+                <td>{{ databases.additional }}</td>
             </tr>
         </tbody>
     </table>
@@ -41,11 +41,12 @@
         },
         methods: {
             GetLocations() {
-                axios.get('/Database')
+                axios.get("http://localhost:8080")
                     .then((response) => {
                         this.databases = response.data;
                     })
                     .catch(function (error) {
+                        console.log(error);
                         alert(error);
                     });
             }
