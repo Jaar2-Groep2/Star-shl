@@ -45,7 +45,7 @@ namespace VueJSDotnet51
                 c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             });
 
-            services.AddDbContext<SimpleModelsAndRelationsContext>(options =>
+            services.AddDbContext<LocationsContext>(options =>
             {
                 options.UseNpgsql(@"Server=145.24.222.238;Port=8001;User Id=postgres;Password=Star-Shl;Database=postgres;");
             });
