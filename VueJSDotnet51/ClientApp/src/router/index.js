@@ -4,7 +4,7 @@ import Login from "@/components/Login.vue";
 import Database from "@/components/Database.vue";
 import SecureComponent from "@/components/Secure.vue"
 import PDF from "../components/PDF.vue";
-
+import Tiptap from "@/components/Tiptap.vue";
 const routes = [
     {
         path: "/Home",
@@ -31,6 +31,11 @@ const routes = [
         path: "/Database",
         name: "Database",
         component: Database,
+    },
+    {
+        path: "/Tiptap",
+        name: "Tiptap",
+        component: Tiptap
     }
 ];
 

@@ -8,11 +8,14 @@
     })
 <script>
     import Sidebar from './components/Sidebar.vue'
+    //import Tiptap from './components/Tiptap.vue'
+
     export default {
         name: 'App',
         emits: ["authenticated", "setAuthenticated"],
         components: {
-            Sidebar
+            Sidebar,
+            //Tiptap
         },
         data() {
             return {
@@ -45,6 +48,9 @@
     <div>
         <router-view />
     </div>
+    <!--<div id="app">
+        <tiptap />
+    </div>-->
 </template>
 
 <style>

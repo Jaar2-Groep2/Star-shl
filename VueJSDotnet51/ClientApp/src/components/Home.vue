@@ -1,4 +1,4 @@
-<template>
+﻿<template>
     <div class="home">
         <div class="img">
             <img src="../assets/star-shl.jpg" />
@@ -9,7 +9,8 @@
             Your browser does not support the video tag.
         </video>
 
-        <div class="text_homepage">
+
+        <!--<div class="text_homepage">
             <h6>Over Star-shl</h6>
             <p>
                 Iedereen die bij ons komt, heeft vragen over gezondheid. Vragen die wij beantwoorden met betrouwbare medische diagnostiek.
@@ -17,7 +18,22 @@
                 Daarom geloven wij dat elke vraag onze speciale aandacht verdient voor een helder en betrouwbaar antwoord.<br>
                 <strong class="black-text">Klik om meer te lezen.</strong>
             </p>
+        </div>-->
+
+        <editor-content :editor="editor" />
+
+        <div>
+            <div v-if="editor">
+                <button @click="editor.chain().focus().toggleBold().run()" :class="{ 'is-active': editor.isActive('bold') }">
+                    bold
+                </button>
+                <button @click="editor.chain().focus().undo().run()">
+                    undo
+                </button>
+            </div>
         </div>
+
+
 
         <a class="homeButtons btn">Informatie over onderzoeken</a>
         <a class="homeButtons btn">Afspraak maken</a>
@@ -41,7 +57,33 @@
 
 
 <script>
-    
+    import { Editor, EditorContent } from '@tiptap/vue-3'
+    import StarterKit from '@tiptap/starter-kit'
+
+    export default {
+        components: {
+            EditorContent,
+        },
+
+        data() {
+            return {
+                editor: null,
+            }
+        },
+
+        mounted() {
+            this.editor = new Editor({
+                content: '<h6>Iedereen die bij ons komt, heeft vragen over gezondheid. Vragen die wij beantwoorden met betrouwbare medische diagnostiek.Achter elke diagnose schuilt een persoonlijk verhaal.Daarom geloven wij dat elke vraag onze speciale aandacht verdient voor een helder en betrouwbaar antwoord.</h6>',
+                extensions: [
+                    StarterKit,
+                ],
+            })
+        },
+
+        beforeUnmount() {
+            this.editor.destroy()
+        },
+    }
 </script>
 
 <style>
@@ -55,6 +97,10 @@
 </style>
 
 <style scoped>
+    .ProseMirror p {
+        margin: 10em 0;
+        text-align: center;
+    }
     .img {
         vertical-align: middle;
         border-style: none;

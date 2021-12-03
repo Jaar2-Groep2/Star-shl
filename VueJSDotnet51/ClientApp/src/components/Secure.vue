@@ -36,7 +36,7 @@
     </div>
 
     <div class="Editable Reservations">    <!-- Home page edit button -->
-        <a class="btn">
+        <a class="btn" v-on:click="login()">
             <i class="material-icons">edit</i>Homepagina bewerken
         </a>
     </div>
@@ -51,7 +51,20 @@
     //    var options = {alignment: 'left'}
     //    this.Dropdown.init(elems, options);
     //});
+    export default {
+        name: 'Login',
+        data() {
+            return {
 
+            }
+        },
+        methods: {
+            login() {
+
+                     this.$router.replace({ name: "Home" });   //changes webpage to /Secure
+            }
+        }
+    }
 
 </script>
 
