@@ -41,7 +41,10 @@
         },
         methods: {
             GetLocations() {
-                axios.get("http://localhost:8080")
+                //"https://jsonplaceholder.typicode.com/todos/1" for testing purposes
+                // <th>API TEST</th>
+                // <td>{{databases.id}}</td>
+                axios.get("http://localhost:50598/api/location")
                     .then((response) => {
                         this.databases = response.data;
                     })

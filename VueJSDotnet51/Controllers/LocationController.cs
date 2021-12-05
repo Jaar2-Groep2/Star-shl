@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using Npgsql;
 using VueJSDotnet51.Models;
@@ -15,57 +17,78 @@ namespace VueJSDotnet51.Controllers
         public List<Location> locations { get; set; }
     }
 
-    [Route("[controller]")]
+    //[Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
-    public partial class LocationController : Controller
+    public partial class LocationController : ControllerBase
     {
         private readonly LocationsContext _context;
-        private readonly ProjectNameOptions _projectNameOptions;
+        //private readonly ProjectNameOptions _projectNameOptions;
+        private readonly IConfiguration _configuration;
 
-        // !!! FOR ADDING A PRODUCT TO THE DATABASE !!!
-        //
-        //public LocationController(SimpleModelsAndRelationsContext context, IOptions<ProjectNameOptions> projectNameOptions)
-        //{
-        //    _context = context;
-        //    _projectNameOptions = projectNameOptions.Value;
-        //    if (_context.Products.Count() == 0)
-        //    {
-        //        _context.Products.AddRange(new Product[]{
-        //        new Product(){Name="Potato", Price=1},
-        //        new Product(){Name="Tomato", Price=0.75f},
-        //        new Product(){Name="Apple", Price=1},
-        //        new Product(){Name="Ananas", Price=1.5f},
-        //        new Product(){Name="Carrot", Price=0.5f},
-        //        new Product(){Name="Egg", Price=2}
-        //      });
-        //        _context.SaveChanges();
-        //    }
-
-
-            
-               
-           
-
-
-        [HttpGet("GetLocations")]
-        public IActionResult GetLocations()
+        public LocationController(IConfiguration configuration)
         {
-            var locations_AUX = (
-                               from l in _context.Locations
+            _configuration = configuration;
+        }
 
-                               select new
-                               {
-                                   LocationCity = l.city,
-                                   LocationName = l.locname,
-                                   LocationStreet = l.address,
-                                   LocationPostalcode = l.postalCode,
-                                   LocationOpenTimes = l.openTimes,
-                                   LocationAdditional = l.additional
-                               }).ToList();
 
-            var locations = locations_AUX;
+        //[HttpGet("{GetLocations}")]
+        // [HttpGet]
+        //public IActionResult GetLocations()
+        //{
+        //    Console.WriteLine("Test");
+        //    var locations_AUX = (
+        //                       from l in _context.Locations
 
-            return Ok(locations);
+        //                       select new
+        //                       {
+        //                           LocationCity = l.city,
+        //                           LocationName = l.locname,
+        //                           LocationStreet = l.address,
+        //                           LocationPostalcode = l.postalCode,
+        //                           LocationOpenTimes = l.openTimes,
+        //                           LocationAdditional = l.additional
+        //                       }).ToList();
+
+        //    var locations = locations_AUX;
+
+        //    return Ok(locations);
+        //}
+
+
+        [HttpGet]
+        public JsonResult Get()
+        {
+            string query = @"
+                select id as ""l.id"",
+                        city as ""l.city"",
+                        locationname as ""l.name"",
+                        street as ""l.street"",
+                        postcode as ""l.postcode"",
+                        openinghours as ""l.openinghours"",
+                        particularities as ""l.particularities"",
+                        lat as ""l.lat"",
+                        lon as ""l.lon""
+                FROM ""Locations"";
+            ";
+
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("LocationAppCon");
+            NpgsqlDataReader myReader;
+            using (NpgsqlConnection myCon = new NpgsqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (NpgsqlCommand myCommand = new NpgsqlCommand(query, myCon))
+                {
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+
+                    myReader.Close();
+                    myCon.Close();
+
+                }
+            }
+            return new JsonResult(table);
         }
     }
 }
