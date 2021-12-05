@@ -60,15 +60,15 @@ namespace VueJSDotnet51.Controllers
         public JsonResult Get()
         {
             string query = @"
-                select id as ""l.id"",
-                        city as ""l.city"",
-                        locationname as ""l.name"",
-                        street as ""l.street"",
-                        postcode as ""l.postcode"",
-                        openinghours as ""l.openinghours"",
-                        particularities as ""l.particularities"",
-                        lat as ""l.lat"",
-                        lon as ""l.lon""
+                select id as ""id"",
+                        city as ""city"",
+                        locationname as ""name"",
+                        street as ""street"",
+                        postcode as ""postcode"",
+                        openinghours as ""openinghours"",
+                        particularities as ""particularities"",
+                        lat as ""lat"",
+                        lon as ""lon""
                 FROM ""Locations"";
             ";
 

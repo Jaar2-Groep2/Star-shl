@@ -14,11 +14,11 @@ namespace VueJSDotnet51.Models
     {
         public int id { get; set; }
         public string city { get; set; }
-        public string locname { get; set; }
-        public string address { get; set; }
-        public string postalCode { get; set; }
-        public string openTimes { get; set; }
-        public string additional { get; set; }
+        public string locationname { get; set; }
+        public string street { get; set; }
+        public string postcode { get; set; }
+        public string openinghours { get; set; }
+        public string particularities { get; set; }
         public double lat { get; set; }
         public double lon { get; set; }
     }

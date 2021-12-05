@@ -3,9 +3,9 @@
 
     <p>This component demonstrates fetching data from the server.</p>
 
-    <p v-if="!databases"><em>Loading...</em></p>
+    <p v-if="!locations"><em>Loading...</em></p>
 
-    <table class='table table-striped' aria-labelledby="tableLabel" v-if="databases">
+    <table class='table table-striped' aria-labelledby="tableLabel" v-if="locations">
         <thead>
             <tr>
                 <th>City</th>
@@ -17,13 +17,13 @@
             </tr>
         </thead>
         <tbody>
-            <tr v-for="database of databases" v-bind:key="database">
-                <td>{{ databases.city }}</td>
-                <td>{{ databases.locname }}</td>
-                <td>{{ databases.address }}</td>
-                <td>{{ databases.postalCode }}</td>
-                <td>{{ databases.openTimes }}</td>
-                <td>{{ databases.additional }}</td>
+            <tr v-for="loc in locations" v-bind:key="loc" >
+                <td>{{ loc.city }}</td>
+                <td>{{ loc.name }}</td>
+                <td>{{ loc.street }}</td>
+                <td>{{ loc.postcode }}</td>
+                <td>{{ loc.openinghours }}</td>
+                <td>{{ loc.particularities }}</td>
             </tr>
         </tbody>
     </table>
@@ -33,10 +33,18 @@
 <script>
     import axios from 'axios'
     export default {
-        name: "Database",
+        name: "locations",
         data() {
             return {
-                databases: []
+                locations: [],
+                id: 0,
+                city: "",
+                name: "",
+                street: "",
+                postcode: "",
+                openinghours: "",
+                particularities: ""
+
             }
         },
         methods: {
@@ -46,7 +54,7 @@
                 // <td>{{databases.id}}</td>
                 axios.get("http://localhost:50598/api/location")
                     .then((response) => {
-                        this.databases = response.data;
+                        this.locations = response.data;
                     })
                     .catch(function (error) {
                         console.log(error);
