@@ -2,7 +2,8 @@
 import Home from "@/components/Home.vue";
 import Login from "@/components/Login.vue";
 import Database from "@/components/Database.vue";
-import SecureComponent from "@/components/Secure.vue"
+import SecureComponent from "@/components/Secure.vue";
+import AddReservation from "@/components/AddReservation.vue";
 import PDF from "../components/PDF.vue";
 
 
@@ -32,6 +33,11 @@ const routes = [
         path: "/Database",
         name: "Database",
         component: Database,
+    },
+    {
+        path: "/AddReservation",
+        name: "AddReservation",
+        component: AddReservation,
     }
 ];
 
