@@ -14,57 +14,13 @@
             Your browser does not support the video tag.
         </video>
 
+        Text_saver
 
-        <!--<div class="text_homepage">
-            <h6>Over Star-shl</h6>
-            <p>
-                Iedereen die bij ons komt, heeft vragen over gezondheid. Vragen die wij beantwoorden met betrouwbare medische diagnostiek.
-                Achter elke diagnose schuilt een persoonlijk verhaal.
-                Daarom geloven wij dat elke vraag onze speciale aandacht verdient voor een helder en betrouwbaar antwoord.<br>
-                <strong class="black-text">Klik om meer te lezen.</strong>
-            </p>
-        </div>-->
-
-        <div class="edit_buttons">
-            <div v-if="editor">
-                <button @click="editor.chain().focus().undo().run()">
-                    <div class="material-icons">undo</div>
-                </button>
-                <button @click="editor.chain().focus().toggleBold().run()" :class="{ 'is-active': editor.isActive('bold') }">
-                    <div class="bub">bold</div>
-                </button>
-                <button @click="editor.chain().focus().toggleItalic().run()" :class="{ 'is-active': editor.isActive('italic') }">
-                    italic
-                </button>
-                <button @click="editor.chain().focus().toggleHeading({ level: 1 }).run()" :class="{ 'is-active': editor.isActive('heading', { level: 1 }) }">
-                    h1
-                </button>
-                <button @click="editor.chain().focus().toggleHeading({ level: 2 }).run()" :class="{ 'is-active': editor.isActive('heading', { level: 2 }) }">
-                    h2
-                </button>
-                <button @click="editor.chain().focus().toggleHeading({ level: 3 }).run()" :class="{ 'is-active': editor.isActive('heading', { level: 3 }) }">
-                    h3
-                </button>
-                <button @click="editor.chain().focus().toggleHeading({ level: 4 }).run()" :class="{ 'is-active': editor.isActive('heading', { level: 4 }) }">
-                    h4
-                </button>
-                <button @click="editor.chain().focus().toggleHeading({ level: 5 }).run()" :class="{ 'is-active': editor.isActive('heading', { level: 5 }) }">
-                    h5
-                </button>
-            </div>
-        </div>
-
-        <div class="text_homepage">
-            <editor-content :editor="editor" />
-        </div>
-
-
-
-        <a class="homeButtons btn">Informatie over onderzoeken</a>
-        <a class="homeButtons btn">Afspraak maken</a>
-        <a class="homeButtons btn">Priklocaties</a>
-        <br><br>
-        <a class="homeButtons blue btn">Contact</a>
+                <a class="homeButtons btn">Informatie over onderzoeken</a>
+                <a class="homeButtons btn">Afspraak maken</a>
+                <a class="homeButtons btn">Priklocaties</a>
+                <br><br>
+                <a class="homeButtons blue btn">Contact</a>
     </div>
 
     <footer>
@@ -82,33 +38,33 @@
 
 
 <script>
-    import { Editor, EditorContent } from '@tiptap/vue-3'
-    import StarterKit from '@tiptap/starter-kit'
+    //import { Editor, EditorContent } from '@tiptap/vue-3'
+    //import StarterKit from '@tiptap/starter-kit'
 
-    export default {
-        components: {
-            EditorContent,
-        },
+    //export default {
+    //    components: {
+    //        EditorContent,
+    //    },
 
-        data() {
-            return {
-                editor: null,
-            }
-        },
+    //    data() {
+    //        return {
+    //            editor: null,
+    //        }
+    //    },
 
-        mounted() {
-            this.editor = new Editor({
-                content: '<h5>Iedereen die bij ons komt, heeft vragen over gezondheid. Vragen die wij beantwoorden met betrouwbare medische diagnostiek. Achter elke diagnose schuilt een persoonlijk verhaal. Daarom geloven wij dat elke vraag onze speciale aandacht verdient voor een helder en betrouwbaar antwoord.</h5>',
-                extensions: [
-                    StarterKit,
-                ],
-            })
-        },
+    //    mounted() {
+    //        this.editor = new Editor({
+    //            content: '<h5>Iedereen die bij ons komt, heeft vragen over gezondheid. Vragen die wij beantwoorden met betrouwbare medische diagnostiek. Achter elke diagnose schuilt een persoonlijk verhaal. Daarom geloven wij dat elke vraag onze speciale aandacht verdient voor een helder en betrouwbaar antwoord.</h5>',
+    //            extensions: [
+    //                StarterKit,
+    //            ],
+    //        })
+    //    },
 
-        beforeUnmount() {
-            this.editor.destroy()
-        },
-    }
+    //    beforeUnmount() {
+    //        this.editor.destroy()
+    //    },
+    //}
 </script>
 
 <style>
@@ -217,8 +173,6 @@
     .material-icons {
         font-size: 10px;
     }
-
-
 
 </style>
 

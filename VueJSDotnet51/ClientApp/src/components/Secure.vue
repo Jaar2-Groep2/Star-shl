@@ -61,7 +61,7 @@
         methods: {
             login() {
 
-                     this.$router.replace({ name: "Home" });   //changes webpage to /Secure
+                     this.$router.replace({ name: "Tiptap" });   //changes webpage to /Secure
             }
         }
     }
