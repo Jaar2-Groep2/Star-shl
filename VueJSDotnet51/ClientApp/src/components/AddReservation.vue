@@ -26,7 +26,6 @@
         <div>
             <label>Mobiel:</label>
             <input v-model="input.phonenumber" id="number" placeholder="Mobiel telefoonnummer" />
-            <span id="error"></span>
         </div>
 
         <div>
@@ -68,14 +67,14 @@
                     gender: ""
                 }
             }
-        },
+        }
 
         //werkt nog niet
-        errorMessage() {
-            var error = document.getElementById("error")
-            error.textContent = "Please enter a valid number"
-            error.style.color = "red"
-        }
+        //errorMessage() {
+        //    var error = document.getElementById("error")
+        //    error.textContent = "Please enter a valid number"
+        //    error.style.color = "red"
+        //}
     }
 </script>
 
