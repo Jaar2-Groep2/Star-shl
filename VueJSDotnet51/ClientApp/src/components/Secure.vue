@@ -12,7 +12,7 @@
     </div>
     
     <div class="Reservation_add Reservations">  <!-- Reservation add-->
-        <a class="btn">
+        <a class="btn" v-on:click="addReservation()">
             <i class="material-icons">add_circle</i> Afspraak toevoegen
         </a>
     </div>
@@ -45,13 +45,13 @@
 
 
 <script>
-    ////materialise code voor dropdown button niet toegepast
-    //document.addEventListener('DOMContentLoaded', function () {
-    //    var elems = document.querySelectorAll('.dropdown-trigger');
-    //    var options = {alignment: 'left'}
-    //    this.Dropdown.init(elems, options);
-    //});
-
+    export default {
+        methods: {
+            addReservation() {
+                this.$router.replace({ name: "AddReservation" });
+            }
+        }
+    }
 
 </script>
 
@@ -81,9 +81,5 @@
 
     .Editable a {
         background: #00c853;
-    }
-
-    .btn {
-        opacity: 0.6;
     }
 </style>
