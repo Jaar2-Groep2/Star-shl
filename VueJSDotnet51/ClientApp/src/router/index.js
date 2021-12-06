@@ -1,7 +1,7 @@
 ﻿import { createWebHistory, createRouter } from "vue-router";
 import Home from "@/components/Home.vue";
 import Login from "@/components/Login.vue";
-import Database from "@/components/Database.vue";
+import Priklocaties from "@/components/Priklocaties.vue";
 import SecureComponent from "@/components/Secure.vue"
 import PDF from "../components/PDF.vue";
 
@@ -29,9 +29,9 @@ const routes = [
         component: SecureComponent,
     },
     {
-        path: "/Database",
-        name: "Database",
-        component: Database,
+        path: "/Priklocaties",
+        name: "Priklocaties",
+        component: Priklocaties,
     }
 ];
 

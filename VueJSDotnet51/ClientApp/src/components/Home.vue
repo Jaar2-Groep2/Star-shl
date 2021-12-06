@@ -21,7 +21,7 @@
 
         <a class="homeButtons btn">Informatie over onderzoeken</a>
         <a class="homeButtons btn">Afspraak maken</a>
-        <a class="homeButtons btn">Priklocaties</a>
+        <router-link class="homeButtons btn" :to="{ name: 'Priklocaties' }">Priklokaties</router-link>
         <br><br>
         <a class="homeButtons blue btn">Contact</a>
     </div>
@@ -46,7 +46,7 @@
 
 <style>
     .btn:hover {
-        opacity: 0.6;
+        opacity: 1.0;
     }
 
     .btn {
@@ -134,7 +134,7 @@
     }
 
     .btn {
-        opacity: 0.6;
+        opacity: 1.0;
     }
 
 </style>
