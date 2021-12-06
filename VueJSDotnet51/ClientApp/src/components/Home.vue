@@ -19,7 +19,7 @@
             </p>
         </div>
 
-        <a class="homeButtons btn">Informatie over onderzoeken</a>
+        <router-link class="homeButtons btn" :to="{ name: 'Info' }">Informatie over onderzoeken</router-link>
         <a class="homeButtons btn">Afspraak maken</a>
         <router-link class="homeButtons btn" :to="{ name: 'Priklocaties' }">Priklokaties</router-link>
         <br><br>

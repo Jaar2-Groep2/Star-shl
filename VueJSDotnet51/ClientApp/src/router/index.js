@@ -3,7 +3,6 @@ import Home from "@/components/Home.vue";
 import Login from "@/components/Login.vue";
 import Priklocaties from "@/components/Priklocaties.vue";
 import SecureComponent from "@/components/Secure.vue"
-import SecureComponent from "@/components/Secure.vue";
 import Info from "@/components/Info.vue"
 import PDF from "../components/PDF.vue";
 
@@ -34,7 +33,6 @@ const routes = [
         path: "/Priklocaties",
         name: "Priklocaties",
         component: Priklocaties,
-        component: SecureComponent
     },
     {
         path: "/Info",
