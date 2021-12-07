@@ -1,6 +1,5 @@
 ﻿<template>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    import './styles/my-styles.scss'
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
 
 
@@ -14,13 +13,16 @@
             Your browser does not support the video tag.
         </video>
 
-        Text_saver
+        <div class="text_homepage">
+            <p>ddddddddddddddddddddd</p>
+        </div>
 
-                <a class="homeButtons btn">Informatie over onderzoeken</a>
-                <a class="homeButtons btn">Afspraak maken</a>
-                <a class="homeButtons btn">Priklocaties</a>
-                <br><br>
-                <a class="homeButtons blue btn">Contact</a>
+
+         <a class="homeButtons btn">Informatie over onderzoeken</a>
+         <a class="homeButtons btn">Afspraak maken</a>
+         <a class="homeButtons btn">Priklocaties</a>
+         <br><br>
+         <a class="homeButtons blue btn">Contact</a>
     </div>
 
     <footer>
@@ -64,6 +66,14 @@
     //    beforeUnmount() {
     //        this.editor.destroy()
     //    },
+    //}
+    //import Text_saver from "@/components/Tiptap.vue";
+    //export default {
+    //    methods: {
+    //        content() {
+    //            Text_saver;
+    //        }
+    //    }
     //}
 </script>
 
