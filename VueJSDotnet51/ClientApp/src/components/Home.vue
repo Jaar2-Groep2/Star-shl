@@ -9,14 +9,15 @@
             Your browser does not support the video tag.
         </video>
 
+        <div class="headline">Over Star-shl</div>
+
         <div class="text_homepage">
-            <h6>Over Star-shl</h6>
-            <p>
+            <h6>
                 Iedereen die bij ons komt, heeft vragen over gezondheid. Vragen die wij beantwoorden met betrouwbare medische diagnostiek.
                 Achter elke diagnose schuilt een persoonlijk verhaal.
                 Daarom geloven wij dat elke vraag onze speciale aandacht verdient voor een helder en betrouwbaar antwoord.<br>
                 <strong class="black-text">Klik om meer te lezen.</strong>
-            </p>
+            </h6>
         </div>
 
         <router-link class="homeButtons btn" :to="{ name: 'Info' }">Informatie over onderzoeken</router-link>
@@ -55,7 +56,7 @@
 
     footer {
         margin-top: 5%;
-        background: #2C2B64;
+        background: #142d49;
         padding: 5%;
         width: 100%;
         position: absolute;
@@ -87,22 +88,27 @@
     }
 
     .text_homepage {
-        font-size: 60%;
+/*        font-size: calc(8px + 0.5vw);*/
         text-align: center;
-        margin-top: 5%;
+        margin-top: 1%;
         margin-left: 8%;
         margin-right: 8%;
     }
+    .headline{
+        font-size: calc(12px + 1.5vw);
+        margin-top: 3%
+    }
 
-    .text_homepage p {
+    .text_homepage h6 {
         cursor: pointer;
-        padding: 4%;
+        padding: 3%;
         margin-right: 10%;
         margin-left: 10%;
-        margin-bottom: 12%;
+        margin-bottom: 10%;
         border-radius: 15px;
         box-shadow: 0 0 10px 1px black;
         text-align: left;
+        font-size: calc(8px + 1.0vw)
     }
 
     video {
@@ -121,7 +127,7 @@
     }
 
     .homeButtons {
-        background: #E91E63;
+        background: #e7334c;
         border: hidden;
         padding: 2%;
         font-size: calc(8px + 1.0vw);
@@ -132,7 +138,7 @@
     }
 
     .blue {
-        background: #2C2B64;
+        background: #142d49;
     }
 
     .btn {

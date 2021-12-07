@@ -54,7 +54,7 @@
     <header :class="{ 'scrolled-nav' : scrollPosition}">
         <ul v-show="!mobile" class="nav">
             <li><router-link class="link" :to="{name: 'Home'}">Home</router-link></li>
-            <li><router-link class="link" :to="{name: 'Login'}">Login</router-link></li>
+            <li><router-link class="link" :to="{name: 'Login'}">Login(test)</router-link></li>
             <li><router-link class="link" :to="{ name: 'PDF' }">Bloedprik certificaat</router-link></li>
             <li><router-link class="link" :to="{name: 'Priklocaties' }">Priklokaties</router-link></li>
             <li><router-link class="link" :to="{name: 'Info'}">Informatie</router-link></li>
@@ -67,7 +67,7 @@
             <ul v-show="mobileNav" class="nav-dropdown">
                 <!--v-on:click=toggleMobileNav()-->
                 <li><router-link class="link2" :to="{name: 'Home'}">Home</router-link></li>
-                <li><router-link class="link2" :to="{name: 'Login'}">Login</router-link></li>
+                <li><router-link class="link2" :to="{name: 'Login'}">Login(test)</router-link></li>
                 <li><router-link class="link2" :to="{ name: 'PDF' }">Bloedprik certificaat</router-link></li>
                 <li><router-link class="link2" :to="{name: 'Priklocaties'}">Priklocaties</router-link></li>
                 <li><router-link class="link2" :to="{name: 'Info'}">Informatie</router-link></li>

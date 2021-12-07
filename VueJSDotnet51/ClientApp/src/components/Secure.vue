@@ -70,7 +70,7 @@
     }
 
     .Reservations a {
-        background: #e91e63;
+        background: #e7334c;
         border: hidden;
         padding: 15px;
         font-size: calc(6px + 1.5vw);
@@ -81,6 +81,6 @@
     }
 
     .Editable a {
-        background: #00c853;
+        background: #79b9d5;
     }
 </style>
