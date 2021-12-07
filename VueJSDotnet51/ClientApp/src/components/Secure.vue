@@ -66,16 +66,17 @@
     }
 
     .Reservations a i {
-        font-size: 16px;
+        font-size: calc(6px + 1.5vw);
     }
 
     .Reservations a {
         background: #e91e63;
         border: hidden;
         padding: 15px;
-        font-size: 60%;
+        font-size: calc(6px + 1.5vw);
+        font-weight: bold;
         border-radius: 15px;
-        width: 60%;
+        width: calc(50% + 1.5vw);
         margin: 1.5%;
     }
 

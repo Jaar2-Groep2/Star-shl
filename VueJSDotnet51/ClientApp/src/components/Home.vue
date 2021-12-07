@@ -124,9 +124,10 @@
         background: #E91E63;
         border: hidden;
         padding: 2%;
-        font-size: 60%;
+        font-size: calc(8px + 1.0vw);
+        font-weight: bold;
         border-radius: 15px;
-        width: 60%;
+        width: calc(50% + 1.0vw);
         margin: 1.5%;
     }
 
