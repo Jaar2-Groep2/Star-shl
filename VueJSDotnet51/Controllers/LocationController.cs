@@ -55,11 +55,13 @@ namespace VueJSDotnet51.Controllers
         //    return Ok(locations);
         //}
 
-
         [HttpGet]
         public JsonResult Get()
         {
-            string query = @"
+            bool test = true;
+
+            if (test) {
+                string query = @"
                 select id as ""id"",
                         city as ""city"",
                         locationname as ""name"",
@@ -72,23 +74,22 @@ namespace VueJSDotnet51.Controllers
                 FROM ""Locations"";
             ";
 
-            DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("LocationAppCon");
-            NpgsqlDataReader myReader;
-            using (NpgsqlConnection myCon = new NpgsqlConnection(sqlDataSource))
-            {
-                myCon.Open();
-                using (NpgsqlCommand myCommand = new NpgsqlCommand(query, myCon))
+                DataTable table = new();
+                string sqlDataSource = _configuration.GetConnectionString("LocationAppCon");
+                NpgsqlDataReader myReader;
+                using (NpgsqlConnection myCon = new(sqlDataSource))
                 {
+                    myCon.Open();
+                    using NpgsqlCommand myCommand = new(query, myCon);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
 
                     myReader.Close();
                     myCon.Close();
-
                 }
+                return new JsonResult(table);
             }
-            return new JsonResult(table);
+            return new JsonResult(null);
         }
     }
 }
