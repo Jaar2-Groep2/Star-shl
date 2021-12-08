@@ -11,6 +11,8 @@
         {{"Lat : " + co.lat}}
         <br />
         {{"Lon : " + co.lon}}
+        <br />
+        {{co.display_name}}
     </div>
 
     <div class="locationwrapper" v-for="loc in locations" v-bind:key="loc">
@@ -57,7 +59,10 @@
                 lat: "",
                 lon: "",
                 inputlat: "",
-                inputlon: ""
+                inputlon: "",
+                compareCoordinates: false,
+                inputlatfloat: 0,
+                inputlonfloat: 0
 
             }
         },
@@ -66,16 +71,74 @@
                 axios.get("http://localhost:5000/api/location")
                     .then((response) => {
                         this.locations = response.data;
+                        // If we have an input postal code to compare to every entry in the DB
+                        if (this.compareCoordinates == true)
+                        {
+                            // Iterates through every item in DB
+                            // The i represents the index, the j represents the amount of locations we want to display
+                            for (let i = 0, j = 0; i < this.locations.length; i++)
+                            {
+                                // Binds the lat and lon for every entry in DB to a variable
+                                var DBlat = this.locations[i].lat;
+                                var DBlon = this.locations[i].lon;
+
+                                // parses the string values to 4 digit floats
+                                var DBlatfloat = Number(parseFloat(DBlat)).toFixed(4);
+                                var DBlonfloat = Number(parseFloat(DBlon)).toFixed(4);
+
+                                // imports haversines module to calculate distance between input coordinates and database coordinates per entry in DB
+                                const haversine = require('haversine-distance')
+
+                                // a = coordinates from database, new coordinates each iteration
+                                // b = coordinates from input, stay the same during each iteration
+                                const a = { latitude: DBlatfloat, longitude: DBlonfloat };
+                                const b = { latitude: this.inputlatfloat, longitude: this.inputlonfloat };
+
+
+                                // calculates the distance in meters between point a and b each iteration
+                                var distanceInMeters = haversine(a, b).toFixed(2);
+                                var distanceInKM = (distanceInMeters / 1000).toFixed(2);
+
+                                this.locations[i]['distance'] = distanceInMeters;
+                                
+                      
+                            }
+
+                            // nog mee bezig 
+                            this.locations.sort(this.compare);
+                            console.log(this.locations[0].distance);
+                            console.log(this.locations[0].city);
+                            for (var i = 0; i < this.locations.length; i++)
+                            {
+                                console.log(this.locations[i].distance);
+                                console.log(this.locations[i].city);
+                            }
+                        }
+                                
+                        
+                        else {
+                            //If we don't (yet) have an input postal code to compare to every entry in the DB
+                            console.log("Show all locations");
+                        }
                     })
                     .catch(function (error) {
                         console.log(error);
                         alert(error);
                     });
             },
+            compare(a, b) {
+                if (a.distance < b.distance)
+                    return -1;
+                if (a.distance > b.distance)
+                    return 1;
+                return 0;
+            },
+
 
             testFunction() {
                 if (this.postcodeInput.length == 6) {
                     console.log("Postcode: " + this.postcodeInput);
+                    this.compareCoordinates = true;
                     this.GetCoordinates();
                 }
                 else
@@ -98,22 +161,24 @@
                 axios.get(this.testURL)
                     .then((response) => {
                         this.coordinates = response.data;
-                        // extracts the lat from the input postal code
-                        var inputlat = JSON.stringify(response.data[0].lat);
-                        // extracts the lon from the input postal code
-                        var inputlon = JSON.stringify(response.data[0].lon);
-                        // logs the coordinates
-                        console.log("lat: " + inputlat);
-                        console.log("lon: " + inputlon);
 
+                        // extracts the lat and lon from the input postal code
+                        var inputlat = this.coordinates[0].lat;
+                        var inputlon = this.coordinates[0].lon;
 
+                        // parses the string values to 4 digit floats
+                        this.inputlatfloat = parseFloat(inputlat).toFixed(4);
+                        this.inputlonfloat = parseFloat(inputlon).toFixed(4);
+
+                        // goes to GetLocations to compare these coordinates with coordinates stored in the DB
+                        this.GetLocations()
                     })
                     .catch(function (error) {
                         console.log(error);
                         alert(error);
                     });
             },
-        },
+        }, 
 
         mounted() {
             this.GetLocations();
