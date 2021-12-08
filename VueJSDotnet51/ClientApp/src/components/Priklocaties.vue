@@ -1,5 +1,18 @@
 ﻿<template>
     <h1>Onze locaties</h1>
+    <h5>Filter op: </h5>
+    <div class="form">
+        <input v-model="postcodeInput" maxlength="6" placeholder="Postcode?" />
+        <input v-model="radiusInput" maxlength="4" placeholder="Radius???" />
+        <br />
+        <button class="btn" @click="testFunction">Submit</button>
+    </div>
+    <div class="coordinaten" v-for="co in coordinates" v-bind:key="co">
+        {{"Lat : " + co.lat}}
+        <br />
+        {{"Lon : " + co.lon}}
+    </div>
+
     <div class="locationwrapper" v-for="loc in locations" v-bind:key="loc">
         <div class="loc-city">
             {{ "Plaats: " + loc.city }}
@@ -29,13 +42,22 @@
         data() {
             return {
                 locations: [],
+                coordinates: [],
+                coordinatesJson: [],
                 id: 0,
                 city: "",
                 name: "",
                 street: "",
                 postcode: "",
                 openinghours: "",
-                particularities: ""
+                particularities: "",
+                postcodeInput: "",
+                radiusInput: "",
+                testURL: "",
+                lat: "",
+                lon: "",
+                inputlat: "",
+                inputlon: ""
 
             }
         },
@@ -49,8 +71,50 @@
                         console.log(error);
                         alert(error);
                     });
-            }
+            },
+
+            testFunction() {
+                if (this.postcodeInput.length == 6) {
+                    console.log("Postcode: " + this.postcodeInput);
+                    this.GetCoordinates();
+                }
+                else
+                {
+                    console.log("error! postcode moet 6 karakters bevatten");
+                }
+                if (this.radiusInput >= 1) {
+                    console.log("Radius in km: " + this.radiusInput);
+                }
+                else
+                {
+                    console.log("error! radius moet minimaal 1 karakter bevatten");
+                }  
+            },
+
+            GetCoordinates()
+            {
+                //sends a request to the openstreetmap API with in the input postal code
+                this.testURL = "https://nominatim.openstreetmap.org/search.php?q=" + this.postcodeInput + "&format=jsonv2";
+                axios.get(this.testURL)
+                    .then((response) => {
+                        this.coordinates = response.data;
+                        // extracts the lat from the input postal code
+                        var inputlat = JSON.stringify(response.data[0].lat);
+                        // extracts the lon from the input postal code
+                        var inputlon = JSON.stringify(response.data[0].lon);
+                        // logs the coordinates
+                        console.log("lat: " + inputlat);
+                        console.log("lon: " + inputlon);
+
+
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                        alert(error);
+                    });
+            },
         },
+
         mounted() {
             this.GetLocations();
         }
@@ -66,5 +130,15 @@
         border-radius: 1rem;
         box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
         transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    }
+    input, select, optgroup, textarea {
+        margin: 0;
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+        background-color: transparent;
+    }
+    button{
+        margin: 0;
     }
 </style>
