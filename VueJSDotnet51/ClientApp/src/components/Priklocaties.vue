@@ -1,14 +1,13 @@
 ﻿<template>
-    <h1>Onze locaties</h1>
+    <h1>Locaties Star-shl</h1>
     <h5>Vul postcode in: </h5>
     <div class="form">
         <input v-model="postcodeInput" maxlength="6" placeholder="Postcode, bijv: 1234AB" />
         <br />
-        <button class="btn" @click="testFunction">Submit</button>
+        <button class="btn" @click="submitFunction">Zoek</button>
     </div>
 
     <br />
-    <h5>Of laat locatie bepalen: </h5>
     <p>
         <button class="btn" @click="locateMe">Detecteer locatie</button>
     </p>
@@ -22,8 +21,15 @@
         <i>Bezig met het detecteren van de locatie</i>
     </div>
 
-    <div v-if="location">
-        Gedecteerde locatie:  {{ location.coords.latitude }}, {{ location.coords.longitude}}
+    <div v-if="location != null">
+        Gedecteerde locatie:
+        <br />
+        {{detectedTown}}
+        <br />
+        {{detectedStreet}} {{detectedNumber}}
+        <br />
+        {{detectedPostal}}
+        <br />
     </div>
 
     <div class="locationwrapper" v-for="loc in locations" v-bind:key="loc">
@@ -79,8 +85,11 @@
                 inputlonfloat: 0,
                 location: null,
                 gettingLocation: false,
-                errorStr: null
-
+                errorStr: null,
+                detectedTown: "",
+                detectedPostal: "",
+                detectedStreet: "",
+                detectedNumber: ""
             }
         },
         methods: {
@@ -145,7 +154,7 @@
             },
 
             // function if the 'submit' button has been clicked
-            testFunction() {
+            submitFunction() {
                 if (this.postcodeInput.length == 6) {
                     console.log("Postcode: " + this.postcodeInput);
                     this.compareCoordinatesBool = true;
@@ -166,7 +175,7 @@
                     .then((response) => {
                         this.coordinates = response.data;
 
-                        // extracts the lat and lon from the input postal code
+                        // extracts the lat and lon from the input postal code in the API
                         var inputlat = this.coordinates[0].lat;
                         var inputlon = this.coordinates[0].lon;
 
@@ -183,6 +192,27 @@
                     });
             },
 
+            // If a location gets detected, translate the coordinates to address information such as postal code, city etc.
+            GetAddressDetailsFromCoordinates() {
+                var newURL = "https://nominatim.openstreetmap.org/reverse?lat=" + this.location.coords.latitude + "&lon=" + this.location.coords.longitude + "&format=jsonv2";
+                axios.get(newURL)
+                    .then((response) => {
+                        var addresdetails = response.data;
+
+                        // extracts the postal code from API
+                        this.detectedStreet = addresdetails.address["road"];
+                        this.detectedNumber = addresdetails.address["house_number"];
+                        this.detectedPostal = addresdetails.address["postcode"];
+                        this.detectedTown = addresdetails.address["town"];
+                        this.postcodeInput = this.detectedPostal;
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                        alert("Er ging iets fout...");
+                    });
+            },
+
+            // Method to detect a location, works with geolocation
             async getLocation() {
                 return new Promise((resolve, reject) => {
 
@@ -198,13 +228,14 @@
                 });
             },
 
+            // method that works with getLocation(), parses the detected coordinated to the compare_Coordinates method. Also calls a method to find the detected location street, city, postal etc. 
             async locateMe() {
-
                 this.gettingLocation = true;
                 try {
                     this.gettingLocation = false;
                     this.location = await this.getLocation();
                     this.compare_Coordinates(this.location.coords.latitude, this.location.coords.longitude);
+                    this.GetAddressDetailsFromCoordinates();
                 } catch (e) {
                     this.gettingLocation = false;
                     this.errorStr = e.message;
