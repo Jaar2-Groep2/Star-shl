@@ -1,17 +1,35 @@
 ﻿<template>
     <h1>Onze locaties</h1>
-    <h5>Filter op: </h5>
+    <h5>Vul postcode in: </h5>
     <div class="form">
-        <input v-model="postcodeInput" maxlength="6" placeholder="Postcode?" />
-        <input v-model="radiusInput" maxlength="4" placeholder="Radius???" />
+        <input v-model="postcodeInput" maxlength="6" placeholder="Postcode, bijv: 1234AB" />
         <br />
         <button class="btn" @click="testFunction">Submit</button>
     </div>
 
+    <br />
+    <h5>Of laat locatie bepalen: </h5>
+    <p>
+        <button class="btn" @click="locateMe">Detecteer locatie</button>
+    </p>
+
+    <div v-if="errorStr">
+        Sorry, but the following error
+        occurred: {{errorStr}}
+    </div>
+
+    <div v-if="gettingLocation">
+        <i>Bezig met het detecteren van de locatie</i>
+    </div>
+
+    <div v-if="location">
+        Gedecteerde locatie:  {{ location.coords.latitude }}, {{ location.coords.longitude}}
+    </div>
+
     <div class="locationwrapper" v-for="loc in locations" v-bind:key="loc">
 
-        <div class="ewaja" v-if="loc.distance != null">
-            {{"KM: " + ((loc.distance/1000).toFixed(2)) }}
+        <div class="loc-distance" v-if="loc.distance != null">
+            {{"Afstand (in km): " + ((loc.distance/1000).toFixed(2)) }}
         </div>
         <div class="loc-city">
             {{ "Plaats: " + loc.city }}
@@ -51,15 +69,17 @@
                 openinghours: "",
                 particularities: "",
                 postcodeInput: "",
-                radiusInput: "",
                 testURL: "",
                 lat: "",
                 lon: "",
                 inputlat: "",
                 inputlon: "",
-                compareCoordinates: false,
+                compareCoordinatesBool: false,
                 inputlatfloat: 0,
-                inputlonfloat: 0
+                inputlonfloat: 0,
+                location: null,
+                gettingLocation: false,
+                errorStr: null
 
             }
         },
@@ -68,67 +88,54 @@
                 axios.get("http://localhost:5000/api/location")
                     .then((response) => {
                         this.locations = response.data;
-                        // If we have an input postal code to compare to every entry in the DB
-                        if (this.compareCoordinates == true)
-                        {
-                            // Iterates through every item in DB
-                            // The i represents the index, the j represents the amount of locations we want to display
-                            for (let i = 0; i < this.locations.length; i++)
-                            {
-                                // Binds the lat and lon for every entry in DB to a variable
-                                var DBlat = this.locations[i].lat;
-                                var DBlon = this.locations[i].lon;
-
-                                // parses the string values to 4 digit floats
-                                var DBlatfloat = Number(parseFloat(DBlat)).toFixed(4);
-                                var DBlonfloat = Number(parseFloat(DBlon)).toFixed(4);
-
-                                // imports haversines module to calculate distance between input coordinates and database coordinates per entry in DB
-                                const haversine = require('haversine-distance')
-
-                                // a = coordinates from database, new coordinates each iteration
-                                // b = coordinates from input, stay the same during each iteration
-                                const a = { latitude: DBlatfloat, longitude: DBlonfloat };
-                                const b = { latitude: this.inputlatfloat, longitude: this.inputlonfloat };
-
-
-                                // calculates the distance in meters between point a and b each iteration
-                                var distanceInMeters = haversine(a, b);
-                                var distanceInKM = (distanceInMeters / 1000).toFixed(2);
-
-                                this.locations[i]['distance'] = distanceInMeters;
-                                
-                      
-                            }
-
-                            // nog mee bezig 
-                            this.locations.sort(this.compare);
-
-                            for (let j = 0; j < this.locations.length; j++)
-                            {
-                                console.log(this.locations[j].distance);
-                                console.log(this.locations[j].city);
-                                console.log(this.locations[j].name);
-                                console.log(this.locations[j].street);
-                                console.log(this.locations[j].postcode);
-                                console.log(this.locations[j].openinghours);
-                                console.log(this.locations[j].particularities);
-                                console.log("_____________________")
-                            }
-                            
-                        }
-                                
-                        
-                        else {
-                            //If we don't (yet) have an input postal code to compare to every entry in the DB
-                            console.log("Show all locations");
-                        }
                     })
                     .catch(function (error) {
                         console.log(error);
                         alert(error);
                     });
             },
+
+            compare_Coordinates(c, d) {
+                // If we have an input postal code to compare to every entry in the DB
+                if (this.compareCoordinatesBool == true || this.location != null) {
+                    // Iterates through every item in DB
+                    // The i represents the index, the j represents the amount of locations we want to display
+                    for (let i = 0; i < this.locations.length; i++) {
+                        // Binds the lat and lon for every entry in DB to a variable
+                        var DBlat = this.locations[i].lat;
+                        var DBlon = this.locations[i].lon;
+
+                        // parses the string values to 4 digit floats
+                        var DBlatfloat = Number(parseFloat(DBlat)).toFixed(4);
+                        var DBlonfloat = Number(parseFloat(DBlon)).toFixed(4);
+
+                        // imports haversines module to calculate distance between input coordinates and database coordinates per entry in DB
+                        const haversine = require('haversine-distance')
+
+                        // a = coordinates from database, new coordinates each iteration
+                        // b = coordinates from input, stay the same during each iteration. Depends on if the users enters postalcode manually or if the location gets detected
+
+                        const a = { latitude: DBlatfloat, longitude: DBlonfloat };
+                        const b = { latitude: c, longitude: d };
+
+                        //submit with detected coords
+                        //const b = { latitude: this.location.coords.latitude, longitude: this.location.coords.longitude }
+
+
+                        // calculates the distance in meters between point a and b each iteration
+                        var distanceInMeters = haversine(a, b);
+
+                        // adds distance in meters to locations[]
+                        this.locations[i]['distance'] = distanceInMeters;
+                    }
+                    this.locations.sort(this.compare);
+                }
+                else {
+                    //If we don't (yet) have an input postal code to compare to every entry in the DB
+                    console.log("Show all locations with no distancechecks");
+                }
+            },
+            // compares given coordinates
             compare(a, b) {
                 if (a.distance < b.distance)
                     return -1;
@@ -137,24 +144,18 @@
                 return 0;
             },
 
-
+            // function if the 'submit' button has been clicked
             testFunction() {
                 if (this.postcodeInput.length == 6) {
                     console.log("Postcode: " + this.postcodeInput);
-                    this.compareCoordinates = true;
+                    this.compareCoordinatesBool = true;
                     this.GetCoordinates();
                 }
                 else
                 {
                     console.log("error! postcode moet 6 karakters bevatten");
+                    alert("Er moet een postcode ingevuld worden. Bijvoorbeeld: 1234AB");
                 }
-                if (this.radiusInput >= 1) {
-                    console.log("Radius in km: " + this.radiusInput);
-                }
-                else
-                {
-                    console.log("error! radius moet minimaal 1 karakter bevatten");
-                }  
             },
 
             GetCoordinates()
@@ -173,14 +174,42 @@
                         this.inputlatfloat = parseFloat(inputlat).toFixed(4);
                         this.inputlonfloat = parseFloat(inputlon).toFixed(4);
 
-                        // goes to GetLocations to compare these coordinates with coordinates stored in the DB
-                        this.GetLocations()
+                        // goes to compareCoordinates to compare these coordinates with coordinates stored in the DB
+                        this.compare_Coordinates(this.inputlatfloat, this.inputlonfloat);
                     })
                     .catch(function (error) {
                         console.log(error);
-                        alert(error);
+                        alert("Geen geldige postcode. Probeer opnieuw.");
                     });
             },
+
+            async getLocation() {
+                return new Promise((resolve, reject) => {
+
+                    if (!("geolocation" in navigator)) {
+                        reject(new Error('Geolocation is not available.'));
+                    }
+                    navigator.geolocation.getCurrentPosition(pos => {
+                        resolve(pos);
+                    }, err => {
+                        reject(err);
+                    });
+
+                });
+            },
+
+            async locateMe() {
+
+                this.gettingLocation = true;
+                try {
+                    this.gettingLocation = false;
+                    this.location = await this.getLocation();
+                    this.compare_Coordinates(this.location.coords.latitude, this.location.coords.longitude);
+                } catch (e) {
+                    this.gettingLocation = false;
+                    this.errorStr = e.message;
+                } 
+            }
         }, 
 
         mounted() {
@@ -207,6 +236,10 @@
         background-color: transparent;
     }
     button{
-        margin: 0;
+        margin: 2px;
+    }
+    .loc-distance {
+        font-weight: bold;
+        margin: 2px;
     }
 </style>
