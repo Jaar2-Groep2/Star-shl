@@ -7,15 +7,12 @@
         <br />
         <button class="btn" @click="testFunction">Submit</button>
     </div>
-    <div class="coordinaten" v-for="co in coordinates" v-bind:key="co">
-        {{"Lat : " + co.lat}}
-        <br />
-        {{"Lon : " + co.lon}}
-        <br />
-        {{co.display_name}}
-    </div>
 
     <div class="locationwrapper" v-for="loc in locations" v-bind:key="loc">
+
+        <div class="ewaja" v-if="loc.distance != null">
+            {{"KM: " + ((loc.distance/1000).toFixed(2)) }}
+        </div>
         <div class="loc-city">
             {{ "Plaats: " + loc.city }}
         </div>
@@ -76,7 +73,7 @@
                         {
                             // Iterates through every item in DB
                             // The i represents the index, the j represents the amount of locations we want to display
-                            for (let i = 0, j = 0; i < this.locations.length; i++)
+                            for (let i = 0; i < this.locations.length; i++)
                             {
                                 // Binds the lat and lon for every entry in DB to a variable
                                 var DBlat = this.locations[i].lat;
@@ -96,7 +93,7 @@
 
 
                                 // calculates the distance in meters between point a and b each iteration
-                                var distanceInMeters = haversine(a, b).toFixed(2);
+                                var distanceInMeters = haversine(a, b);
                                 var distanceInKM = (distanceInMeters / 1000).toFixed(2);
 
                                 this.locations[i]['distance'] = distanceInMeters;
@@ -106,13 +103,19 @@
 
                             // nog mee bezig 
                             this.locations.sort(this.compare);
-                            console.log(this.locations[0].distance);
-                            console.log(this.locations[0].city);
-                            for (var i = 0; i < this.locations.length; i++)
+
+                            for (let j = 0; j < this.locations.length; j++)
                             {
-                                console.log(this.locations[i].distance);
-                                console.log(this.locations[i].city);
+                                console.log(this.locations[j].distance);
+                                console.log(this.locations[j].city);
+                                console.log(this.locations[j].name);
+                                console.log(this.locations[j].street);
+                                console.log(this.locations[j].postcode);
+                                console.log(this.locations[j].openinghours);
+                                console.log(this.locations[j].particularities);
+                                console.log("_____________________")
                             }
+                            
                         }
                                 
                         
