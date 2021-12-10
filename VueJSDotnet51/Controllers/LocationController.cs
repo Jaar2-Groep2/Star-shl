@@ -1,12 +1,8 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Npgsql;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Options;
-using Npgsql;
 using VueJSDotnet51.Models;
 
 
@@ -60,7 +56,8 @@ namespace VueJSDotnet51.Controllers
         {
             bool test = true;
 
-            if (test) {
+            if (test)
+            {
                 string query = @"
                 select id as ""id"",
                         city as ""city"",
@@ -94,30 +91,30 @@ namespace VueJSDotnet51.Controllers
     }
 }
 
-    
 
 
-    //    [ApiController]
-    //    [Route("api/[controller]")]
 
-    //    public class LocationController : ControllerBase
-    //    {
-    //        private readonly IConfiguration _configuration;
+//    [ApiController]
+//    [Route("api/[controller]")]
 
-    //        public LocationController(IConfiguration configuration)
-    //        {
-    //            _configuration = configuration;
-    //        }
+//    public class LocationController : ControllerBase
+//    {
+//        private readonly IConfiguration _configuration;
 
-    //        [HttpGet]
+//        public LocationController(IConfiguration configuration)
+//        {
+//            _configuration = configuration;
+//        }
 
-    //        public JsonResult Get()
-    //        {
-    //            string query = @"
+//        [HttpGet]
 
-    //"           ;
-    //        }
+//        public JsonResult Get()
+//        {
+//            string query = @"
 
-    //        }
-    //    }
+//"           ;
+//        }
+
+//        }
+//    }
 
