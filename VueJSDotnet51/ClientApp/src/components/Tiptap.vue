@@ -1,4 +1,4 @@
-<template>
+﻿<template>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
 
@@ -44,7 +44,11 @@
         </div>
 
         <div class="text_homepage">
-            <editor-content :editor="editor" />
+            <editor-content 
+                            :editor="editor"
+                            v-model="content"
+            />
+            <pre>{{ content }}</pre>
         </div>
 
 
@@ -74,6 +78,7 @@
 <script>
     import { Editor, EditorContent } from '@tiptap/vue-3'
     import StarterKit from '@tiptap/starter-kit'
+    //const html = this.editor.getHTML()
     export default {
         components: {
             EditorContent,
@@ -82,18 +87,24 @@
         data() {
             return {
                 editor: null,
-                Text_saver: '<h5>Iedereen die bij ons komt, heeft vragen over gezondheid. Vragen die wij beantwoorden met betrouwbare medische diagnostiek. Achter elke diagnose schuilt een persoonlijk verhaal. Daarom geloven wij dat elke vraag onze speciale aandacht verdient voor een helder en betrouwbaar antwoord.<h5>'
+                content: null,
             }
         },
 
-
         mounted() {
             this.editor = new Editor({
-                content: this.Text_saver,
+                //content: '<p>I’m running Tiptap with Vue.js. 🎉</p>',
+                content: "<p>Hello</p>",
                 extensions: [
                     StarterKit,
                 ],
             })
+            //const json = editor.getJSON()
+            //this.editor.commands.clearContent(true)
+
+            //this.editor.commands.setContent('<p>Example Text</p>')
+
+
         },
 
         beforeUnmount() {
