@@ -1,43 +1,56 @@
 <template>
 
-    <div class="form">
-        <h2>Uw gegevens</h2>
+    <h2>Uw gegevens</h2>
+
+
+    <form class="form">
 
         <div>
-            <label>Voorletters:</label>
-            <input v-model="input.firstName" placeholder="Voorletters" />
+            <label for="firstName">Voorletters:</label>
+            <input v-model="firstName" name="firstName" id="firstName" type="text" placeholder="Voorletters*" />
+            <p class="error">{{ msg['firstName'] }}</p>
         </div>
 
         <div>
-            <label>Tussenvoegsel:</label>
-            <input class="insertion_input" v-model="input.insertion" placeholder="Tussenvoegsel" />
+            <label for="insertion">Tussenvoegsel:</label>
+            <input class="insertion_input" v-model="insertion" placeholder="Tussenvoegsel" />
         </div>
 
         <div>
-            <label>Achternaam:</label>
-            <input v-model="input.lastname" placeholder="Achternaam" />
+            <label for="lastName">Achternaam:</label>
+            <input v-model="lastName" name="lastName" id="lastName" type="text" placeholder="Achternaam*" />
+            <p class="error">{{ msg['lastName'] }}</p>
         </div>
 
         <div>
-            <label>E-mail:</label>
-            <input v-model="input.mail" placeholder="E-mail" />
+            <label for="email">E-mail:</label>
+            <input v-model="email" name="email" id="email" type="email" placeholder="E-mail*" />
+            <p class="error">{{ msg['email'] }}</p>
         </div>
 
         <div>
-            <label>Mobiel:</label>
-            <input v-model="input.phonenumber" id="number" placeholder="Mobiel telefoonnummer" />
+            <label for="phonenumber">Mobiel:</label>
+            <input v-model="phonenumber" name="phonenumber" id="phonenumber" type="number" placeholder="Mobiel telefoonnummer" />
+            <p class="error"></p>
         </div>
 
         <div>
-            <label>Geslacht:</label>
+            <label for="age">Leeftijd:</label>
+            <input id="age" v-model="age" type="number" name="age" min="0" max="130">
+            <p class="error">{{ msg['age'] }}</p>
+        </div>
+
+        <div>
+            <label for="gender">Geslacht:</label>
             <select name="gender" v-model="gender">
                 <option value="man">man</option>
                 <option value="woman">vrouw</option>
             </select>
+            <p class="error">{{ msg['gender'] }}</p>
         </div>
 
-        <button class="btn" onclick="errorMessage()">Volgende</button>
-    </div>
+        <div class="btn" v-on:click="formCheck">Submit</div>
+    </form>
 
     <footer>
         <p class="text-white">
@@ -57,46 +70,98 @@
     export default {
         data() {
             return {
-                input: {
-                    firstName: "",
-                    insertion: "",
-                    lastName: "",
-                    mail: "",
-                    phonenumber: "",
-                    birthdate: "",
-                    gender: ""
+                msg: [],
+                firstName: '',
+                insertion: '',
+                lastName: '',
+                email: '',
+                phonenumber: null,
+                age: null,
+                gender: ''
+            }
+        },
+        methods: {
+            nameCheck: function(name) {
+                if (name == '') {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            },
+            emailCheck: function (email) {
+                var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                if (re.test(email)) {
+                    return false;
+                }
+                else {
+                    return true;
+                }
+            },
+            formCheck() {
+                if (this.nameCheck(this.firstName)) {
+                    this.msg['firstName'] = 'Voornaam is verplicht'
+                }
+                else {
+                    this.msg['firstName'] = ''
+                }
+
+                if (this.nameCheck(this.lastName)) {
+                    this.msg['lastName'] = 'Achternaam is verplicht'
+                }
+                else {
+                    this.msg['lastName'] = ''
+                }
+
+                if (this.nameCheck(this.gender)) {
+                    this.msg['gender'] = 'Uw geslacht vermelden is verplicht'
+                }
+                else {
+                    this.msg['gender'] = ''
+                }
+
+                if (!/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(this.email)) {
+                    this.msg['email'] = 'Voer een geldig email adres in a.u.b'
+                }
+                else {
+                    this.msg['email'] = ''
+                }
+
+                if (this.age < 0 || this.age > 130) {
+                    this.msg['age'] = 'Voer uw echte leeftijd in a.u.b'
+                }
+                else {
+                    this.msg['age'] = ''
                 }
             }
         }
-
-        //werkt nog niet
-        //errorMessage() {
-        //    var error = document.getElementById("error")
-        //    error.textContent = "Please enter a valid number"
-        //    error.style.color = "red"
-        //}
     }
 </script>
 
 <style scoped>
-    .form *{
-        margin: 3%;
+    .form div {
+        margin: 10%;
+        text-align: left;
     }
 
-    .form div {
-        text-align: left;
+    .form div label {
+        margin-right: 2%;
     }
 
     .insertion_input {
         width: 50%;
     }
 
-    .form h2{
+    .h2 {
         margin-bottom: 15%;
     }
 
     footer {
-        bottom: 0;
+        margin-top: 10vh;
+    }
+
+    .error {
+        color: #e7334c;
     }
 </style>
 
