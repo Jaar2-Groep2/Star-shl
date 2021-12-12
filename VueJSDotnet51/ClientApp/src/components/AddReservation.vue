@@ -1,43 +1,54 @@
 <template>
 
-    <div class="form">
-        <h2>Uw gegevens</h2>
+    <h2>Uw gegevens</h2>
+
+
+    <form class="form">
 
         <div>
-            <label>Voorletters:</label>
-            <input v-model="input.firstName" placeholder="Voorletters" />
+            <label for="firstName">Voorletters:</label>
+            <input v-model="firstName" name="firstName" id="firstName" type="text" placeholder="Voorletters" />
+            <p class="error" v-if="firstName == ''">"Voorletters zijn verplicht</p>
         </div>
 
         <div>
-            <label>Tussenvoegsel:</label>
+            <label for="insertion">Tussenvoegsel:</label>
             <input class="insertion_input" v-model="input.insertion" placeholder="Tussenvoegsel" />
         </div>
 
         <div>
-            <label>Achternaam:</label>
-            <input v-model="input.lastname" placeholder="Achternaam" />
+            <label for="lastName">Achternaam:</label>
+            <input v-model="lastName" name="lastName" id="lastName" type="text" placeholder="Achternaam" />
+            <p class="error" v-if="lastName == ''">"Achternaam is verplicht</p>
         </div>
 
         <div>
-            <label>E-mail:</label>
-            <input v-model="input.mail" placeholder="E-mail" />
+            <label for="email">E-mail:</label>
+            <input v-model="email" name="email" id="email" type="email" placeholder="E-mail" />
+            <p class="error" v-if="emailCheck">{{ emailError }}</p>
+        </div>
+            
+        <div>
+            <label for="phonenumber">Mobiel:</label>
+            <input v-model="phonenumber" name="phonenumber" id="phonenumber" type="number" placeholder="Mobiel telefoonnummer" />
+            <p class="error" v-if="Number.isNaN(parseInt(form.vat_id))">Voer een geldig nummer in a.u.b</p>
         </div>
 
         <div>
-            <label>Mobiel:</label>
-            <input v-model="input.phonenumber" id="number" placeholder="Mobiel telefoonnummer" />
+            <label for="birthdate">Geboortedatum:</label>
+            <input v-model="birthdate" name="birthdate" id="birthdate" type="number" placeholder="Geboortedatum" />
         </div>
 
         <div>
-            <label>Geslacht:</label>
+            <label for="gender">Geslacht:</label>
             <select name="gender" v-model="gender">
                 <option value="man">man</option>
                 <option value="woman">vrouw</option>
             </select>
         </div>
 
-        <button class="btn" onclick="errorMessage()">Volgende</button>
-    </div>
+        <button class="btn">Volgende</button>
+    </form>
 
     <footer>
         <p class="text-white">
@@ -54,28 +65,33 @@
 
 
 <script>
-    export default {
-        data() {
-            return {
-                input: {
-                    firstName: "",
-                    insertion: "",
-                    lastName: "",
-                    mail: "",
-                    phonenumber: "",
-                    birthdate: "",
-                    gender: ""
+    const app = new Vue({
+        el: '#app',
+        data: {
+            firstName: null,
+            insertion: null,
+            lastName: null,
+            email: null,
+            emailError: null,
+            phonenumber: null,
+            birthdate: null,
+            gender: null
+        },
+        methods: {
+            emailCheck: function() {
+                if (!this.email) {
+                    this.emailError = 'Email is een verplicht veld';
+                } else if (!this.validEmail(this.email)) {
+                    this.emailError = 'Voer aub een geldig email adres in';
                 }
+                return true;
+            },
+            validEmail: function (email) {
+                var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(email);
             }
         }
-
-        //werkt nog niet
-        //errorMessage() {
-        //    var error = document.getElementById("error")
-        //    error.textContent = "Please enter a valid number"
-        //    error.style.color = "red"
-        //}
-    }
+    })
 </script>
 
 <style scoped>
@@ -91,12 +107,16 @@
         width: 50%;
     }
 
-    .form h2{
+    .h2{
         margin-bottom: 15%;
     }
 
     footer {
         bottom: 0;
+    }
+
+    .error {
+        color: #e7334c;
     }
 </style>
 
