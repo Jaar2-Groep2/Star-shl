@@ -29,6 +29,7 @@ namespace VueJSDotnet51.Controllers
             _configuration = configuration;
         }
 
+        /*
         [HttpGet]
         public JsonResult Get()
         {
@@ -60,6 +61,8 @@ namespace VueJSDotnet51.Controllers
             }
             return new JsonResult(table);
         }
+         */
+
         [HttpPost]
         public IActionResult Register(User user)
         {
@@ -91,8 +94,8 @@ namespace VueJSDotnet51.Controllers
 
             myCon.Close();
         }
-
-        [HttpGet]
+        //NEVER DO THIS IN A REAL SCENARIO! I couldn't get hhtps to work properly, hence this madness
+        [HttpGet("{username}/{password}")]
         public bool Login(string username, string password)
         {
             bool result = false;
