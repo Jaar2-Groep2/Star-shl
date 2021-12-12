@@ -31,12 +31,13 @@
         <div>
             <label for="phonenumber">Mobiel:</label>
             <input v-model="phonenumber" name="phonenumber" id="phonenumber" type="number" placeholder="Mobiel telefoonnummer" />
-            <p class="error" v-if="Number.isNaN(parseInt(form.vat_id))">Voer een geldig nummer in a.u.b</p>
+            <p class="error" v-if="Number.isNaN(parseInt(phonenumber))">Voer een geldig nummer in a.u.b</p>
         </div>
 
         <div>
-            <label for="birthdate">Geboortedatum:</label>
-            <input v-model="birthdate" name="birthdate" id="birthdate" type="number" placeholder="Geboortedatum" />
+            <label for="age">Leeftijd</label>
+            <input id="age" v-model="age" type="number" name="age" min="0" max="150">
+            <p class="error" v-if="age == null">Voer eengetal in a.u.b</p>
         </div>
 
         <div>
@@ -74,7 +75,7 @@
             email: null,
             emailError: null,
             phonenumber: null,
-            birthdate: null,
+            age: null,
             gender: null
         },
         methods: {
