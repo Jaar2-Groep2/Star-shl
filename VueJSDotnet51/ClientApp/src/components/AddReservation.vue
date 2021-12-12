@@ -83,19 +83,10 @@
         methods: {
             nameCheck: function(name) {
                 if (name == '') {
-                    return true;
+                    return true
                 }
                 else {
-                    return false;
-                }
-            },
-            emailCheck: function (email) {
-                var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-                if (re.test(email)) {
-                    return false;
-                }
-                else {
-                    return true;
+                    return false
                 }
             },
             formCheck() {
@@ -132,6 +123,10 @@
                 }
                 else {
                     this.msg['age'] = ''
+                }
+                
+                if (this.msg['firstName'] == '' && this.msg['lastName'] == '' && this.msg['gender'] == '' && this.msg['email'] == '' && this.msg['age'] == '') {
+                    this.$router.replace({ name: "Secure" });
                 }
             }
         }
