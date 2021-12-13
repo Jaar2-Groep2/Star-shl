@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace VueJSDotnet51.Models
 {
-    public class Location
+    public class Content
     {
         public int id { get; set; }
         public string city { get; set; }
@@ -17,13 +17,13 @@ namespace VueJSDotnet51.Models
         public double lon { get; set; }
     }
 
-    public class LocationList
+    public class ContentList
     {
-        public List<Location> locations { get; set; }
+        public List<Content> Contentlist { get; set; }
     }
 
 
-    public class LocationsContext : DbContext
+    public class ContentContext : DbContext
     {
         private readonly IConfiguration _configuration;
         public DbSet<Location> Locations { get; set; }
@@ -33,7 +33,7 @@ namespace VueJSDotnet51.Models
             optionsBuilder.UseNpgsql(@"Server=145.24.222.238;Port=8001;User Id=postgres;Password=Star-Shl;Database=postgres;");
         }
 
-        public LocationsContext(IConfiguration configuration)
+        public ContentContext(IConfiguration configuration)
         {
             _configuration = configuration;
         }

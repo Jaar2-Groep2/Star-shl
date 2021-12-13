@@ -8,21 +8,20 @@ using VueJSDotnet51.Models;
 
 namespace VueJSDotnet51.Controllers
 {
-    public class LocationList
+    public class ContentList
     {
-        public List<Location> locations { get; set; }
+        public List<Content> Contentlist { get; set; }
     }
 
-    //[Route("[controller]")]
     [Route("api/[controller]")]
     [ApiController]
-    public partial class LocationController : ControllerBase
+    public partial class ContentController : ControllerBase
     {
-        private readonly LocationsContext _context;
+        private readonly ContentContext _context;
         //private readonly ProjectNameOptions _projectNameOptions;
         private readonly IConfiguration _configuration;
 
-        public LocationController(IConfiguration configuration)
+        public ContentController(IConfiguration configuration)
         {
             _configuration = configuration;
         }
@@ -32,15 +31,8 @@ namespace VueJSDotnet51.Controllers
         {
             string query = @"
                 select id as ""id"",
-                        city as ""city"",
-                        locationname as ""name"",
-                        street as ""street"",
-                        postcode as ""postcode"",
-                        openinghours as ""openinghours"",
-                        particularities as ""particularities"",
-                        lat as ""lat"",
-                        lon as ""lon""
-                FROM ""Locations"";
+                content as ""content""
+                FROM ""Content"";
             ";
 
             DataTable table = new DataTable();
@@ -64,4 +56,3 @@ namespace VueJSDotnet51.Controllers
     }
 }
 
-    

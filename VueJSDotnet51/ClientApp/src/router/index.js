@@ -6,7 +6,7 @@ import SecureComponent from "@/components/Secure.vue"
 import Info from "@/components/Info.vue"
 import AddReservation from "@/components/AddReservation.vue";
 import PDF from "../components/PDF.vue";
-
+import EditorArjan from "../components/EditorArjan.vue";
 
 const routes = [
     {
@@ -44,6 +44,11 @@ const routes = [
         path: "/AddReservation",
         name: "AddReservation",
         component: AddReservation,
+    },
+    {
+        path: "/EditorArjan",
+        name: "EditorArjan",
+        component: EditorArjan,
     }
 ];
 

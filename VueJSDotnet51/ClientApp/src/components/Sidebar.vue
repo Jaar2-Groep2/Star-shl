@@ -58,6 +58,8 @@
             <li><router-link class="link" :to="{ name: 'PDF' }">Bloedprik certificaat</router-link></li>
             <li><router-link class="link" :to="{name: 'Priklocaties' }">Priklokaties</router-link></li>
             <li><router-link class="link" :to="{name: 'Info'}">Informatie</router-link></li>
+            <li><router-link class="link" :to="{name: 'EditorArjan'}">EditorArjan</router-link></li>
+            
 
         </ul>
         <div class="toggle">
@@ -71,6 +73,7 @@
                 <li><router-link class="link2" :to="{ name: 'PDF' }">Bloedprik certificaat</router-link></li>
                 <li><router-link class="link2" :to="{name: 'Priklocaties'}">Priklocaties</router-link></li>
                 <li><router-link class="link2" :to="{name: 'Info'}">Informatie</router-link></li>
+                <li><router-link class="link2" :to="{name: 'EditorArjan'}">EditorArjan</router-link></li>
 
             </ul>
         </transition>
