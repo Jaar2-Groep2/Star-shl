@@ -54,7 +54,7 @@
         </div>
         <div class="save_class">
             <editor-content :editor="editor" />
-            <button class="btn" @click="saveInDB">Veranderingen opslaan</button>
+            <button class="btn_save" @click="saveInDB">Veranderingen opslaan</button>
         </div>
 
         <a class="homeButtons btn">Informatie over onderzoeken</a>
@@ -243,6 +243,18 @@ export default {
 
     .edit_buttons {
         margin-top: 1%;
+    }
+
+    .btn_save {
+        background: rgb(111 216 103);
+        border: hidden;
+        padding: 1%;
+        font-size: calc(40% + 1.0vw);
+        /*border-radius: 15px;*/
+        width: calc(20% + 1.0vw);
+        margin: 1.5%;
+        font-weight: 600;
+        text-decoration-color: white;
     }
 
     .bub {
