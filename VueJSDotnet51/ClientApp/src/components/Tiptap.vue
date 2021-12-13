@@ -25,6 +25,9 @@
                 <button @click="editor.chain().focus().toggleItalic().run()" :class="{ 'is-active': editor.isActive('italic') }">
                     italic
                 </button>
+                <button @click="editor.chain().focus().toggleStrike().run()" :class="{ 'is-active': editor.isActive('strike') }">
+                    strike
+                </button>
                 <button @click="editor.chain().focus().toggleHeading({ level: 1 }).run()" :class="{ 'is-active': editor.isActive('heading', { level: 1 }) }">
                     h1
                 </button>
@@ -40,18 +43,19 @@
                 <button @click="editor.chain().focus().toggleHeading({ level: 5 }).run()" :class="{ 'is-active': editor.isActive('heading', { level: 5 }) }">
                     h5
                 </button>
+                <button @click="editor.chain().focus().setParagraph().run()" :class="{ 'is-active': editor.isActive('paragraph') }">
+                    paragraph
+                </button>
+
+                <button @click="editor.chain().focus().toggleBulletList().run()" :class="{ 'is-active': editor.isActive('bulletList') }">
+                    bullet list
+                </button>
             </div>
         </div>
-
-        <div class="text_homepage">
-            <editor-content 
-                            :editor="editor"
-                            v-model="content"
-            />
-            <pre>{{ content }}</pre>
+        <div class="save_class">
+            <editor-content :editor="editor" />
+            <button class="btn" @click="saveInDB">Veranderingen opslaan</button>
         </div>
-
-
 
         <a class="homeButtons btn">Informatie over onderzoeken</a>
         <a class="homeButtons btn">Afspraak maken</a>
@@ -76,41 +80,64 @@
 
 
 <script>
-    import { Editor, EditorContent } from '@tiptap/vue-3'
-    import StarterKit from '@tiptap/starter-kit'
-    //const html = this.editor.getHTML()
-    export default {
-        components: {
-            EditorContent,
+import axios from 'axios'
+import { Editor, EditorContent } from '@tiptap/vue-3'
+import StarterKit from '@tiptap/starter-kit'
+
+export default {
+    components: {
+        EditorContent,
+    },
+    
+    data() {
+        return {
+            editor: null,
+            ContentArray: [],
+            DBcontent: "",
+            contentstring: ""
+    }
         },
 
-        data() {
-            return {
-                editor: null,
-                content: null,
+        methods: {
+            GetContent()
+            {  
+                axios.get("http://localhost:5000/api/content")
+                    .then((response) => {
+                        this.ContentArray = response.data;
+                        this.contentstring = this.ContentArray[0]["content"];
+                        this.editor.commands.setContent(this.contentstring);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                        alert(error);
+                    }
+                ); 
+            },
+            saveInDB()
+            {
+                console.log("Save input in DB");
+                const html = this.editor.getHTML();
+                console.log(html);
             }
-        },
-
-        mounted() {
-            this.editor = new Editor({
-                //content: '<p>I’m running Tiptap with Vue.js. 🎉</p>',
-                content: "<p>Hello</p>",
-                extensions: [
-                    StarterKit,
-                ],
-            })
-            //const json = editor.getJSON()
-            //this.editor.commands.clearContent(true)
-
-            //this.editor.commands.setContent('<p>Example Text</p>')
-
 
         },
+
+        mounted()
+        {
+            this.editor = new Editor(
+                {
+                    extensions: [
+                        StarterKit,
+                    ],
+                    content: 'test ' + this.contentstring
+                }),
+                this.GetContent();
+  },
 
         beforeUnmount() {
-            this.editor.destroy()
-        },
-    }
+    this.editor.destroy()
+  },
+}
 </script>
 
 <style>
@@ -152,7 +179,7 @@
         font-size: 60%;
         text-align: center;
         margin-top: 1%;
-        margin-bottom: 3%;
+        margin-bottom: 1%;
         margin-left: 15%;
         margin-right: 15%;
     }
@@ -162,7 +189,7 @@
             padding: 4%;
             margin-right: 10%;
             margin-left: 10%;
-            margin-bottom: 12%;
+            margin-bottom: 1%;
             border-radius: 15px;
             box-shadow: 0 0 10px 1px black;
             text-align: left;
@@ -192,6 +219,10 @@
         width: 60%;
         margin: 1.5%;
     }
+    .save_class{
+        margin-bottom: 1%;
+        margin-top: 1%;
+    }
 
     .blue {
         background: #2C2B64;
@@ -209,12 +240,9 @@
             font-size: 50%;
         }
 
-    .btn {
-        opacity: 0.6;
-    }
 
     .edit_buttons {
-        margin-top: 3%;
+        margin-top: 1%;
     }
 
     .bub {
