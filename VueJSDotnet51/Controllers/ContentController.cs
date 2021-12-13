@@ -54,10 +54,55 @@ namespace VueJSDotnet51.Controllers
             return new JsonResult(table);
         }
 
-        //public void SendContent(string contentstring)
-        //{
+        [HttpPut]
+        public JsonResult Put(Content _content)
+        {
+            /*
+             * Query that works in our DB.
+             * 
+               UPDATE "Content"
+               SET content = 'test'    
+               WHERE id = 1;
+             */
 
-        //}
+
+            string query = @"
+                UPDATE ""Content""
+                SET content = @content
+                WHERE id = @id
+                ;
+            ";
+
+            // 
+            //test query 
+            //
+            //string query = @"
+            //    UPDATE ""Content""
+            //    SET content = 'test'
+            //    WHERE id = 1;
+            //";
+            ;
+
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("LocationAppCon");
+            NpgsqlDataReader myReader;
+            using (NpgsqlConnection myCon = new NpgsqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (NpgsqlCommand myCommand = new NpgsqlCommand(query, myCon))
+                {
+                    myCommand.Parameters.AddWithValue("@content", _content.content);
+                    myCommand.Parameters.AddWithValue("@id", _content.id);
+                    myReader = myCommand.ExecuteReader();
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+            return new JsonResult("Updated Successfully");
+        }
     }
 }
 

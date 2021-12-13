@@ -90,8 +90,7 @@ export default {
         },
 
         methods: {
-            GetContent()
-            {  
+            GetContent() {
                 axios.get("http://localhost:5000/api/content")
                     .then((response) => {
                         this.ContentArray = response.data;
@@ -102,15 +101,33 @@ export default {
                         console.log(error);
                         alert(error);
                     }
-                ); 
+                    );
             },
+
             saveInDB()
             {
-                console.log("Save input in DB");
                 const html = this.editor.getHTML();
-                console.log(html);
-            }
-
+                axios({
+                    method: 'PUT',
+                    url: 'http://localhost:5000/api/content',
+                    data: {
+                        content: html,
+                        id: 1
+                    },
+                    headers: {
+                        'Content-Type': 'text/plain;charset=utf-8',
+                        "Access-Control-Allow-Origin": "*",
+                        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+                        'Access-Control-Allow-Credentials': true
+                    },
+                }).then(function (response) {
+                    console.log(response);
+                }).catch(function (error) {
+                    console.log(error);
+                    console.log(error.response);
+                    alert(error);
+                });
+            },
         },
 
         mounted()
@@ -120,7 +137,7 @@ export default {
                     extensions: [
                         StarterKit,
                     ],
-                    content: 'test ' + this.contentstring
+                    content: 'test ' 
                 }),
                 this.GetContent();
   },

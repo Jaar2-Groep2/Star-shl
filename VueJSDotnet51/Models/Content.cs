@@ -20,7 +20,7 @@ namespace VueJSDotnet51.Models
     public class ContentContext : DbContext
     {
         private readonly IConfiguration _configuration;
-        public DbSet<Location> Locations { get; set; }
+        public DbSet<Content> Contentlist { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //here we define the name of our database (make sure to put the correct password)

@@ -50,16 +50,26 @@ namespace VueJSDotnet51
                 options.UseNpgsql(@"Server=145.24.222.238;Port=8001;User Id=postgres;Password=Star-Shl;Database=postgres;");
             });
 
+            services.AddDbContext<ContentContext>(options =>
+            {
+                options.UseNpgsql(@"Server=145.24.222.238;Port=8001;User Id=postgres;Password=Star-Shl;Database=postgres;");
+            });
+
             services.AddControllersWithViews().AddNewtonsoftJson(options =>
             options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore)
                 .AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver
                 = new DefaultContractResolver());
 
-            services.AddControllers();
+            //services.AddControllers();
+
+            services.AddControllers(options => options.EnableEndpointRouting = false);
+
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp";
             });
+
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -95,6 +105,10 @@ namespace VueJSDotnet51
                 }
 
             });
+
+            app.UseHttpsRedirection();
+
+            app.UseMvc();
         }
     }
 }
