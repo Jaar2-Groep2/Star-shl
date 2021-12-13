@@ -7,14 +7,8 @@ namespace VueJSDotnet51.Models
     public class Content
     {
         public int id { get; set; }
-        public string city { get; set; }
-        public string locationname { get; set; }
-        public string street { get; set; }
-        public string postcode { get; set; }
-        public string openinghours { get; set; }
-        public string particularities { get; set; }
-        public double lat { get; set; }
-        public double lon { get; set; }
+        public string content { get; set; }
+
     }
 
     public class ContentList

@@ -1,72 +1,73 @@
 ﻿<template>
-  <div>
-    <div v-if="editor">
-      <button @click="editor.chain().focus().toggleBold().run()" :class="{ 'is-active': editor.isActive('bold') }">
-        bold
-      </button>
-      <button @click="editor.chain().focus().toggleItalic().run()" :class="{ 'is-active': editor.isActive('italic') }">
-        italic
-      </button>
-      <button @click="editor.chain().focus().toggleStrike().run()" :class="{ 'is-active': editor.isActive('strike') }">
-        strike
-      </button>
-      <button @click="editor.chain().focus().toggleCode().run()" :class="{ 'is-active': editor.isActive('code') }">
-        code
-      </button>
-      <button @click="editor.chain().focus().unsetAllMarks().run()">
-        clear marks
-      </button>
-      <button @click="editor.chain().focus().clearNodes().run()">
-        clear nodes
-      </button>
-      <button @click="editor.chain().focus().setParagraph().run()" :class="{ 'is-active': editor.isActive('paragraph') }">
-        paragraph
-      </button>
-      <button @click="editor.chain().focus().toggleHeading({ level: 1 }).run()" :class="{ 'is-active': editor.isActive('heading', { level: 1 }) }">
-        h1
-      </button>
-      <button @click="editor.chain().focus().toggleHeading({ level: 2 }).run()" :class="{ 'is-active': editor.isActive('heading', { level: 2 }) }">
-        h2
-      </button>
-      <button @click="editor.chain().focus().toggleHeading({ level: 3 }).run()" :class="{ 'is-active': editor.isActive('heading', { level: 3 }) }">
-        h3
-      </button>
-      <button @click="editor.chain().focus().toggleHeading({ level: 4 }).run()" :class="{ 'is-active': editor.isActive('heading', { level: 4 }) }">
-        h4
-      </button>
-      <button @click="editor.chain().focus().toggleHeading({ level: 5 }).run()" :class="{ 'is-active': editor.isActive('heading', { level: 5 }) }">
-        h5
-      </button>
-      <button @click="editor.chain().focus().toggleHeading({ level: 6 }).run()" :class="{ 'is-active': editor.isActive('heading', { level: 6 }) }">
-        h6
-      </button>
-      <button @click="editor.chain().focus().toggleBulletList().run()" :class="{ 'is-active': editor.isActive('bulletList') }">
-        bullet list
-      </button>
-      <button @click="editor.chain().focus().toggleOrderedList().run()" :class="{ 'is-active': editor.isActive('orderedList') }">
-        ordered list
-      </button>
-      <button @click="editor.chain().focus().toggleCodeBlock().run()" :class="{ 'is-active': editor.isActive('codeBlock') }">
-        code block
-      </button>
-      <button @click="editor.chain().focus().toggleBlockquote().run()" :class="{ 'is-active': editor.isActive('blockquote') }">
-        blockquote
-      </button>
-      <button @click="editor.chain().focus().setHorizontalRule().run()">
-        horizontal rule
-      </button>
-      <button @click="editor.chain().focus().setHardBreak().run()">
-        hard break
-      </button>
-      <button @click="editor.chain().focus().undo().run()">
-        undo
-      </button>
-      <button @click="editor.chain().focus().redo().run()">
-        redo
-      </button>
+    <div>
+        <div v-if="editor">
+            <button @click="editor.chain().focus().toggleBold().run()" :class="{ 'is-active': editor.isActive('bold') }">
+                bold
+            </button>
+            <button @click="editor.chain().focus().toggleItalic().run()" :class="{ 'is-active': editor.isActive('italic') }">
+                italic
+            </button>
+            <button @click="editor.chain().focus().toggleStrike().run()" :class="{ 'is-active': editor.isActive('strike') }">
+                strike
+            </button>
+            <button @click="editor.chain().focus().toggleCode().run()" :class="{ 'is-active': editor.isActive('code') }">
+                code
+            </button>
+            <button @click="editor.chain().focus().unsetAllMarks().run()">
+                clear marks
+            </button>
+            <button @click="editor.chain().focus().clearNodes().run()">
+                clear nodes
+            </button>
+            <button @click="editor.chain().focus().setParagraph().run()" :class="{ 'is-active': editor.isActive('paragraph') }">
+                paragraph
+            </button>
+            <button @click="editor.chain().focus().toggleHeading({ level: 1 }).run()" :class="{ 'is-active': editor.isActive('heading', { level: 1 }) }">
+                h1
+            </button>
+            <button @click="editor.chain().focus().toggleHeading({ level: 2 }).run()" :class="{ 'is-active': editor.isActive('heading', { level: 2 }) }">
+                h2
+            </button>
+            <button @click="editor.chain().focus().toggleHeading({ level: 3 }).run()" :class="{ 'is-active': editor.isActive('heading', { level: 3 }) }">
+                h3
+            </button>
+            <button @click="editor.chain().focus().toggleHeading({ level: 4 }).run()" :class="{ 'is-active': editor.isActive('heading', { level: 4 }) }">
+                h4
+            </button>
+            <button @click="editor.chain().focus().toggleHeading({ level: 5 }).run()" :class="{ 'is-active': editor.isActive('heading', { level: 5 }) }">
+                h5
+            </button>
+            <button @click="editor.chain().focus().toggleHeading({ level: 6 }).run()" :class="{ 'is-active': editor.isActive('heading', { level: 6 }) }">
+                h6
+            </button>
+            <button @click="editor.chain().focus().toggleBulletList().run()" :class="{ 'is-active': editor.isActive('bulletList') }">
+                bullet list
+            </button>
+            <button @click="editor.chain().focus().toggleOrderedList().run()" :class="{ 'is-active': editor.isActive('orderedList') }">
+                ordered list
+            </button>
+            <button @click="editor.chain().focus().toggleCodeBlock().run()" :class="{ 'is-active': editor.isActive('codeBlock') }">
+                code block
+            </button>
+            <button @click="editor.chain().focus().toggleBlockquote().run()" :class="{ 'is-active': editor.isActive('blockquote') }">
+                blockquote
+            </button>
+            <button @click="editor.chain().focus().setHorizontalRule().run()">
+                horizontal rule
+            </button>
+            <button @click="editor.chain().focus().setHardBreak().run()">
+                hard break
+            </button>
+            <button @click="editor.chain().focus().undo().run()">
+                undo
+            </button>
+            <button @click="editor.chain().focus().redo().run()">
+                redo
+            </button>
+        </div>
+        <editor-content :editor="editor" />
+        <button class="btn" @click="saveInDB">Veranderingen opslaan</button>
     </div>
-    <editor-content :editor="editor" />
-  </div>
 </template>
 
 <script>
@@ -82,38 +83,46 @@ export default {
     data() {
         return {
             editor: null,
-            AllDBcontent: [],
+            ContentArray: [],
             DBcontent: "",
-            content: ""
+            contentstring: ""
     }
         },
 
         methods: {
             GetContent()
             {  
+                axios.get("http://localhost:5000/api/content")
+                    .then((response) => {
+                        this.ContentArray = response.data;
+                        this.contentstring = this.ContentArray[0]["content"];
+                        this.editor.commands.setContent(this.contentstring);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                        alert(error);
+                    }
+                ); 
+            },
+            saveInDB()
+            {
+                console.log("Save input in DB");
+                const html = this.editor.getHTML();
+                console.log(html);
             }
 
         },
 
-        mounted() {
-            axios.get("http://localhost:5000/api/content")
-                .then((response) => {
-                    var allcontent = response.data;
-                    this.content = allcontent[0]["content"];
-                    //this.content = response.data[0].content;
-                    console.log(this.content);
-                })
-                .catch(function (error) {
-                    console.log(error);
-                    alert(error);
-                }
-                );    
-            this.editor = new Editor({
-    extensions: [
-    StarterKit,
-                ],
-                content: 'test ' + this.content
-    })
+        mounted()
+        {
+            this.editor = new Editor(
+                {
+                    extensions: [
+                        StarterKit,
+                    ],
+                    content: 'test ' + this.contentstring
+                }),
+                this.GetContent();
   },
 
         beforeUnmount() {

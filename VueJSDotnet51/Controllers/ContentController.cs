@@ -27,7 +27,7 @@ namespace VueJSDotnet51.Controllers
         }
 
         [HttpGet]
-        public JsonResult Get()
+        public JsonResult GetContent()
         {
             string query = @"
                 select id as ""id"",
@@ -53,6 +53,11 @@ namespace VueJSDotnet51.Controllers
             }
             return new JsonResult(table);
         }
+
+        //public void SendContent(string contentstring)
+        //{
+
+        //}
     }
 }
 
