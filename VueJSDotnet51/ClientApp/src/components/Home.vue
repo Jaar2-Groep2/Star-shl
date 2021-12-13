@@ -40,41 +40,7 @@
 
 
 <script>
-    //import { Editor, EditorContent } from '@tiptap/vue-3'
-    //import StarterKit from '@tiptap/starter-kit'
 
-    //export default {
-    //    components: {
-    //        EditorContent,
-    //    },
-
-    //    data() {
-    //        return {
-    //            editor: null,
-    //        }
-    //    },
-
-    //    mounted() {
-    //        this.editor = new Editor({
-    //            content: '<h5>Iedereen die bij ons komt, heeft vragen over gezondheid. Vragen die wij beantwoorden met betrouwbare medische diagnostiek. Achter elke diagnose schuilt een persoonlijk verhaal. Daarom geloven wij dat elke vraag onze speciale aandacht verdient voor een helder en betrouwbaar antwoord.</h5>',
-    //            extensions: [
-    //                StarterKit,
-    //            ],
-    //        })
-    //    },
-
-    //    beforeUnmount() {
-    //        this.editor.destroy()
-    //    },
-    //}
-    //import Text_saver from "@/components/Tiptap.vue";
-    //export default {
-    //    methods: {
-    //        content() {
-    //            Text_saver;
-    //        }
-    //    }
-    //}
 </script>
 
 <style>
