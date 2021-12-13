@@ -39,6 +39,8 @@
         <div>
             <a v-on:click=toggleOne() class="info btn">Over Star-shl</a>
             <a v-on:click=toggleTwo() class="info btn">Innovatie</a>
+        </div>
+        <div>
             <a v-on:click=toggleThree() class="info btn">Vrijwilligersbeleid</a>
             <a v-on:click=toggleFour() class="info btn">Kwaliteit</a>
         </div>
@@ -155,15 +157,19 @@
         }
     }
 
-    .homeButtons {
-        background: #E91E63;
+    .info a {
+        background: #e7334c;
         border: hidden;
         padding: 2%;
-        font-size: 60%;
+        font-size: calc(6px + 1.0vw);
+        font-weight: bold;
         border-radius: 15px;
-        width: 60%;
-        margin: 1.5%;
+        width: calc(30% + 0.5vw);
+        margin-left: 1.5%;
+        margin-bottom: 0%;
+        margin-top: 2%;
     }
+
 
     .blue {
         background: #2C2B64;
@@ -183,7 +189,6 @@
     }
 
     .btn {
-        opacity: 0.6;
         margin-top: 40px;
     }
 

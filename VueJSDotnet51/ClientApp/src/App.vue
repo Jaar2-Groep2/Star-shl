@@ -1,19 +1,5 @@
-
-<!-- <button class="btn" v-on:click="login()">Login</button> -->
-    var example1 = new Vue({
-        el: '#example-1',
-        data: {
-            counter: 0
-        }
-    })
-
-
 <script>
     import Sidebar from './components/Sidebar.vue'
-    //import Tiptap from './components/Tiptap.vue'
-    //import Quill from "@/components/Quill.vue";
-
-
     export default {
         name: 'App',
         emits: ["authenticated", "setAuthenticated"],
@@ -31,7 +17,7 @@
         },
         mounted() {
             if (!this.authenticated) {
-                this.$router.replace({ name: "Login" });
+                this.$router.replace({ name: "Home" });
             }
         },
         methods: {

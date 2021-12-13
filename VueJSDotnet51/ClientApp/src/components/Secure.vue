@@ -66,20 +66,21 @@
     }
 
     .Reservations a i {
-        font-size: 16px;
+        font-size: calc(6px + 1.5vw);
     }
 
     .Reservations a {
-        background: #e91e63;
+        background: #e7334c;
         border: hidden;
         padding: 15px;
-        font-size: 60%;
+        font-size: calc(6px + 1.5vw);
+        font-weight: bold;
         border-radius: 15px;
-        width: 60%;
+        width: calc(50% + 1.5vw);
         margin: 1.5%;
     }
 
     .Editable a {
-        background: #00c853;
+        background: #79b9d5;
     }
 </style>
