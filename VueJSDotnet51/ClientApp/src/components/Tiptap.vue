@@ -255,6 +255,7 @@ export default {
         margin: 1.5%;
         font-weight: 600;
         text-decoration-color: white;
+        color: white;
     }
 
     .bub {
