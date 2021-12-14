@@ -109,13 +109,13 @@ export default {
                 const html = this.editor.getHTML();
                 axios({
                     method: 'PUT',
-                    url: 'http://localhost:5000/api/content',
+                    url: 'http://localhost:5000/api/content/',
                     data: {
                         content: html,
                         id: 1
                     },
                     headers: {
-                        'Content-Type': 'text/plain;charset=utf-8',
+                        'Content-Type': 'application/json',
                         "Access-Control-Allow-Origin": "*",
                         'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
                         'Access-Control-Allow-Credentials': true

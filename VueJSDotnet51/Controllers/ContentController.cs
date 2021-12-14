@@ -94,7 +94,6 @@ namespace VueJSDotnet51.Controllers
                     myCommand.Parameters.AddWithValue("@content", _content.content);
                     myCommand.Parameters.AddWithValue("@id", _content.id);
                     myReader = myCommand.ExecuteReader();
-                    myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
 
                     myReader.Close();

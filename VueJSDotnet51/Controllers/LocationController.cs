@@ -10,8 +10,7 @@ namespace VueJSDotnet51.Controllers
 {
     public class LocationList
     {
-        public List<Location> locations { 
-            ; set; }
+        public List<Location> locations { get; set; }
     }
 
     //[Route("[controller]")]
