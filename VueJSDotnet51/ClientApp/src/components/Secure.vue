@@ -36,7 +36,7 @@
     </div>
 
     <div class="Editable Reservations">    <!-- Home page edit button -->
-        <a class="btn">
+        <a class="btn" v-on:click="change_page()">
             <i class="material-icons">edit</i>Homepagina bewerken
         </a>
     </div>
@@ -49,6 +49,9 @@
         methods: {
             addReservation() {
                 this.$router.replace({ name: "AddReservation" });
+            },
+            change_page() {
+                this.$router.replace({ name: "EditorArjan" });   //changes webpage to /Secure
             }
         }
     }
@@ -75,7 +78,6 @@
         padding: 15px;
         font-size: calc(6px + 1.5vw);
         font-weight: bold;
-        border-radius: 15px;
         width: calc(50% + 1.5vw);
         margin: 1.5%;
     }

@@ -12,14 +12,11 @@
         <div class="headline">Over Star-shl</div>
 
         <div class="text_homepage">
-            <h6>
-                Iedereen die bij ons komt, heeft vragen over gezondheid. Vragen die wij beantwoorden met betrouwbare medische diagnostiek.
-                Achter elke diagnose schuilt een persoonlijk verhaal.
-                Daarom geloven wij dat elke vraag onze speciale aandacht verdient voor een helder en betrouwbaar antwoord.<br>
-                <strong class="black-text">Klik om meer te lezen.</strong>
-            </h6>
+            <editor-content :editor="editor" />
         </div>
-
+        <!--<div class="save_class">
+            <editor-content :editor="editor" />
+        </div>-->
         <router-link class="homeButtons btn" :to="{ name: 'Info' }">Informatie over onderzoeken</router-link>
         <a class="homeButtons btn">Afspraak maken</a>
         <router-link class="homeButtons btn" :to="{ name: 'Priklocaties' }">Priklokaties</router-link>
@@ -42,7 +39,80 @@
 
 
 <script>
+    import axios from 'axios'
+    import { Editor, EditorContent } from '@tiptap/vue-3'
+    import StarterKit from '@tiptap/starter-kit'
 
+    export default {
+        components: {
+            EditorContent,
+        },
+
+        data() {
+            return {
+                editor: null,
+                ContentArray: [],
+                DBcontent: "",
+                contentstring: ""
+            }
+        },
+
+        methods: {
+            GetContent() {
+                axios.get("http://localhost:5000/api/content")
+                    .then((response) => {
+                        this.ContentArray = response.data;
+                        this.contentstring = this.ContentArray[0]["content"];
+                        this.editor.commands.setContent(this.contentstring);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                        alert(error);
+                    }
+                    );
+            },
+
+            saveInDB() {
+                const html = this.editor.getHTML();
+                axios({
+                    method: 'PUT',
+                    url: 'http://localhost:5000/api/content/',
+                    data: {
+                        content: html,
+                        id: 1
+                    },
+                    headers: {
+                        'Content-Type': 'application/json',
+                        "Access-Control-Allow-Origin": "*",
+                        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+                        'Access-Control-Allow-Credentials': true
+                    },
+                }).then(function (response) {
+                    console.log(response);
+                }).catch(function (error) {
+                    console.log(error);
+                    console.log(error.response);
+                    alert(error);
+                });
+            },
+        },
+
+        mounted() {
+            this.editor = new Editor(
+                {
+                    editable: false,
+                    extensions: [
+                        StarterKit,
+                    ],
+                    content: 'test '
+                }),
+                this.GetContent();
+        },
+
+        beforeUnmount() {
+            this.editor.destroy()
+        },
+    }
 </script>
 
 <style>
@@ -105,7 +175,6 @@
         margin-right: 10%;
         margin-left: 10%;
         margin-bottom: 10%;
-        border-radius: 15px;
         box-shadow: 0 0 10px 1px black;
         text-align: left;
         font-size: calc(8px + 1.0vw)
@@ -132,7 +201,6 @@
         padding: 2%;
         font-size: calc(8px + 1.0vw);
         font-weight: bold;
-        border-radius: 15px;
         width: calc(50% + 1.0vw);
         margin: 1.5%;
     }

@@ -137,7 +137,6 @@
         margin-right: 10%;
         margin-left: 10%;
         margin-bottom: 12%;
-        border-radius: 15px;
         box-shadow: 0 0 10px 1px black;
         text-align: left;
     }
@@ -163,7 +162,6 @@
         padding: 2%;
         font-size: calc(6px + 1.0vw);
         font-weight: bold;
-        border-radius: 15px;
         width: calc(30% + 0.5vw);
         margin-left: 1.5%;
         margin-bottom: 0%;

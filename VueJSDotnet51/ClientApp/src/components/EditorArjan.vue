@@ -129,6 +129,7 @@
         mounted() {
             this.editor = new Editor(
                 {
+                    
                     extensions: [
                         StarterKit,
                     ],
@@ -193,7 +194,6 @@
             margin-right: 10%;
             margin-left: 10%;
             margin-bottom: 1%;
-            border-radius: 15px;
             box-shadow: 0 0 10px 1px black;
             text-align: left;
         }
@@ -217,10 +217,12 @@
         background: #E91E63;
         border: hidden;
         padding: 2%;
-        font-size: 60%;
-        border-radius: 15px;
+        font-size: calc(60% + 1.0vw);
         width: 60%;
         margin: 1.5%;
+        border-radius: 0px;
+        font-weight: 500;
+        color: white;
     }
 
     .save_class {
@@ -253,11 +255,11 @@
         background: rgb(111 216 103);
         border: hidden;
         padding: 1%;
-        font-size: calc(40% + 1.0vw);
+        font-size: calc(60% + 2vw);
         /*border-radius: 15px;*/
         width: calc(20% + 1.0vw);
         margin: 1.5%;
-        font-weight: 600;
+        font-weight: 500;
         text-decoration-color: white;
         color: white;
     }

@@ -84,7 +84,6 @@
             position: relative;
             background: #79b9d5;
             padding: 3px;
-            border-radius: 20px;
         }
 
         .box {
@@ -94,7 +93,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            border-radius: 20px;
             height: 100%;
         }
 
@@ -131,7 +129,6 @@
         }
 
         .int {
-            border-radius: 5px;
             font-size: 17px;
             margin-bottom: 10px;
             border-color: red;
