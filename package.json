@@ -1,10 +1,18 @@
 {
   "dependencies": {
-    "@tiptap/starter-kit": "^2.0.0-beta.148",
-    "@tiptap/vue-3": "^2.0.0-beta.82"
+    "@tiptap/starter-kit": "^2.0.0-beta.145",
+    "@tiptap/vue-3": "^2.0.0-beta.81",
+    "geo-coordinates-parser": "^1.4.1",
+    "haversine-distance": "^1.2.1",
+    "jquery": "^3.6.0",
+    "node-sass": "^6.0.1",
+    "tui-editor": "^1.4.10",
+    "vue-quill-editor": "^3.0.6",
+    "vue-trumbowyg": "^4.0.0"
   },
   "devDependencies": {
-    "node-sass": "^6.0.1",
-    "sass-loader": "^12.3.0"
+    "sass": "^1.43.5",
+    "sass-loader": "^12.3.0",
+    "webpack": "^5.64.4"
   }
 }

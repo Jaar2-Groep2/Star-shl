@@ -1,8 +1,10 @@
 ﻿import { createWebHistory, createRouter } from "vue-router";
 import Home from "@/components/Home.vue";
 import Login from "@/components/Login.vue";
-import Database from "@/components/Database.vue";
+import Priklocaties from "@/components/Priklocaties.vue";
 import SecureComponent from "@/components/Secure.vue"
+import Info from "@/components/Info.vue"
+import AddReservation from "@/components/AddReservation.vue";
 import PDF from "../components/PDF.vue";
 import Tiptap from "@/components/Tiptap.vue";
 const routes = [
@@ -14,7 +16,7 @@ const routes = [
     {
         path: "/Login",
         name: "Login",
-        component: Login,
+        component: Login, 
     },
     {
         path: "/PDF",
@@ -28,14 +30,24 @@ const routes = [
         component: SecureComponent,
     },
     {
-        path: "/Database",
-        name: "Database",
-        component: Database,
+        path: "/Priklocaties",
+        name: "Priklocaties",
+        component: Priklocaties,
+    },
+    {
+        path: "/Info",
+        name: "Info",
+        component: Info,
+    },
+    {
+        path: "/AddReservation",
+        name: "AddReservation",
+        component: AddReservation,
     },
     {
         path: "/Tiptap",
         name: "Tiptap",
-        component: Tiptap
+        component: Tiptap,
     }
 ];
 

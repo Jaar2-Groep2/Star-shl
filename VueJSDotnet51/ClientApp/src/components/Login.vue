@@ -126,7 +126,7 @@
             text-align: center;
         }
 
-        .form input::placeholder {
+        .form input ::placeholder {
             color: gray;
         }
 
