@@ -1,44 +1,44 @@
 <script>
     export default {
         name: "sidebar",
-            data() {
-                return {
-                    scrollPosition: null,
-                    mobile: true,
-                    mobileNav: true,
-                    windowWidth: null,
-                    width: 0,
-                    height: 0,
-                };
+        data() {
+            return {
+                scrollPosition: null,
+                mobile: true,
+                mobileNav: true,
+                windowWidth: null,
+                width: 0,
+                height: 0,
+            };
+        },
+
+        created() {
+            window.addEventListener("resize", this.checkScreen);
+            this.checkScreen();
+        },
+
+        methods: {
+            toggleMobileNav: function () {
+                this.mobileNav = !this.mobileNav;
             },
 
-            created() {
-                window.addEventListener("resize", this.checkScreen);
-                this.checkScreen();
-            },
-
-            methods: {
-                toggleMobileNav: function()   {
-                    this.mobileNav = !this.mobileNav;
-                },
-
-                checkScreen: function()   {
-                    this.windowWidth = window.innerWidth;
-                    this.width = window.innerWidth;
-                    this.height = window.innerHeight;
-                    if (this.windowWidth <= 750) {
-                        this.mobile = true;
-                        this.mobileNav = false;
-                        return;
-                    }
-                    this.mobile = false;
+            checkScreen: function () {
+                this.windowWidth = window.innerWidth;
+                this.width = window.innerWidth;
+                this.height = window.innerHeight;
+                if (this.windowWidth <= 750) {
+                    this.mobile = true;
                     this.mobileNav = false;
                     return;
-                },
-
-                show: function () {
-                    return "Welcome!"
                 }
+                this.mobile = false;
+                this.mobileNav = false;
+                return;
+            },
+
+            show: function () {
+                return "Welcome!"
+            }
         }
     };
 
@@ -84,7 +84,8 @@
         --sidebar-item-hover: #4abad7;
         --sidebar-item-active: #fd334b;
     }
-    .sidebar    {
+
+    .sidebar {
         position: fixed;
     }
 </style>
@@ -92,7 +93,7 @@
 <style scoped>
 
 
-    header{
+    header {
         background-color: black;
         z-index: 99;
         width: 110%;
@@ -136,7 +137,6 @@
         align-items: center;
         transition: 0.5s ease all;
         padding-right: 20px;
-        
     }
 
         li :hover {
@@ -144,12 +144,12 @@
         }
 
     .slide-enter-active,
-    .slide-leave-active{
+    .slide-leave-active {
         transition: 0.6s ease all;
     }
 
     .slide-enter-from,
-    .slide-leave-to{
+    .slide-leave-to {
         transform: translateX(-250px);
     }
 
@@ -189,7 +189,7 @@
         padding: 20px 0;
     }
 
-    
+
 
     .toggle {
         float: left;
@@ -202,6 +202,4 @@
         transition: 1s ease all;
         transform: scale(1);
     }
-
- 
 </style>

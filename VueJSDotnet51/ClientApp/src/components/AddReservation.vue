@@ -79,7 +79,7 @@
 </script>
 
 <style scoped>
-    .form *{
+    .form * {
         margin: 3%;
     }
 
@@ -91,7 +91,7 @@
         width: 50%;
     }
 
-    .form h2{
+    .form h2 {
         margin-bottom: 15%;
     }
 

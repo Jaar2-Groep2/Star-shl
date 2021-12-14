@@ -37,7 +37,7 @@
     <div>
         <router-view />
     </div>
-    
+
 </template>
 
 <style>
@@ -58,6 +58,7 @@
         color: #2c3e50;
         background-color: #e0edf5;
     }
+
     body {
         padding-top: 100px;
         background-color: #e0edf5;
@@ -68,7 +69,5 @@
             padding-top: 50px;
             background-color: #e0edf5;
         }
-
     }
-    
 </style>

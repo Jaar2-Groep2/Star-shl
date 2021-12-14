@@ -160,15 +160,13 @@
                     this.compareCoordinatesBool = true;
                     this.GetCoordinates();
                 }
-                else
-                {
+                else {
                     console.log("error! postcode moet 6 karakters bevatten");
                     alert("Er moet een postcode ingevuld worden. Bijvoorbeeld: 1234AB");
                 }
             },
 
-            GetCoordinates()
-            {
+            GetCoordinates() {
                 //sends a request to the openstreetmap API with in the input postal code
                 this.testURL = "https://nominatim.openstreetmap.org/search.php?q=" + this.postcodeInput + "&format=jsonv2";
                 axios.get(this.testURL)
@@ -228,7 +226,7 @@
                 });
             },
 
-            // method that works with getLocation(), parses the detected coordinated to the compare_Coordinates method. Also calls a method to find the detected location street, city, postal etc. 
+            // method that works with getLocation(), parses the detected coordinated to the compare_Coordinates method. Also calls a method to find the detected location street, city, postal etc.
             async locateMe() {
                 this.gettingLocation = true;
                 try {
@@ -239,9 +237,9 @@
                 } catch (e) {
                     this.gettingLocation = false;
                     this.errorStr = e.message;
-                } 
+                }
             }
-        }, 
+        },
 
         mounted() {
             this.GetLocations();
@@ -259,6 +257,7 @@
         box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
         transition: all 0.3s cubic-bezier(.25,.8,.25,1);
     }
+
     input, select, optgroup, textarea {
         margin: 0;
         font-family: inherit;
@@ -266,9 +265,11 @@
         line-height: inherit;
         background-color: transparent;
     }
-    button{
+
+    button {
         margin: 2px;
     }
+
     .loc-distance {
         font-weight: bold;
         margin: 2px;

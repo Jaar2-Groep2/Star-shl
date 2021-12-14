@@ -32,14 +32,14 @@
 
 
 <style>
-    .nav-item   {
+    .nav-item {
         min-width: 100px;
     }
 
-    /* This is the color that is used when hovering over a menu item */
-    .nav-item:hover {
-        background-color:#4abad7
-    }
+        /* This is the color that is used when hovering over a menu item */
+        .nav-item:hover {
+            background-color: #4abad7
+        }
 
     a.navbar-brand {
         white-space: normal;

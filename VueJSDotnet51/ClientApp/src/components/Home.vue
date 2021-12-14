@@ -62,10 +62,10 @@
         position: absolute;
     }
 
-    footer p {
-        text-align: left;
-        font-size: 60%;
-    }
+        footer p {
+            text-align: left;
+            font-size: 60%;
+        }
 </style>
 
 <style scoped>
@@ -73,6 +73,7 @@
         vertical-align: middle;
         border-style: none;
     }
+
     img {
         vertical-align: middle;
         border-style: none;
@@ -88,13 +89,14 @@
     }
 
     .text_homepage {
-/*        font-size: calc(8px + 0.5vw);*/
+        /*        font-size: calc(8px + 0.5vw);*/
         text-align: center;
         margin-top: 1%;
         margin-left: 8%;
         margin-right: 8%;
     }
-    .headline{
+
+    .headline {
         font-size: calc(12px + 1.5vw);
         margin-top: 3%
     }
@@ -115,7 +117,7 @@
         margin-top: 10px;
         width: 640px;
         height: 360px;
-    }   
+    }
 
 
     @media screen and (max-width: 700px) {
@@ -144,6 +146,5 @@
     .btn {
         opacity: 1.0;
     }
-
 </style>
 
