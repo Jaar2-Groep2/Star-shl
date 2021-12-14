@@ -21,6 +21,7 @@
 </template>
 
     <script>
+        import axios from 'axios'
         export default {
             name: 'Login',
             emits: ["authenticated", "setAuthenticated"],
@@ -29,23 +30,47 @@
                     input: {
                         username: "",
                         password: ""
-                    }
+                    },
+                    loginauth: false
                 }
             },
             methods: {
+                LoginCall(username, password) {
+                    axios.get(("http://localhost:5000/api/login/"+username+'/'+password))
+                        .then((response) => {
+                            this.loginauth = response.data;
+                            console.log(username + ' ' + password + ' ' + response.data + ' ' + this.loginauth);
+                            //console.log("Result: " + response.data);                           
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                            alert(error);
+                        });
+
+                },
                 login() {
+                    //method call here
+                    //iets
                     if (this.input.username != "" && this.input.password != "") {
-                        //if (this.input.username == this.$parent.mockAccount.username && this.input.password == this.$parent.mockAccount.password) {
-                            //this.$emit("authenticated", true);
-                            //this.$router.replace({ name: "Secure" });                                 
-                        if (this.input.username == "admin" && this.input.password == "admin") {
-                            this.$emit("authenticated", true);
-                            this.$router.replace({ name: "Secure" });   //changes webpage to /Secure
-                        } else {
-                            console.log("The username and / or password is incorrect");
-                        }
+                        this.LoginCall(this.input.username, this.input.password);
+                        //console.log(this.loginauth);
+
+                        this.loginactual(this.loginauth);
+
+
                     } else {
                         console.log("A username and password must be present");
+                    }
+                },
+                loginactual(auth) {
+                    console.log(auth);
+                    //this.login();
+                    if (auth) {
+                        this.$emit("authenticated", true);
+                        this.$router.replace({ name: "Secure" });   //changes webpage to /Secure
+                    } else {
+                        //window.alert("The username and / or password is incorrect");
+                        console.log("The username and / or password is incorrect");
                     }
                 }
             }
