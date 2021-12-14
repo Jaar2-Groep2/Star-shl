@@ -54,13 +54,9 @@
     <header :class="{ 'scrolled-nav' : scrollPosition}">
         <ul v-show="!mobile" class="nav">
             <li><router-link class="link" :to="{name: 'Home'}">Home</router-link></li>
-            <li><router-link class="link" :to="{name: 'Login'}">Login(test)</router-link></li>
+            <li><router-link class="link" :to="{name: 'Login'}">Login</router-link></li>
             <li><router-link class="link" :to="{ name: 'PDF' }">Bloedprik certificaat</router-link></li>
-            <li><router-link class="link" :to="{name: 'Priklocaties' }">Priklokaties</router-link></li>
-            <li><router-link class="link" :to="{name: 'Info'}">Informatie</router-link></li>
-            <li><router-link class="link" :to="{name: 'EditorArjan'}">EditorArjan</router-link></li>
-            
-
+            <li><router-link class="link" :to="{ name: 'Database' }">Database</router-link></li>
         </ul>
         <div class="toggle">
             <i v-on:click=toggleMobileNav() v-show="mobile" class="fas fa-bars fa-2x" style="color: white" v-bind:class="{ 'toggle-active': mobileNav}"></i>
@@ -69,12 +65,9 @@
             <ul v-show="mobileNav" class="nav-dropdown">
                 <!--v-on:click=toggleMobileNav()-->
                 <li><router-link class="link2" :to="{name: 'Home'}">Home</router-link></li>
-                <li><router-link class="link2" :to="{name: 'Login'}">Login(test)</router-link></li>
+                <li><router-link class="link2" :to="{name: 'Login'}">Login</router-link></li>
                 <li><router-link class="link2" :to="{ name: 'PDF' }">Bloedprik certificaat</router-link></li>
-                <li><router-link class="link2" :to="{name: 'Priklocaties'}">Priklocaties</router-link></li>
-                <li><router-link class="link2" :to="{name: 'Info'}">Informatie</router-link></li>
-                <li><router-link class="link2" :to="{name: 'EditorArjan'}">EditorArjan</router-link></li>
-
+                <li><router-link class="link2" :to="{ name: 'Database' }">Database</router-link></li>
             </ul>
         </transition>
     </header>

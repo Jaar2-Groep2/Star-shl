@@ -17,11 +17,13 @@
                             <router-link :to="{ name: 'Home' }" class="nav-link text-dark">Home</router-link>
                         </li>
                         <li class="nav-item">
-                            <router-link :to="{ name: 'Login' }" class="nav-link text-dark">
-                            </router-link>
+                            <router-link :to="{ name: 'Login' }" class="nav-link text-dark">Login</router-link>
                         </li>
                         <li class="nav-item">
                             <router-link :to="{ name: 'PDF' }" class="nav-link text-dark">Bloedprik certificaat</router-link>
+                        </li>
+                        <li class="nav-item">
+                            <router-link :to="{ name: 'Database' }" class="nav-link text-dark">Database</router-link>
                         </li>
                     </ul>
                 </div>

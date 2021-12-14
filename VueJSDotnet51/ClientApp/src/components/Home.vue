@@ -1,4 +1,8 @@
-<template>
+﻿<template>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+
+
     <div class="home">
         <div class="img">
             <img src="../assets/star-shl.jpg" />
@@ -9,22 +13,16 @@
             Your browser does not support the video tag.
         </video>
 
-        <div class="headline">Over Star-shl</div>
-
         <div class="text_homepage">
-            <h6>
-                Iedereen die bij ons komt, heeft vragen over gezondheid. Vragen die wij beantwoorden met betrouwbare medische diagnostiek.
-                Achter elke diagnose schuilt een persoonlijk verhaal.
-                Daarom geloven wij dat elke vraag onze speciale aandacht verdient voor een helder en betrouwbaar antwoord.<br>
-                <strong class="black-text">Klik om meer te lezen.</strong>
-            </h6>
+            <p>ddddddddddddddddddddd</p>
         </div>
 
-        <router-link class="homeButtons btn" :to="{ name: 'Info' }">Informatie over onderzoeken</router-link>
-        <a class="homeButtons btn">Afspraak maken</a>
-        <router-link class="homeButtons btn" :to="{ name: 'Priklocaties' }">Priklokaties</router-link>
-        <br><br>
-        <a class="homeButtons blue btn">Contact</a>
+
+         <a class="homeButtons btn">Informatie over onderzoeken</a>
+         <a class="homeButtons btn">Afspraak maken</a>
+         <a class="homeButtons btn">Priklocaties</a>
+         <br><br>
+         <a class="homeButtons blue btn">Contact</a>
     </div>
 
     <footer>
@@ -47,28 +45,19 @@
 
 <style>
     .btn:hover {
-        opacity: 1.0;
+        opacity: 0.6;
     }
 
     .btn {
         color: white;
     }
-
-    footer {
-        margin-top: 5%;
-        background: #142d49;
-        padding: 5%;
-        width: 100%;
-        position: absolute;
-    }
-
-    footer p {
-        text-align: left;
-        font-size: 60%;
-    }
 </style>
 
 <style scoped>
+    .ProseMirror p {
+        margin: 10em 0;
+        text-align: center;
+    }
     .img {
         vertical-align: middle;
         border-style: none;
@@ -88,27 +77,23 @@
     }
 
     .text_homepage {
-/*        font-size: calc(8px + 0.5vw);*/
+        font-size: 60%;
         text-align: center;
         margin-top: 1%;
-        margin-left: 8%;
-        margin-right: 8%;
-    }
-    .headline{
-        font-size: calc(12px + 1.5vw);
-        margin-top: 3%
+        margin-bottom: 3%;
+        margin-left: 15%;
+        margin-right: 15%;
     }
 
-    .text_homepage h6 {
+    .text_homepage p {
         cursor: pointer;
-        padding: 3%;
+        padding: 4%;
         margin-right: 10%;
         margin-left: 10%;
-        margin-bottom: 10%;
+        margin-bottom: 12%;
         border-radius: 15px;
         box-shadow: 0 0 10px 1px black;
         text-align: left;
-        font-size: calc(8px + 1.0vw)
     }
 
     video {
@@ -127,23 +112,101 @@
     }
 
     .homeButtons {
-        background: #e7334c;
+        background: #E91E63;
         border: hidden;
         padding: 2%;
-        font-size: calc(8px + 1.0vw);
-        font-weight: bold;
+        font-size: 60%;
         border-radius: 15px;
-        width: calc(50% + 1.0vw);
+        width: 60%;
         margin: 1.5%;
     }
 
     .blue {
-        background: #142d49;
+        background: #2C2B64;
+    }
+
+    footer {
+        margin-top: 5%;
+        background: #2C2B64;
+        padding: 5%;
+        padding-left: 8%;
+    }
+
+    footer p {
+        text-align: left;
+        font-size: 50%;
     }
 
     .btn {
-        opacity: 1.0;
+        opacity: 0.6;
+    }
+    .edit_buttons {
+        margin-top: 3%;
+    }
+    .bub {
+        color: rgb(18 33 82);
+    }
+    .material-icons {
+        font-size: 10px;
     }
 
 </style>
 
+<!--<style lang="scss">
+/* Basic editor styles */
+.ProseMirror {
+  > * + * {
+    margin-top: 0.75em;
+  }
+
+  ul,
+  ol {
+    padding: 0 1rem;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    line-height: 1.1;
+  }
+
+  code {
+    background-color: rgba(#616161, 0.1);
+    color: #616161;
+  }
+
+  pre {
+    background: #0D0D0D;
+    color: #FFF;
+    font-family: 'JetBrainsMono', monospace;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+
+    code {
+      color: inherit;
+      padding: 0;
+      background: none;
+      font-size: 0.8rem;
+    }
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  blockquote {
+    padding-left: 1rem;
+    border-left: 2px solid rgba(#0D0D0D, 0.1);
+  }
+
+  hr {
+    border: none;
+    border-top: 2px solid rgba(#0D0D0D, 0.1);
+    margin: 2rem 0;
+  }
+}
+</style>-->

@@ -1,10 +1,21 @@
+
+<!-- <button class="btn" v-on:click="login()">Login</button> -->
+    var example1 = new Vue({
+        el: '#example-1',
+        data: {
+            counter: 0
+        }
+    })
 <script>
     import Sidebar from './components/Sidebar.vue'
+    //import Tiptap from './components/Tiptap.vue'
+
     export default {
         name: 'App',
         emits: ["authenticated", "setAuthenticated"],
         components: {
-            Sidebar
+            Sidebar,
+            //Tiptap
         },
         data() {
             return {
@@ -17,7 +28,7 @@
         },
         mounted() {
             if (!this.authenticated) {
-                this.$router.replace({ name: "Home" });
+                this.$router.replace({ name: "Login" });
             }
         },
         methods: {
@@ -33,11 +44,13 @@
 </script>
 
 <template>
-    <Sidebar></Sidebar>
+    <Sidebar />
     <div>
         <router-view />
     </div>
-    
+    <!--<div id="app">
+        <tiptap />
+    </div>-->
 </template>
 
 <style>

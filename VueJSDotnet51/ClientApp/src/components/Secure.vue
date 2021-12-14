@@ -12,7 +12,7 @@
     </div>
     
     <div class="Reservation_add Reservations">  <!-- Reservation add-->
-        <a class="btn" v-on:click="addReservation()">
+        <a class="btn">
             <i class="material-icons">add_circle</i> Afspraak toevoegen
         </a>
     </div>
@@ -36,7 +36,7 @@
     </div>
 
     <div class="Editable Reservations">    <!-- Home page edit button -->
-        <a class="btn">
+        <a class="btn" v-on:click="login()">
             <i class="material-icons">edit</i>Homepagina bewerken
         </a>
     </div>
@@ -45,10 +45,23 @@
 
 
 <script>
+    ////materialise code voor dropdown button niet toegepast
+    //document.addEventListener('DOMContentLoaded', function () {
+    //    var elems = document.querySelectorAll('.dropdown-trigger');
+    //    var options = {alignment: 'left'}
+    //    this.Dropdown.init(elems, options);
+    //});
     export default {
+        name: 'Login',
+        data() {
+            return {
+
+            }
+        },
         methods: {
-            addReservation() {
-                this.$router.replace({ name: "AddReservation" });
+            login() {
+
+                     this.$router.replace({ name: "Tiptap" });   //changes webpage to /Secure
             }
         }
     }
@@ -66,21 +79,24 @@
     }
 
     .Reservations a i {
-        font-size: calc(6px + 1.5vw);
+        font-size: 16px;
     }
 
     .Reservations a {
-        background: #e7334c;
+        background: #e91e63;
         border: hidden;
         padding: 15px;
-        font-size: calc(6px + 1.5vw);
-        font-weight: bold;
+        font-size: 60%;
         border-radius: 15px;
-        width: calc(50% + 1.5vw);
+        width: 60%;
         margin: 1.5%;
     }
 
     .Editable a {
-        background: #79b9d5;
+        background: #00c853;
+    }
+
+    .btn {
+        opacity: 0.6;
     }
 </style>
