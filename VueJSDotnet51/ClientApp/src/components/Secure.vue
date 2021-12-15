@@ -30,13 +30,13 @@
     </div>
 
     <div class="Editable Reservations">    <!-- Information page edit button -->
-        <a class="btn">
+        <a class="btn" v-on:click="change_page2()">
             <i class="material-icons">edit</i>Informatiepagina bewerken
         </a>
     </div>
 
     <div class="Editable Reservations">    <!-- Home page edit button -->
-        <a class="btn" v-on:click="change_page()">
+        <a class="btn" v-on:click="change_page1()">
             <i class="material-icons">edit</i>Homepagina bewerken
         </a>
     </div>
