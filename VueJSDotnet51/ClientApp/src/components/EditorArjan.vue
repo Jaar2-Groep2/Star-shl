@@ -99,6 +99,7 @@
                         alert(error);
                     }
                     );
+
             },
 
             saveInDB() {
@@ -118,6 +119,7 @@
                     },
                 }).then(function (response) {
                     console.log(response);
+                    window.alert("Opgeslagen!");
                 }).catch(function (error) {
                     console.log(error);
                     console.log(error.response);

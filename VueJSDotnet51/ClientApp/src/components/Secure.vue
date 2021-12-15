@@ -50,8 +50,11 @@
             addReservation() {
                 this.$router.replace({ name: "AddReservation" });
             },
-            change_page() {
-                this.$router.replace({ name: "EditorArjan" });   //changes webpage to /Secure
+            change_page1() {
+                this.$router.replace({ name: "EditorArjan" });   //changes webpage to /editor
+            },
+            change_page2() {
+                this.$router.replace({ name: "EditorEsat" });   //changes webpage to /editor
             }
         }
     }

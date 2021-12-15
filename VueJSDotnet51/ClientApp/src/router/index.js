@@ -7,6 +7,8 @@ import Info from "@/components/Info.vue"
 import AddReservation from "@/components/AddReservation.vue";
 import PDF from "../components/PDF.vue";
 import EditorArjan from "../components/EditorArjan.vue";
+import EditorEsat from "../components/EditorEsat.vue";
+
 
 const routes = [
     {
@@ -49,6 +51,11 @@ const routes = [
         path: "/EditorArjan",
         name: "EditorArjan",
         component: EditorArjan,
+    },
+    {
+        path: "/EditorEsat",
+        name: "EditorEsat",
+        component: EditorEsat,
     }
 ];
 
