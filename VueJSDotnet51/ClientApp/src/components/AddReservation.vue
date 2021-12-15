@@ -136,10 +136,11 @@
             },
             sendMail() {
                 console.log(this.form)
+                console.log(JSON.stringify(this.form))
                 axios({
                     method: 'POST',
-                    url: 'http://localhost:5000/api/Email.cs',
-                    data: this.form,
+                    url: 'http://localhost:5000/api/Email/',
+                    data: JSON.stringify(this.form),
                     headers: {
                         'Content-Type': 'application/json',
                         "Access-Control-Allow-Origin": "*",

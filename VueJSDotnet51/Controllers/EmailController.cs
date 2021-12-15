@@ -4,48 +4,51 @@ using System.Net.Mail;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using Microsoft.Extensions.Configuration;
+using System.IO;
 
 namespace VueJSDotnet51.Controllers
 {
-    public class ReservationList
-    {
-        public List<Reservation> ReservationInfo { get; set; }
-    }
-        public class Email
-    {
+    //public class ReservationList
+    //{
+    //    public List<Reservation> Reservationdatalist { get; set; }
+    //}
 
-        [Route("api/[controller]")]
-        [ApiController]
-        public partial class EmailController : ControllerBase
+
+    [Route("api/[controller]")]
+    [ApiController]
+
+    public partial class EmailController : ControllerBase
+    {
+        private readonly IConfiguration _configuration;
+
+        public EmailController(IConfiguration configuration)
         {
-            [HttpGet]
-            public JsonResult Get()
+            _configuration = configuration;
+        }
+
+        [HttpPost]
+        public JsonResult Post(Reservation reservation)
+        {
+            var emailData = JsonConvert.DeserializeObject<EmailData>(System.IO.File.ReadAllText("ClientApp/Assets/src/email.json"));
+
+            using var smtpClient = new SmtpClient("smtp.gmail.com")
             {
-                return new JsonResult("This works!");
-            }
+                Port = 587,
+                Credentials = new NetworkCredential(emailData.Email, emailData.Password),
+                EnableSsl = true
+            };
+            var body = emailData.Body
 
-            [HttpPost]
-            public JsonResult Post(Reservation reservation)
-            {
-                var emailData = JsonConvert.DeserializeObject<EmailData>(System.IO.File.ReadAllText("Assets/email.json"));
+                .Replace("[NAME]", reservation.firstName)
+                .Replace("[CODE]", reservation.lastName)
+                .Replace("[EMAIL]", reservation.email);
 
-                using var smtpClient = new SmtpClient("smtp.gmail.com")
-                {
-                    Port = 587,
-                    Credentials = new NetworkCredential(emailData.Email, emailData.Password),
-                    EnableSsl = true
-                };
+            smtpClient.Send(emailData.Email, reservation.email, emailData.Subject, body);
 
-                var body = emailData.Body
-                    .Replace("[NAME]", reservation.firstName)
-                    .Replace("[CODE]", reservation.lastName)
-                    .Replace("[EMAIL]", reservation.email);
-
-                smtpClient.Send(emailData.Email, reservation.email, emailData.Subject, body);
-
-                return new JsonResult("Done sending email");
-            }
+            return new JsonResult("Done sending email");
         }
     }
 }
+
 
