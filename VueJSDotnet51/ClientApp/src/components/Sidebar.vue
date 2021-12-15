@@ -58,6 +58,7 @@
             <li><router-link class="link" :to="{ name: 'PDF' }">Bloedprik certificaat</router-link></li>
             <li><router-link class="link" :to="{name: 'Priklocaties' }">Priklokaties</router-link></li>
             <li><router-link class="link" :to="{name: 'Info'}">Informatie</router-link></li>
+            
 
         </ul>
         <div class="toggle">

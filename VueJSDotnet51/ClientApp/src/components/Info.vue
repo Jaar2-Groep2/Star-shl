@@ -55,7 +55,7 @@
                 Onze trombosedienst begeleidt jaarlijks ruim 30.000 patiënten bij het gebruik van antistollingsmiddelen.
                 Onze locaties voor bloedafname en andere onderzoeken zitten verspreid over Zuidwest-Nederland en daardoor zijn we altijd dichtbij.
                 En als het nodig is, komen we bij de mensen thuis.<br><br>
-                Medewerkers van Star-shl ondersteunen en adviseren professionals zoals huisartsen, verloskundigen en zorginstellingen.
+                Medewerkers van Star-shl ondersteunen en adviseren professionals zoals huisartsen, verloskundigen en zorginstellingen. 
                 Onze ervaren praktijkondersteuners begeleiden in tal van huisartsenpraktijken patiënten met chronische aandoeningen.
             </p>
             <p v-show="infopage === 2">
@@ -109,7 +109,6 @@
         vertical-align: middle;
         border-style: none;
     }
-
     img {
         vertical-align: middle;
         border-style: none;
@@ -132,22 +131,21 @@
         margin-right: 8%;
     }
 
-        .text_info p {
-            cursor: pointer;
-            padding: 4%;
-            margin-right: 10%;
-            margin-left: 10%;
-            margin-bottom: 12%;
-            border-radius: 15px;
-            box-shadow: 0 0 10px 1px black;
-            text-align: left;
-        }
+    .text_info p {
+        cursor: pointer;
+        padding: 4%;
+        margin-right: 10%;
+        margin-left: 10%;
+        margin-bottom: 12%;
+        box-shadow: 0 0 10px 1px black;
+        text-align: left;
+    }
 
     video {
         margin-top: 10px;
         width: 640px;
         height: 360px;
-    }
+    }   
 
 
     @media screen and (max-width: 700px) {
@@ -164,7 +162,6 @@
         padding: 2%;
         font-size: calc(6px + 1.0vw);
         font-weight: bold;
-        border-radius: 15px;
         width: calc(30% + 0.5vw);
         margin-left: 1.5%;
         margin-bottom: 0%;
@@ -184,13 +181,14 @@
         padding-left: 8%;
     }
 
-        footer p {
-            text-align: left;
-            font-size: 50%;
-        }
+    footer p {
+        text-align: left;
+        font-size: 50%;
+    }
 
     .btn {
         margin-top: 40px;
     }
+
 </style>
 
