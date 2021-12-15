@@ -6,6 +6,8 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using Microsoft.Extensions.Configuration;
 using System.IO;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Serialization;
 
 namespace VueJSDotnet51.Controllers
 {
@@ -30,23 +32,25 @@ namespace VueJSDotnet51.Controllers
         [HttpPost]
         public JsonResult Post(Reservation reservation)
         {
-            var emailData = JsonConvert.DeserializeObject<EmailData>(System.IO.File.ReadAllText("ClientApp/Assets/src/email.json"));
+            var emailData = JsonConvert.DeserializeObject<EmailData>(System.IO.File.ReadAllText("../VueJSDotnet51/ClientApp/src/assets/email.json"));
 
-            using var smtpClient = new SmtpClient("smtp.gmail.com")
+            using var smtpClient = new SmtpClient("smtp.gmail.com", 587)
             {
-                Port = 587,
                 Credentials = new NetworkCredential(emailData.Email, emailData.Password),
                 EnableSsl = true
             };
             var body = emailData.Body
+                .Replace("[FNAME]", reservation.FirstName)
+                .Replace("[INSERTION]", reservation.Insertion)
+                .Replace("[LNAME]", reservation.LastName)
+                .Replace("[PHONENUMBER]", reservation.Phonenumber.Length == 0 ? reservation.Phonenumber = "Niet gegeven": reservation.Phonenumber)
+                .Replace("[AGE]", reservation.Age.Length == 0 ? reservation.Age = "Niet gegeven": reservation.Age)
+                .Replace("[GENDER]", reservation.Gender)
+                .Replace("[EMAIL]", reservation.Email);
 
-                .Replace("[NAME]", reservation.firstName)
-                .Replace("[CODE]", reservation.lastName)
-                .Replace("[EMAIL]", reservation.email);
+            smtpClient.Send(emailData.Email, reservation.Email, emailData.Subject, body);
 
-            smtpClient.Send(emailData.Email, reservation.email, emailData.Subject, body);
-
-            return new JsonResult("Done sending email");
+            return new JsonResult("email sent");
         }
     }
 }

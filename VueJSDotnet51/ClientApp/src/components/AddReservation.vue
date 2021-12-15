@@ -75,13 +75,13 @@
                 emailInfo: [],
                 msg: [],
                 form: {
-                    firstName: 'fdas',
+                    firstName: '',
                     insertion: '',
-                    lastName: 'fasd',
-                    email: 'nuur.said@hotmail.nl',
-                    phonenumber: 342,
-                    age: 12,
-                    gender: 'man'
+                    lastName: '',
+                    email: '',
+                    phonenumber: '',
+                    age: '',
+                    gender: ''
                 }
             }
         },
@@ -135,12 +135,10 @@
                 }
             },
             sendMail() {
-                console.log(this.form)
-                console.log(JSON.stringify(this.form))
                 axios({
                     method: 'POST',
                     url: 'http://localhost:5000/api/Email/',
-                    data: JSON.stringify(this.form),
+                    data: this.form,
                     headers: {
                         'Content-Type': 'application/json',
                         "Access-Control-Allow-Origin": "*",

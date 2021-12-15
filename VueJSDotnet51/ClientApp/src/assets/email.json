@@ -2,5 +2,5 @@
     "email": "cineconprojectb@gmail.com",
     "password": "cineconmaardaneenbeterewachtwoord123*",
     "subject": "Reservering Cinecon",
-    "body": "Beste [NAME],\n\nErg bedankt voor uw reservering bij Cinecon voor [MOVIE_TITLE]. Uw reserveringscode is [CODE].\nDe door u gekozen [SEATS].\n\n[MENU]\nU wordt [DATE] om [TIME] verwacht in zaal [ROOM].\n\nTot bij de voorstelling!"
+    "body": "Beste [FNAME] [INSERTION] [LNAME],\n\nErg bedankt voor uw reservering bij Star-shl voor een bloedprikafspraak.\nU bent [AGE] jaar oud.\n\nmobielenummer: [PHONENUMBER]\nU bent een [GENDER]!\nDe mail: [EMAIL]"
 } 

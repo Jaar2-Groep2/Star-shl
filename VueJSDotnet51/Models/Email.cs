@@ -15,12 +15,12 @@ namespace VueJSDotnet51.Models
 
     public class Reservation
     {
-        public string firstName { get; set; }
-        public string insertion { get; set; }
-        public string lastName { get; set; }
-        public string email { get; set; }
-        public int phonenumber { get; set; }
-        public int age { get; set; }
-        public string gender { get; set; }
+        public string FirstName { get; set; }
+        public string Insertion { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
+        public string Phonenumber { get; set; }
+        public string Age { get; set; }
+        public string Gender { get; set; }
     }
 }
