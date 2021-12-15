@@ -7,49 +7,49 @@
 
         <div>
             <label for="firstName">Voorletters:</label>
-            <input v-model="firstName" name="firstName" id="firstName" type="text" placeholder="Voorletters*" />
+            <input v-model="form.firstName" name="firstName" id="firstName" type="text" placeholder="Voorletters*" />
             <p class="error">{{ msg['firstName'] }}</p>
         </div>
 
         <div>
             <label for="insertion">Tussenvoegsel:</label>
-            <input class="insertion_input" v-model="insertion" placeholder="Tussenvoegsel" />
+            <input class="insertion_input" v-model="form.insertion" placeholder="Tussenvoegsel" />
         </div>
 
         <div>
             <label for="lastName">Achternaam:</label>
-            <input v-model="lastName" name="lastName" id="lastName" type="text" placeholder="Achternaam*" />
+            <input v-model="form.lastName" name="lastName" id="lastName" type="text" placeholder="Achternaam*" />
             <p class="error">{{ msg['lastName'] }}</p>
         </div>
 
         <div>
             <label for="email">E-mail:</label>
-            <input v-model="email" name="email" id="email" type="email" placeholder="E-mail*" />
+            <input v-model="form.email" name="email" id="email" type="email" placeholder="E-mail*" />
             <p class="error">{{ msg['email'] }}</p>
         </div>
 
         <div>
             <label for="phonenumber">Mobiel:</label>
-            <input v-model="phonenumber" name="phonenumber" id="phonenumber" type="number" placeholder="Mobiel telefoonnummer" />
+            <input v-model="form.phonenumber" name="phonenumber" id="phonenumber" type="number" placeholder="Mobiel telefoonnummer" />
             <p class="error"></p>
         </div>
 
         <div>
             <label for="age">Leeftijd:</label>
-            <input id="age" v-model="age" type="number" name="age" min="0" max="130">
+            <input id="age" v-model="form.age" type="number" name="age" min="0" max="130">
             <p class="error">{{ msg['age'] }}</p>
         </div>
 
         <div>
             <label for="gender">Geslacht:</label>
-            <select name="gender" v-model="gender">
+            <select name="gender" v-model="form.gender">
                 <option value="man">man</option>
                 <option value="woman">vrouw</option>
             </select>
             <p class="error">{{ msg['gender'] }}</p>
         </div>
 
-        <div class="btn" v-on:click="formCheck">Submit</div>
+         <div class="btn" v-on:click="formCheck">Submit</div>
     </form>
 
     <footer>
@@ -65,19 +65,24 @@
     </footer>
 </template>
 
-
 <script>
+    import axios from 'axios'
+
     export default {
         data() {
             return {
+                answer: '',
+                emailInfo: [],
                 msg: [],
-                firstName: '',
-                insertion: '',
-                lastName: '',
-                email: '',
-                phonenumber: null,
-                age: null,
-                gender: ''
+                form: {
+                    firstName: 'fdas',
+                    insertion: '',
+                    lastName: 'fasd',
+                    email: 'nuur.said@hotmail.nl',
+                    phonenumber: 342,
+                    age: 12,
+                    gender: 'man'
+                }
             }
         },
         methods: {
@@ -90,35 +95,35 @@
                 }
             },
             formCheck() {
-                if (this.nameCheck(this.firstName)) {
+                if (this.nameCheck(this.form.firstName)) {
                     this.msg['firstName'] = 'Voornaam is verplicht'
                 }
                 else {
                     this.msg['firstName'] = ''
                 }
 
-                if (this.nameCheck(this.lastName)) {
+                if (this.nameCheck(this.form.lastName)) {
                     this.msg['lastName'] = 'Achternaam is verplicht'
                 }
                 else {
                     this.msg['lastName'] = ''
                 }
 
-                if (this.nameCheck(this.gender)) {
+                if (this.nameCheck(this.form.gender)) {
                     this.msg['gender'] = 'Uw geslacht vermelden is verplicht'
                 }
                 else {
                     this.msg['gender'] = ''
                 }
 
-                if (!/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(this.email)) {
+                if (!/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(this.form.email)) {
                     this.msg['email'] = 'Voer een geldig email adres in a.u.b'
                 }
                 else {
                     this.msg['email'] = ''
                 }
 
-                if (this.age < 0 || this.age > 130) {
+                if (this.age < 0 || this.form.age > 130) {
                     this.msg['age'] = 'Voer uw echte leeftijd in a.u.b'
                 }
                 else {
@@ -126,12 +131,33 @@
                 }
                 
                 if (this.msg['firstName'] == '' && this.msg['lastName'] == '' && this.msg['gender'] == '' && this.msg['email'] == '' && this.msg['age'] == '') {
-                    this.$router.replace({ name: "Secure" });
+                    this.sendMail()
                 }
+            },
+            sendMail() {
+                console.log(this.form)
+                axios({
+                    method: 'POST',
+                    url: 'http://localhost:5000/api/Email.cs',
+                    data: this.form,
+                    headers: {
+                        'Content-Type': 'application/json',
+                        "Access-Control-Allow-Origin": "*",
+                        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+                        'Access-Control-Allow-Credentials': true
+                    },
+                }).then(function (response) {
+                    console.log(response);
+                }).catch(function (error) {
+                    console.log(error);
+                    console.log(error.response);
+                    alert(error);
+                });
             }
         }
     }
 </script>
+
 
 <style scoped>
     .form div {
