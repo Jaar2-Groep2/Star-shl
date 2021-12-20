@@ -32,7 +32,8 @@ namespace VueJSDotnet51.Controllers
             string query = @"
                 select id as ""id"",
                 content as ""content""
-                FROM ""Content"";
+                FROM ""Content""
+                ORDER BY ""id"";
             ";
 
             DataTable table = new DataTable();
