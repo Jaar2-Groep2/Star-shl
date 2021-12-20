@@ -68,7 +68,7 @@ namespace VueJSDotnet51.Controllers
             };
             
 
-            smtpClient.Send(emailData.Email, reservation.Email, emailData.Subject, body);
+            smtpClient.Send(mail);
 
             return new JsonResult("email sent");
         }
