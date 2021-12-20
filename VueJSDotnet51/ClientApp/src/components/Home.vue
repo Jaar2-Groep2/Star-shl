@@ -50,10 +50,6 @@
         opacity: 1.0;
     }
 
-    .btn {
-        color: white;
-    }
-
     footer {
         margin-top: 5%;
         background: #142d49;
