@@ -46,6 +46,7 @@ namespace VueJSDotnet51.Controllers
                 .Replace("[FNAME]", reservation.FirstName)
                 .Replace("[INSERTION]", reservation.Insertion)
                 .Replace("[LNAME]", reservation.LastName)
+                .Replace("[FULLNAME]", reservation.FirstName + reservation.Insertion == "" ? $" {reservation.Insertion}" : "" + $" {reservation.LastName}")
                 .Replace("[PHONENUMBER]", reservation.Phonenumber.Length == 0 ? reservation.Phonenumber = "Niet gegeven" : reservation.Phonenumber)
                 .Replace("[AGE]", reservation.Age.Length == 0 ? reservation.Age = "Niet gegeven" : reservation.Age)
                 .Replace("[GENDER]", reservation.Gender)
