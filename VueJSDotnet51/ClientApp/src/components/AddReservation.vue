@@ -34,7 +34,7 @@
         </label>
 
         <label class="field field_v3">
-            <input class="field__input" v-model="form.phonenumber" name="phonenumber" id="phonenumber" type="number" placeholder="e.g. 0612345678" />
+            <input class="field__input" v-model="form.phonenumber" name="phonenumber" id="phonenumber" type="number" min="0" placeholder="e.g. 0612345678" />
             <span class="field__label-wrap">
                 <span class="field__label">Mobiel telefoonnummer</span>
             </span>
