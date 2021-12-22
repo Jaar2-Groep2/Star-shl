@@ -4,10 +4,9 @@
             <img src="../assets/star-shl.jpg" />
         </div>
 
-        <video controls="controls" preload="metadata">
-            <source src="../assets/WatGebeurtErMetBloed.mp4#t=3.5" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+        <iframe width="640" height="360"
+                src="https://www.youtube.com/embed/wk-SGVzx1Os">
+        </iframe>
 
         <div class="headline">Over Star-shl</div>
 
