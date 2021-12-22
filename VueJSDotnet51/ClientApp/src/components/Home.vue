@@ -19,7 +19,7 @@
 
         <router-link class="homeButtons btn" :to="{ name: 'Priklocaties' }">Priklokaties</router-link>
         <br><br>
-        <a class="homeButtons blue btn">Contact</a>
+        <a class="homeButtons btn" style="background: #142d49">Contact</a>
     </div>
 
     <footer>
@@ -199,10 +199,6 @@
         font-weight: bold;
         width: calc(50% + 1.0vw);
         margin: 1.5%;
-    }
-
-    .blue {
-        background: #142d49;
     }
 
     .btn {
