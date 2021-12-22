@@ -56,7 +56,7 @@
                 axios.get("http://localhost:5000/api/content")
                     .then((response) => {
                         this.ContentArray = response.data;
-                        this.contentstring = this.ContentArray[3]["content"];
+                        this.contentstring = this.ContentArray[4]["content"];
                         this.editor.commands.setContent(this.contentstring);
                     })
                     .catch(function (error) {
