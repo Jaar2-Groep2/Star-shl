@@ -14,7 +14,7 @@
                 <input type="text" name="username" v-model="input.username" placeholder="Gebruikersnaam" />
                 <input type="password" name="password" v-model="input.password" placeholder="Wachtwoord" />
             </div>
-            <button class="btn" v-on:click="login()">Login</button>
+            <button class="btn" v-on:click="LoginCall(input.username,input.password)">Login</button>
         </div>
     </div>
 
@@ -38,19 +38,24 @@
                 axios.get(("http://145.24.222.238:80/api/login/" + username + '/' + password))
                     .then((response) => {
                         var loginauth = response.data;
-                        if (loginauth) {
+                        if (loginauth == true) {
                             console.log("authenticated");
                             this.$emit("authenticated", true);
                             this.$router.replace({ name: "Secure" });   //changes webpage to /Secure
                         } else {
-                            console.log("The username and / or password is incorrect");
+                            var logmsg = "The username and/ or password is incorrect";
+                            window.alert(logmsg);
+                            console.log(logmsg);
                         }
-                    } else {
-                        console.log("A username and password must be present");
-                    }
-                }
+
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                        alert(error);
+                    });
             }
         }
+    }
     </script>
 
     <style scoped>

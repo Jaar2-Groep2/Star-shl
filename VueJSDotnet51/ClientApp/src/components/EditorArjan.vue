@@ -88,7 +88,7 @@
 
         methods: {
             GetContent() {
-                axios.get("http://localhost:5000/api/content")
+                axios.get("http://145.24.222.238:80/api/content")
                     .then((response) => {
                         this.ContentArray = response.data;
                         this.contentstring = this.ContentArray[0]["content"];
@@ -106,7 +106,7 @@
                 const html = this.editor.getHTML();
                 axios({
                     method: 'PUT',
-                    url: 'http://localhost:5000/api/content/',
+                    url: "http://145.24.222.238:80/api/content",
                     data: {
                         content: html,
                         id: 1
