@@ -1,27 +1,23 @@
 <template>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
     <div class="home">
         <div class="img">
             <img src="../assets/star-shl.jpg" />
         </div>
-
-        <iframe width="640" height="360"
-                src="https://www.youtube.com/embed/wk-SGVzx1Os">
-        </iframe>
-
-        <div class="headline">Over Star-shl</div>
-
-        <div class="text_homepage">
-            <editor-content :editor="editor" />
+        <div>
+            <router-link class="sezer btn" :to="{ name: 'Info1' }">Over Star-shl</router-link>
+            <router-link class="sezer btn" :to="{ name: 'Info2' }">innovatie</router-link>
+        </div>
+        <div>
+            <router-link class="sezer btn" :to="{ name: 'Info3' }">Vrijwilligersbeleid</router-link>
+            <router-link class="sezer btn" :to="{ name: 'Info4' }">Kwaliteit</router-link>
         </div>
 
-        <router-link class="homeButtons btn" :to="{ name: 'Info1' }">Informatie over onderzoeken</router-link>
-        <router-link class="homeButtons btn" :to="{ name: 'AddReservation' }">Afspraak maken</router-link>
-
-        <router-link class="homeButtons btn" :to="{ name: 'Priklocaties' }">Priklokaties</router-link>
-        <br><br>
-        <a class="homeButtons blue btn">Contact</a>
+        <div class="text_info">
+            <editor-content :editor="editor" />
+        </div>
     </div>
-
     <footer>
         <p class="text-white">
             <strong>Etten-Leur</strong><br>
@@ -33,8 +29,8 @@
             Postbus 8661, 3009 AR<br>
         </p>
     </footer>
-</template>
 
+</template>
 
 <script>
     import axios from 'axios'
@@ -60,7 +56,7 @@
                 axios.get("http://localhost:5000/api/content")
                     .then((response) => {
                         this.ContentArray = response.data;
-                        this.contentstring = this.ContentArray[0]["content"];
+                        this.contentstring = this.ContentArray[3]["content"];
                         this.editor.commands.setContent(this.contentstring);
                     })
                     .catch(function (error) {
@@ -68,6 +64,7 @@
                         alert(error);
                     }
                     );
+
             },
 
             saveInDB() {
@@ -77,7 +74,7 @@
                     url: 'http://localhost:5000/api/content/',
                     data: {
                         content: html,
-                        id: 1
+                        id: 4
                     },
                     headers: {
                         'Content-Type': 'application/json',
@@ -87,6 +84,7 @@
                     },
                 }).then(function (response) {
                     console.log(response);
+                    window.alert("Opgeslagen!");
                 }).catch(function (error) {
                     console.log(error);
                     console.log(error.response);
@@ -118,6 +116,10 @@
         opacity: 1.0;
     }
 
+    .btn {
+        color: white;
+    }
+
     footer {
         margin-top: 5%;
         background: #142d49;
@@ -133,9 +135,26 @@
 </style>
 
 <style scoped>
-    .img {
-        vertical-align: middle;
-        border-style: none;
+    .text_info {
+        /*        font-size: calc(8px + 0.5vw);*/
+        text-align: center;
+        margin-top: 1%;
+        margin-left: 8%;
+        margin-right: 8%;
+    }
+    .sezer {
+        background: #e7334c;
+        border: hidden;
+        padding: 2%;
+        font-size: calc(6px + 1.0vw);
+        font-weight: bold;
+        width: calc(30% + 1.0vw);
+        margin: 1.5%;
+    }
+
+    .ProseMirror p {
+        margin: 10em 0;
+        text-align: center;
     }
 
     img {
@@ -145,68 +164,51 @@
         max-width: 90%;
     }
 
-    img {
-        vertical-align: middle;
-        border-style: none;
-        width: 800px;
-        max-width: 80%;
-    }
-
-    .text_homepage {
-        /*        font-size: calc(8px + 0.5vw);*/
-        text-align: center;
+    .save_class {
+        margin-bottom: 1%;
         margin-top: 1%;
-        margin-left: 8%;
-        margin-right: 8%;
-    }
-
-    .headline {
-        font-size: calc(12px + 1.5vw);
-        margin-top: 3%
-    }
-
-    .text_homepage h6 {
-        cursor: pointer;
-        padding: 3%;
-        margin-right: 10%;
-        margin-left: 10%;
-        margin-bottom: 10%;
-        box-shadow: 0 0 10px 1px black;
-        text-align: left;
-        font-size: calc(8px + 1.0vw)
-    }
-
-    video {
-        margin-top: 10px;
-        width: 640px;
-        height: 360px;
-    }
-
-
-    @media screen and (max-width: 700px) {
-        video {
-            width: 320px;
-            margin-top: 10px;
-            height: 240px;
-        }
-    }
-
-    .homeButtons {
-        background: #e7334c;
-        border: hidden;
-        padding: 2%;
-        font-size: calc(8px + 1.0vw);
-        font-weight: bold;
-        width: calc(50% + 1.0vw);
-        margin: 1.5%;
     }
 
     .blue {
-        background: #142d49;
+        background: #2C2B64;
     }
 
-    .btn {
-        opacity: 1.0;
+    footer {
+        margin-top: 5%;
+        background: #2C2B64;
+        padding: 5%;
+        padding-left: 8%;
+    }
+
+        footer p {
+            text-align: left;
+            font-size: 50%;
+        }
+
+
+    .edit_buttons {
+        margin-top: 1%;
+    }
+
+    .btn_save {
+        background: rgb(111 216 103);
+        border: hidden;
+        padding: 1%;
+        font-size: calc(60% + 2vw);
+        /*border-radius: 15px;*/
+        width: calc(30% + 1.5vw);
+        margin: 1.5%;
+        font-weight: 500;
+        text-decoration-color: white;
+        color: white;
+    }
+
+    .bub {
+        color: rgb(18 33 82);
+    }
+
+    .material-icons {
+        font-size: 10px;
     }
 </style>
 
