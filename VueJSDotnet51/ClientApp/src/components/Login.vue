@@ -38,7 +38,7 @@
                 axios.get(("http://145.24.222.238:80/api/login/" + username + '/' + password))
                     .then((response) => {
                         var loginauth = response.data;
-                        if (loginauth) {
+                        if (loginauth == true) {
                             console.log("authenticated");
                             this.$emit("authenticated", true);
                             this.$router.replace({ name: "Secure" });   //changes webpage to /Secure
