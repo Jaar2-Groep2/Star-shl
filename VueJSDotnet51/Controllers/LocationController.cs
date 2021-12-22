@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Data;
 using VueJSDotnet51.Models;
 
-
 namespace VueJSDotnet51.Controllers
 {
     public class LocationList
@@ -16,6 +15,7 @@ namespace VueJSDotnet51.Controllers
     //[Route("[controller]")]
     [Route("api/[controller]")]
     [ApiController]
+
     public partial class LocationController : ControllerBase
     {
         private readonly LocationsContext _context;

@@ -20,7 +20,7 @@
         </div>
 
         <router-link class="homeButtons btn" :to="{ name: 'Info' }">Informatie over onderzoeken</router-link>
-        <a class="homeButtons btn">Afspraak maken</a>
+        <router-link class="homeButtons btn" :to="{ name: 'AddReservation' }">Afspraak maken</router-link>
         <router-link class="homeButtons btn" :to="{ name: 'Priklocaties' }">Priklokaties</router-link>
         <br><br>
         <a class="homeButtons blue btn">Contact</a>
@@ -47,10 +47,6 @@
 <style>
     .btn:hover {
         opacity: 1.0;
-    }
-
-    .btn {
-        color: white;
     }
 
     footer {
