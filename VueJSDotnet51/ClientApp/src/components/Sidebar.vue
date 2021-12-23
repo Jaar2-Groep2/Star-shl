@@ -54,11 +54,12 @@
     <header :class="{ 'scrolled-nav' : scrollPosition}">
         <ul v-show="!mobile" class="nav">
             <li><router-link class="link" :to="{name: 'Home'}">Home</router-link></li>
-            <li><router-link class="link" :to="{name: 'Login'}">Login(test)</router-link></li>
             <li><router-link class="link" :to="{ name: 'PDF' }">Bloedprik certificaat</router-link></li>
             <li><router-link class="link" :to="{name: 'Priklocaties' }">Priklokaties</router-link></li>
             <li><router-link class="link" :to="{name: 'Info1'}">Informatie</router-link></li>
-            
+            <li><router-link class="link" :to="{name: 'Login'}"><a class="red">Login als medewerker</a></router-link></li>
+
+
 
         </ul>
         <div class="toggle">
@@ -68,15 +69,15 @@
             <ul v-show="mobileNav" class="nav-dropdown">
                 <!--v-on:click=toggleMobileNav()-->
                 <li><router-link class="link2" :to="{name: 'Home'}">Home</router-link></li>
-                <li><router-link class="link2" :to="{name: 'Login'}">Login(test)</router-link></li>
                 <li><router-link class="link2" :to="{ name: 'PDF' }">Bloedprik certificaat</router-link></li>
                 <li><router-link class="link2" :to="{name: 'Priklocaties'}">Priklocaties</router-link></li>
                 <li><router-link class="link2" :to="{name: 'Info1'}">Informatie</router-link></li>
+                <li><router-link class="link2" :to="{name: 'Login'}"><a class="red">Login als medewerker</a></router-link></li>
 
             </ul>
         </transition>
     </header>
-
+    <!--#002c40-->
 </template>
 
 <style>
@@ -89,6 +90,7 @@
     .sidebar {
         position: fixed;
     }
+
 </style>
 
 <style scoped>
@@ -144,6 +146,7 @@
             background-color: #fd334b;
         }
 
+
     .slide-enter-active,
     .slide-leave-active {
         transition: 0.6s ease all;
@@ -173,6 +176,12 @@
         width: 200px;
         padding: 20px 0;
     }
+        .link a {
+            color: #79b9d5;
+            text-decoration: none;
+            list-style: none;
+            transition: 0.5s ease all;
+        }
 
     .link2 {
         display: block;
@@ -190,7 +199,12 @@
         padding: 20px 0;
     }
 
-
+        .link2 a {
+            color: #79b9d5;
+            text-decoration: none;
+            list-style: none;
+            transition: 0.5s ease all;
+        }
 
     .toggle {
         float: left;

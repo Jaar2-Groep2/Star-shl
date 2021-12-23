@@ -1,4 +1,6 @@
 <template>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <div class="home">
         <div class="img">
             <img src="../assets/star-shl.jpg" />
@@ -14,12 +16,20 @@
             <editor-content :editor="editor" />
         </div>
 
-        <router-link class="homeButtons btn" :to="{ name: 'Info1' }">Informatie over onderzoeken</router-link>
-        <router-link class="homeButtons btn" :to="{ name: 'AddReservation' }">Afspraak maken</router-link>
+        <router-link class="homeButtons btn" :to="{ name: 'Info1' }">
+            <i class="bi bi-body-text"></i> Informatie over onderzoeken
+        </router-link>
+        <router-link class="homeButtons btn" :to="{ name: 'AddReservation' }">
+            <i class="bi bi-patch-plus"></i> Afspraak maken
+        </router-link>
 
-        <router-link class="homeButtons btn" :to="{ name: 'Priklocaties' }">Priklokaties</router-link>
+        <router-link class="homeButtons btn" :to="{ name: 'Priklocaties' }">
+            <i class="bi bi-map"></i> Priklokaties
+        </router-link>
         <br><br>
-        <a class="homeButtons btn" style="background: #142d49">Contact</a>
+        <a class="homeButtons btn" style="background: #142d49">
+            <i class="bi bi-info-circle"></i> Contact
+        </a>
     </div>
 
     <footer>
@@ -130,6 +140,9 @@
             text-align: left;
             font-size: 60%;
         }
+    .btn i {
+        font-size: calc(6px + 1.5vw);
+    }
 </style>
 
 <style scoped>
