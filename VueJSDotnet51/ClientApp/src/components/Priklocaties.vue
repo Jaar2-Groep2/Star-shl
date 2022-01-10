@@ -94,7 +94,7 @@
         },
         methods: {
             GetLocations() {
-                axios.get("http://145.24.222.238:80/api/location")
+                axios.get("https://localhost:5000/api/location")
                     .then((response) => {
                         this.locations = response.data;
                     })
