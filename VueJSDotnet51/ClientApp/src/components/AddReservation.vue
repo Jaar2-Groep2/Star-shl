@@ -137,7 +137,7 @@
             sendMail() {
                 axios({
                     method: 'POST',
-                    url: 'http://localhost:5000/api/Email/',
+                    url: '/api/Email/',
                     data: this.form,
                     headers: {
                         'Content-Type': 'application/json',

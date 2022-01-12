@@ -90,7 +90,7 @@
 
         methods: {
             GetContent() {
-                axios.get("http://145.24.222.238:80/api/content")
+                axios.get("/api/content")
                     .then((response) => {
                         this.ContentArray = response.data;
                         this.contentstring = this.ContentArray[3]["content"];
@@ -108,7 +108,7 @@
                 const html = this.editor.getHTML();
                 axios({
                     method: 'PUT',
-                    url: "http://145.24.222.238:80/api/content",
+                    url: "/api/content",
                     data: {
                         content: html,
                         id: 4

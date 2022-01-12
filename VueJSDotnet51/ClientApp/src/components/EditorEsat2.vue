@@ -109,7 +109,7 @@
                 const html = this.editor.getHTML();
                 axios({
                     method: 'PUT',
-                    url: "http://145.24.222.238:80/api/content",
+                    url: "/api/content",
                     data: {
                         content: html,
                         id: 3

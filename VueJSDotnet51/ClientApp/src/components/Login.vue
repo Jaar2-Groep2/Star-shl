@@ -35,7 +35,7 @@
         },
         methods: {
             LoginCall(username, password) {
-                axios.get(("http://145.24.222.238:80/api/login/" + username + '/' + password))
+                axios.get(("/api/login/" + username + '/' + password))
                     .then((response) => {
                         var loginauth = response.data;
                         if (loginauth == true) {

@@ -88,7 +88,7 @@
 
         methods: {
             GetContent() {
-                axios.get("http://145.24.222.238:80/api/content")
+                axios.get("/api/content")
                     .then((response) => {
                         this.ContentArray = response.data;
                         this.contentstring = this.ContentArray[0]["content"];

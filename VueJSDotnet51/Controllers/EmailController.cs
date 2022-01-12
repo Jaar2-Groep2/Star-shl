@@ -29,7 +29,7 @@ namespace VueJSDotnet51.Controllers
         }
 
         [HttpPost]
-        public void Post(Reservation reservation)
+        public JsonResult Post(Reservation reservation)
         {
             var emailData = JsonConvert.DeserializeObject<EmailData>(System.IO.File.ReadAllText("../VueJSDotnet51/ClientApp/src/assets/email.json"));
 
@@ -72,10 +72,12 @@ namespace VueJSDotnet51.Controllers
                 smtpClient.Credentials = new NetworkCredential(emailData.Email, emailData.Password);
                 smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
                 smtpClient.Send(mail);
+                return new JsonResult("Mail sent succesfully");
             }
             catch (System.Exception mailException)
             {
-                System.Console.WriteLine(mailException.Message);
+                //System.Console.WriteLine(mailException.Message);
+                return new JsonResult(mailException.Message);
             }
         }
     }
