@@ -9,11 +9,11 @@ import Info3 from "@/components/Info3.vue"
 import Info4 from "@/components/Info4.vue"
 import AddReservation from "@/components/AddReservation.vue";
 import PDF from "../components/PDF.vue";
-import EditorArjan from "../components/EditorArjan.vue";
-import EditorEsat1 from "../components/EditorEsat1.vue";
-import EditorEsat2 from "../components/EditorEsat2.vue";
-import EditorEsat3 from "../components/EditorEsat3.vue";
-import EditorEsat4 from "../components/EditorEsat4.vue";
+import EditHome from "../components/EditHome.vue";
+import EditInfo1 from "../components/EditInfo1.vue";
+import EditInfo2 from "../components/EditInfo2.vue";
+import EditInfo3 from "../components/EditInfo3.vue";
+import EditInfo4 from "../components/EditInfo4.vue";
 
 
 
@@ -55,29 +55,29 @@ const routes = [
         component: AddReservation,
     },
     {
-        path: "/EditorArjan",
-        name: "EditorArjan",
-        component: EditorArjan,
+        path: "/EditHome",
+        name: "EditHome",
+        component: EditHome,
     },
     {
-        path: "/EditorEsat1",
-        name: "EditorEsat1",
-        component: EditorEsat1,
+        path: "/EditInfo1",
+        name: "EditInfo1",
+        component: EditInfo1,
     },
     {
-        path: "/EditorEsat2",
-        name: "EditorEsat2",
-        component: EditorEsat2,
+        path: "/EditInfo2",
+        name: "EditInfo2",
+        component: EditInfo2,
     },
     {
-        path: "/EditorEsat3",
-        name: "EditorEsat3",
-        component: EditorEsat3,
+        path: "/EditInfo3",
+        name: "EditInfo3",
+        component: EditInfo3,
     },
     {
-        path: "/EditorEsat4",
-        name: "EditorEsat4",
-        component: EditorEsat4,
+        path: "/EditInfo4",
+        name: "EditInfo4",
+        component: EditInfo4,
     },
     {
         path: "/Info2",

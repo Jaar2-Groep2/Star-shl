@@ -11,23 +11,23 @@
         <h2 style="font-size:6vw">Medewerkersportaal</h2><br>
     </div>
     
-    <div class="Reservation_add Reservations">  <!-- Reservation add-->
-        <a class="btn" v-on:click="addReservation()">
+    <!--<div class="Reservation_add Reservations">-->  <!-- Reservation add-->
+        <!--<a class="btn" v-on:click="addReservation()">
             <i class="material-icons">add_circle</i> Afspraak toevoegen
         </a>
     </div>
 
-    <div class="Reservation_delete Reservations">   <!-- Reservation delete-->
-        <a class="btn">
+    <div class="Reservation_delete Reservations">-->   <!-- Reservation delete-->
+        <!--<a class="btn">
             <i class="material-icons">delete</i> Afspraak verwijderen
         </a>
     </div>
 
-    <div class="reservation_check Reservations">    <!-- Reservation check-->
-        <a class="btn">
+    <div class="reservation_check Reservations">-->    <!-- Reservation check-->
+        <!--<a class="btn">
             <i class="material-icons">visibility</i> Afspraak inzien
         </a>
-    </div>
+    </div>-->
 
     <div class="Editable Reservations">    <!-- Information page edit button -->
         <a class="btn" v-on:click="change_page2()">
@@ -51,10 +51,10 @@
                 this.$router.replace({ name: "AddReservation" });
             },
             change_page1() {
-                this.$router.replace({ name: "EditorArjan" });   //changes webpage to /editor
+                this.$router.replace({ name: "EditHome" });   //changes webpage to /editor
             },
             change_page2() {
-                this.$router.replace({ name: "EditorEsat1" });   //changes webpage to /editor
+                this.$router.replace({ name: "EditInfo1" });   //changes webpage to /editor
             }
         }
     }
