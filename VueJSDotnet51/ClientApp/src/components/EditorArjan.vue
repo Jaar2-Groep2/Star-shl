@@ -146,16 +146,6 @@
     }
 </script>
 
-<style>
-    .btn:hover {
-        opacity: 0.6;
-    }
-
-    .btn {
-        color: white;
-    }
-</style>
-
 <style scoped>
     .ProseMirror p {
         margin: 10em 0;
@@ -235,19 +225,6 @@
     .blue {
         background: #2C2B64;
     }
-
-    footer {
-        margin-top: 5%;
-        background: #2C2B64;
-        padding: 5%;
-        padding-left: 8%;
-    }
-
-        footer p {
-            text-align: left;
-            font-size: 50%;
-        }
-
 
     .edit_buttons {
         margin-top: 1%;

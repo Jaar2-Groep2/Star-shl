@@ -149,31 +149,6 @@
     }
 </script>
 
-
-
-<style>
-    .btn:hover {
-        opacity: 1.0;
-    }
-
-    .btn {
-        color: white;
-    }
-
-    footer {
-        margin-top: 5%;
-        background: #142d49;
-        padding: 5%;
-        width: 100%;
-        position: absolute;
-    }
-
-        footer p {
-            text-align: left;
-            font-size: 60%;
-        }
-</style>
-
 <style scoped>
     .sezer {
         background: #e7334c;
@@ -204,19 +179,6 @@
     .blue {
         background: #2C2B64;
     }
-
-    footer {
-        margin-top: 5%;
-        background: #2C2B64;
-        padding: 5%;
-        padding-left: 8%;
-    }
-
-        footer p {
-            text-align: left;
-            font-size: 50%;
-        }
-
 
     .edit_buttons {
         margin-top: 1%;

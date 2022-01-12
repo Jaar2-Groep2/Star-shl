@@ -15,11 +15,10 @@
         </div>
 
         <router-link class="homeButtons btn" :to="{ name: 'Info1' }">Informatie over onderzoeken</router-link>
+
         <router-link class="homeButtons btn" :to="{ name: 'AddReservation' }">Afspraak maken</router-link>
 
         <router-link class="homeButtons btn" :to="{ name: 'Priklocaties' }">Priklokaties</router-link>
-        <br><br>
-        <a class="homeButtons btn" style="background: #142d49">Contact</a>
     </div>
 
     <footer>
@@ -118,38 +117,30 @@
         opacity: 1.0;
     }
 
+    .btn {
+        color: white;
+    }
+
     footer {
-        margin-top: 5%;
+        margin-top: 8%;
         background: #142d49;
-        padding: 5%;
+        padding: 4% 4% 2% 4%;
         width: 100%;
         position: absolute;
     }
 
-        footer p {
-            text-align: left;
-            font-size: 60%;
-        }
+    footer p {
+        text-align: left;
+        font-size: calc(6px + 0.8vw);
+    }
 </style>
 
 <style scoped>
-    .img {
-        vertical-align: middle;
-        border-style: none;
-    }
-
     img {
         vertical-align: middle;
         border-style: none;
         width: 800px;
         max-width: 90%;
-    }
-
-    img {
-        vertical-align: middle;
-        border-style: none;
-        width: 800px;
-        max-width: 80%;
     }
 
     .text_homepage {
@@ -176,19 +167,11 @@
         font-size: calc(8px + 1.0vw)
     }
 
-    video {
+    iframe {
         margin-top: 10px;
-        width: 640px;
-        height: 360px;
-    }
-
-
-    @media screen and (max-width: 700px) {
-        video {
-            width: 320px;
-            margin-top: 10px;
-            height: 240px;
-        }
+        width: 800px;
+        max-height:5%;
+        max-width: 90%;
     }
 
     .homeButtons {
