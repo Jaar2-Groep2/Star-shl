@@ -17,18 +17,6 @@
         </a>
     </div>
 
-    <div class="Reservation_delete Reservations">   <!-- Reservation delete-->
-        <a class="btn">
-            <i class="material-icons">delete</i> Afspraak verwijderen
-        </a>
-    </div>
-
-    <div class="reservation_check Reservations">    <!-- Reservation check-->
-        <a class="btn">
-            <i class="material-icons">visibility</i> Afspraak inzien
-        </a>
-    </div>
-
     <div class="Editable Reservations">    <!-- Information page edit button -->
         <a class="btn" v-on:click="change_page2()">
             <i class="material-icons">edit</i>Informatiepagina bewerken

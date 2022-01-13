@@ -72,11 +72,18 @@ namespace VueJSDotnet51.Controllers
                 smtpClient.Credentials = new NetworkCredential(emailData.Email, emailData.Password);
                 smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
                 smtpClient.Send(mail);
+<<<<<<< Updated upstream
                 return new JsonResult("Mail sent succesfully");
             }
             catch (System.Exception mailException)
             {
                 //System.Console.WriteLine(mailException.Message);
+=======
+                return new JsonResult("email sent");
+            }
+            catch (System.Exception mailException)
+            {
+>>>>>>> Stashed changes
                 return new JsonResult(mailException.Message);
             }
         }
