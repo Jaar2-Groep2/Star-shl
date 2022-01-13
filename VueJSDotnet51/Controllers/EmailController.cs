@@ -36,7 +36,7 @@ namespace VueJSDotnet51.Controllers
             string body = string.Empty;
             //using streamreader for reading my htmltemplate   
 
-            using (StreamReader reader = new StreamReader("../VueJSDotnet51/ClientApp/src/components/EmailTemplate.html"))
+            using (StreamReader reader = new StreamReader("../VueJSDotnet51/ClientApp/src/assets/EmailTemplate.html"))
             {
 
                 body = reader.ReadToEnd();

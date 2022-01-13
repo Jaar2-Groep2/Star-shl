@@ -147,6 +147,7 @@
                     },
                 }).then(function (response) {
                     console.log(response);
+                    this.$router.push({ path: '/EmailSent' })
                 }).catch(function (error) {
                     console.log(error);
                     console.log(error.response);

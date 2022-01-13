@@ -14,6 +14,7 @@ import EditorEsat1 from "../components/EditorEsat1.vue";
 import EditorEsat2 from "../components/EditorEsat2.vue";
 import EditorEsat3 from "../components/EditorEsat3.vue";
 import EditorEsat4 from "../components/EditorEsat4.vue";
+import EmailSent from "../components/EmailSent.vue";
 
 
 
@@ -93,6 +94,11 @@ const routes = [
         path: "/Info4",
         name: "Info4",
         component: Info4,
+    },
+    {
+        path: "/EmailSent",
+        name: "EmailSent",
+        component: EmailSent
     }
 ];
 
