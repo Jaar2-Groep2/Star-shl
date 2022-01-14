@@ -28,9 +28,6 @@
             <i class="bi bi-map"></i> Priklokaties
         </router-link>
         <br><br>
-        <a class="homeButtons btn" style="background: #142d49">
-            <i class="bi bi-info-circle"></i> Contact
-        </a>
     </div>
 
     <footer>
