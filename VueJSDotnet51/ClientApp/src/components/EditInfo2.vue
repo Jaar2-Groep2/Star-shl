@@ -90,8 +90,7 @@
 
         methods: {
             GetContent() {
-                axios.get(
-    )
+                axios.get("/api/content")
                     .then((response) => {
                         this.ContentArray = response.data;
                         this.contentstring = this.ContentArray[2]["content"];
@@ -106,7 +105,7 @@
             },
 
             saveInDB() {
-                const html = this.editor.getHTML();
+                const html = this.editor.getHTML();    
                 axios({
                     method: 'PUT',
                     url: "/api/content",
@@ -159,6 +158,7 @@
         width: calc(30% + 1.0vw);
         margin: 1.5%;
     }
+
     .ProseMirror p {
         margin: 10em 0;
         text-align: center;
@@ -205,5 +205,3 @@
         font-size: 10px;
     }
 </style>
-
-
