@@ -6,12 +6,12 @@
             <img src="../assets/star-shl.jpg" />
         </div>
         <div>
-            <router-link class="sezer btn" :to="{ name: 'EditorEsat1' }">Over Star-shl</router-link>
-            <router-link class="sezer btn" :to="{ name: 'EditorEsat2' }">innovatie</router-link>
+            <router-link class="sezer btn" :to="{ name: 'EditInfo1' }">Over Star-shl</router-link>
+            <router-link class="sezer btn" :to="{ name: 'EditInfo2' }">innovatie</router-link>
         </div>
         <div>
-            <router-link class="sezer btn" :to="{ name: 'EditorEsat3' }">Vrijwilligersbeleid</router-link>
-            <router-link class="sezer btn" :to="{ name: 'EditorEsat4' }">Kwaliteit</router-link>
+            <router-link class="sezer btn" :to="{ name: 'EditInfo3' }">Vrijwilligersbeleid</router-link>
+            <router-link class="sezer btn" :to="{ name: 'EditInfo4' }">Kwaliteit</router-link>
         </div>
         <div class="edit_buttons">
             <div v-if="editor">
@@ -90,11 +90,10 @@
 
         methods: {
             GetContent() {
-                axios.get(
-    )
+                axios.get("/api/content")
                     .then((response) => {
                         this.ContentArray = response.data;
-                        this.contentstring = this.ContentArray[2]["content"];
+                        this.contentstring = this.ContentArray[1]["content"];
                         this.editor.commands.setContent(this.contentstring);
                     })
                     .catch(function (error) {
@@ -112,7 +111,7 @@
                     url: "/api/content",
                     data: {
                         content: html,
-                        id: 3
+                        id: 2
                     },
                     headers: {
                         'Content-Type': 'application/json',
