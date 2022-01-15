@@ -54,9 +54,10 @@
     <header :class="{ 'scrolled-nav' : scrollPosition}">
         <ul v-show="!mobile" class="nav">
             <li><router-link class="link" :to="{name: 'Home'}">Home</router-link></li>
-            <li><router-link class="link" :to="{ name: 'PDF' }">Bloedprik certificaat</router-link></li>
+            <li><router-link class="link" :to="{name: 'AddReservation'}">Afspraak maken</router-link></li>
             <li><router-link class="link" :to="{name: 'Priklocaties' }">Priklokaties</router-link></li>
             <li><router-link class="link" :to="{name: 'Info1'}">Informatie</router-link></li>
+            <li><router-link class="link" :to="{ name: 'PDF' }">Bloedprik certificaat</router-link></li>
             <li><router-link class="link" :to="{name: 'Login'}"><a class="red">Login als medewerker</a></router-link></li>
 
 
@@ -69,9 +70,10 @@
             <ul v-show="mobileNav" class="nav-dropdown">
                 <!--v-on:click=toggleMobileNav()-->
                 <li><router-link class="link2" :to="{name: 'Home'}">Home</router-link></li>
-                <li><router-link class="link2" :to="{ name: 'PDF' }">Bloedprik certificaat</router-link></li>
+                <li><router-link class="link2" :to="{name: 'AddReservation'}">Afspraak maken</router-link></li>
                 <li><router-link class="link2" :to="{name: 'Priklocaties'}">Priklocaties</router-link></li>
                 <li><router-link class="link2" :to="{name: 'Info1'}">Informatie</router-link></li>
+                <li><router-link class="link2" :to="{ name: 'PDF' }">Bloedprik certificaat</router-link></li>
                 <li><router-link class="link2" :to="{name: 'Login'}"><a class="red">Login als medewerker</a></router-link></li>
 
             </ul>
