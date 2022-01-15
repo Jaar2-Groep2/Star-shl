@@ -2,7 +2,7 @@
     <h1>Locaties Star-shl</h1>
     <h5>Vul postcode in: </h5>
     <div class="form">
-        <input v-model="postcodeInput" maxlength="6" placeholder="Postcode, bijv: 1234AB" />
+        <input v-model="postcodeInput" maxlength="6" placeholder="1234AB" />
         <br />
         <button class="btn" @click="submitFunction">Zoek</button>
     </div>
