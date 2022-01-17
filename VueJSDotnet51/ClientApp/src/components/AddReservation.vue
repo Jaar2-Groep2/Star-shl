@@ -135,6 +135,7 @@
                 }
             },
             sendMail() {
+                let self = this;
                 axios({
                     method: 'POST',
                     url: '/api/Email/',
@@ -147,7 +148,7 @@
                     },
                 }).then(function (response) {
                     console.log(response);
-                    this.$router.push({ path: '/EmailSent' })
+                    self.$router.push({ path: '/EmailSent' })
                 }).catch(function (error) {
                     console.log(error);
                     console.log(error.response);

@@ -14,6 +14,7 @@ import EditInfo1 from "../components/EditInfo1.vue";
 import EditInfo2 from "../components/EditInfo2.vue";
 import EditInfo3 from "../components/EditInfo3.vue";
 import EditInfo4 from "../components/EditInfo4.vue";
+import EmailSent from "../components/EmailSent.vue";
 
 
 
@@ -93,6 +94,11 @@ const routes = [
         path: "/Info4",
         name: "Info4",
         component: Info4,
+    },
+    {
+        path: "/EmailSent",
+        name: "EmailSent",
+        component: EmailSent
     }
 ];
 
