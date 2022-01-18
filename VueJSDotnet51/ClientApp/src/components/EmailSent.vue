@@ -1,6 +1,6 @@
 ﻿<template>
     <div>
-        <h1 class="headline">Email is verstuurt</h1>
+        <h1 class="headline">Email is verstuurd</h1>
         <br>
         <p>U wordt in 5 seconden terugverzonden naar de homepagina</p>
     </div>

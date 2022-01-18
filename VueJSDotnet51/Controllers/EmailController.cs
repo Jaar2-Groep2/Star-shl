@@ -7,15 +7,14 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using Microsoft.Extensions.Configuration;
 using System.IO;
+using Mailjet.Client;
+using Mailjet.Client.Resources;
+using System;
+using Newtonsoft.Json.Linq;
+using System.Threading.Tasks;
 
 namespace VueJSDotnet51.Controllers
 {
-    //public class ReservationList
-    //{
-    //    public List<Reservation> Reservationdatalist { get; set; }
-    //}
-
-
     [Route("api/[controller]")]
     [ApiController]
 
@@ -29,12 +28,14 @@ namespace VueJSDotnet51.Controllers
         }
 
         [HttpPost]
-        public JsonResult Post(Reservation reservation)
+        public void Post(Reservation reservation)
         {
-            var emailData = JsonConvert.DeserializeObject<EmailData>(System.IO.File.ReadAllText("../VueJSDotnet51/ClientApp/src/assets/email.json"));
+            RunAsync(reservation).Wait();
+        }
+        static async Task RunAsync(Reservation reservation)
+        {
 
             string body = string.Empty;
-            //using streamreader for reading my htmltemplate   
 
             using (StreamReader reader = new StreamReader("../VueJSDotnet51/ClientApp/src/assets/EmailTemplate.html"))
             {
@@ -51,32 +52,62 @@ namespace VueJSDotnet51.Controllers
                 .Replace("[GENDER]", reservation.Gender)
                 .Replace("[EMAIL]", reservation.Email);
 
-            var mail = new MailMessage
+            MailjetClient client = new MailjetClient("1795ef5cfe11ddbaa735ae32569b3627", "2ea35100ed4a8142341f92560b45313d")
             {
-                From = new MailAddress(emailData.Email),
-                Subject = emailData.Subject,
-                Body = body,
-                IsBodyHtml = true
+                Version = ApiVersion.V3_1,
             };
-
-            mail.To.Add(reservation.Email);
-
-            SmtpClient smtpClient = new SmtpClient();
-
-            try
+            MailjetRequest request = new MailjetRequest
             {
-                smtpClient.Host = "in-v3.mailjet.com";
-                smtpClient.Port = int.Parse("587");
-                smtpClient.EnableSsl = true;
-                smtpClient.UseDefaultCredentials = false;
-                smtpClient.Credentials = new NetworkCredential("1795ef5cfe11ddbaa735ae32569b3627", "2ea35100ed4a8142341f92560b45313d");
-                smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
-                smtpClient.Send(mail);
-                return new JsonResult("Mail sent succesfully");
+                Resource = Send.Resource,
             }
-            catch (System.Exception mailException)
+             .Property(Send.Messages, new JArray {
+     new JObject {
+      {
+       "From",
+       new JObject {
+        {"Email", "starshlproject@hotmail.com"},
+        {"Name", "Star-shl"}
+       }
+      }, {
+       "To",
+       new JArray {
+        new JObject {
+         {
+          "Email",
+          reservation.Email
+         }, {
+          "Name",
+          reservation.FirstName
+         }
+        }
+       }
+      }, {
+       "Subject",
+       "Star-shl afspraak"
+      }, {
+       "TextPart",
+       "Star-shl"
+      }, {
+       "HTMLPart",
+       body
+      }, {
+       "CustomID",
+       "Afspraak"
+      }
+     }
+             });
+            MailjetResponse response = await client.PostAsync(request);
+            if (response.IsSuccessStatusCode)
             {
-                return new JsonResult(mailException.Message);
+                Console.WriteLine(string.Format("Total: {0}, Count: {1}\n", response.GetTotal(), response.GetCount()));
+                Console.WriteLine(response.GetData());
+            }
+            else
+            {
+                Console.WriteLine(string.Format("StatusCode: {0}\n", response.StatusCode));
+                Console.WriteLine(string.Format("ErrorInfo: {0}\n", response.GetErrorInfo()));
+                Console.WriteLine(response.GetData());
+                Console.WriteLine(string.Format("ErrorMessage: {0}\n", response.GetErrorMessage()));
             }
         }
     }
