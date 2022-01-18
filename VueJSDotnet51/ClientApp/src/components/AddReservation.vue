@@ -139,7 +139,7 @@
                 axios({
                     method: 'POST',
                     url: '/api/Email/',
-                    data: this.form,
+                    data: JSON.stringify(this.form),
                     headers: {
                         'Content-Type': 'application/json',
                         "Access-Control-Allow-Origin": "*",
