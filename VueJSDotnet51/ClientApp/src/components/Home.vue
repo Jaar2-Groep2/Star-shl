@@ -30,7 +30,7 @@
         <br><br>
     </div>
 
-    <footer>
+    <footer class="footer">
         <p class="text-white">
             <strong>Etten-Leur</strong><br>
             Bredaseweg 165, 4872 LA<br>
@@ -130,12 +130,17 @@
         color: white;
     }
 
+    body {
+        min-height: 100vh;
+        padding-bottom: 0;
+    }
+
     footer {
-        margin-top: 8%;
+        margin: 8% 0 0 0;
         background: #142d49;
         padding: 4% 4% 2% 4%;
         width: 100%;
-        position: absolute;
+        bottom: 0;
     }
 
     footer p {

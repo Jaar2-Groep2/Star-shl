@@ -43,7 +43,7 @@
                             this.$emit("authenticated", true);
                             this.$router.replace({ name: "Secure" });   //changes webpage to /Secure
                         } else {
-                            var logmsg = "Onjuist gebruikersnaam en/of wachtwoord";
+                            var logmsg = "Onjuiste gebruikersnaam en/of wachtwoord";
                             window.alert(logmsg);
                             console.log(logmsg);
                         }
