@@ -7,7 +7,7 @@
         </div>
         <div>
             <router-link class="sezer btn" :to="{ name: 'Info1' }">Over Star-shl</router-link>
-            <router-link class="sezer btn" :to="{ name: 'Info2' }">innovatie</router-link>
+            <router-link class="sezer btn" :to="{ name: 'Info2' }">Innovatie</router-link>
         </div>
         <div>
             <router-link class="sezer btn" :to="{ name: 'Info3' }">Vrijwilligersbeleid</router-link>
