@@ -65,11 +65,11 @@ namespace VueJSDotnet51.Controllers
 
             try
             {
-                smtpClient.Host = "smtp.gmail.com";
+                smtpClient.Host = "in-v3.mailjet.com";
                 smtpClient.Port = int.Parse("587");
                 smtpClient.EnableSsl = true;
                 smtpClient.UseDefaultCredentials = false;
-                smtpClient.Credentials = new NetworkCredential(emailData.Email, emailData.Password);
+                smtpClient.Credentials = new NetworkCredential("1795ef5cfe11ddbaa735ae32569b3627", "2ea35100ed4a8142341f92560b45313d");
                 smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
                 smtpClient.Send(mail);
                 return new JsonResult("Mail sent succesfully");
