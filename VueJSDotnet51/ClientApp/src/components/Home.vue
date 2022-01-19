@@ -21,9 +21,9 @@
             <i class="bi bi-body-text"></i> Informatie over onderzoeken
         </router-link>
 
-        <!--<router-link class="homeButtons btn" :to="{ name: 'AddReservation' }">
+        <router-link class="homeButtons btn" :to="{ name: 'AddReservation' }">
             <i class="bi bi-patch-plus"></i> Afspraak maken
-        </router-link>-->
+        </router-link>
 
         <router-link class="homeButtons btn" :to="{ name: 'Priklocaties' }">
             <i class="bi bi-map"></i> Priklokaties
