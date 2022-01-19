@@ -18,7 +18,6 @@ namespace VueJSDotnet51.Controllers
     public partial class ContentController : ControllerBase
     {
         private readonly ContentContext _context;
-        //private readonly ProjectNameOptions _projectNameOptions;
         private readonly IConfiguration _configuration;
 
         public ContentController(IConfiguration configuration)
@@ -58,30 +57,12 @@ namespace VueJSDotnet51.Controllers
         [HttpPut]
         public JsonResult Put(Content _content)
         {
-            /*
-             * Query that works in our DB.
-             * 
-               UPDATE "Content"
-               SET content = 'test'    
-               WHERE id = 1;
-             */
-
-
             string query = @"
                 UPDATE ""Content""
                 SET content = @content
                 WHERE id = @id
                 ;
             ";
-
-            // 
-            //test query 
-            //
-            //string query = @"
-            //    UPDATE ""Content""
-            //    SET content = 'test'
-            //    WHERE id = 1;
-            //";
             ;
 
             DataTable table = new DataTable();

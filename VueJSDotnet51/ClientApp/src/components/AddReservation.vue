@@ -181,20 +181,14 @@
         font-size: inherit;
     }
 
-        .field__input:focus::-webkit-input-placeholder {
+        .field__input:focus::-webkit-input-placeholder 
+        {
             color: var(--uiFieldPlaceholderColor);
         }
 
         .field__input:focus::-moz-placeholder {
             color: var(--uiFieldPlaceholderColor);
         }
-
-    /*
-=====
-CORE STYLES
-=====
-*/
-
     .field {
         --uiFieldBorderWidth: var(--fieldBorderWidth, 2px);
         --uiFieldPaddingRight: var(--fieldPaddingRight, 1rem);

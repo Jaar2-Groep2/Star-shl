@@ -12,44 +12,18 @@ namespace VueJSDotnet51.Controllers
         public List<Location> locations { get; set; }
     }
 
-    //[Route("[controller]")]
     [Route("api/[controller]")]
     [ApiController]
 
     public partial class LocationController : ControllerBase
     {
         private readonly LocationsContext _context;
-        //private readonly ProjectNameOptions _projectNameOptions;
         private readonly IConfiguration _configuration;
 
         public LocationController(IConfiguration configuration)
         {
             _configuration = configuration;
         }
-
-
-        //[HttpGet("{GetLocations}")]
-        // [HttpGet]
-        //public IActionResult GetLocations()
-        //{
-        //    Console.WriteLine("Test");
-        //    var locations_AUX = (
-        //                       from l in _context.Locations
-
-        //                       select new
-        //                       {
-        //                           LocationCity = l.city,
-        //                           LocationName = l.locname,
-        //                           LocationStreet = l.address,
-        //                           LocationPostalcode = l.postalCode,
-        //                           LocationOpenTimes = l.openTimes,
-        //                           LocationAdditional = l.additional
-        //                       }).ToList();
-
-        //    var locations = locations_AUX;
-
-        //    return Ok(locations);
-        //}
 
         [HttpGet]
         public JsonResult Get()
@@ -90,31 +64,4 @@ namespace VueJSDotnet51.Controllers
         }
     }
 }
-
-
-
-
-//    [ApiController]
-//    [Route("api/[controller]")]
-
-//    public class LocationController : ControllerBase
-//    {
-//        private readonly IConfiguration _configuration;
-
-//        public LocationController(IConfiguration configuration)
-//        {
-//            _configuration = configuration;
-//        }
-
-//        [HttpGet]
-
-//        public JsonResult Get()
-//        {
-//            string query = @"
-
-//"           ;
-//        }
-
-//        }
-//    }
 

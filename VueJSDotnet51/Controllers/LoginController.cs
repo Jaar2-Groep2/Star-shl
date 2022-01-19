@@ -4,7 +4,6 @@ using Microsoft.Extensions.Configuration;
 using Npgsql;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using VueJSDotnet51.Models;
 
 
@@ -15,53 +14,17 @@ namespace VueJSDotnet51.Controllers
         public List<Location> locations { get; set; }
     }
 
-    //[Route("[controller]")]
     [Route("api/[controller]")]
     [ApiController]
     public partial class LoginController : ControllerBase
     {
         private readonly LocationsContext _context;
-        //private readonly ProjectNameOptions _projectNameOptions;
         private readonly IConfiguration _configuration;
 
         public LoginController(IConfiguration configuration)
         {
             _configuration = configuration;
         }
-
-        /*
-        [HttpGet]
-        public JsonResult Get()
-        {
-            string query = @"
-                select id as ""id"",
-                        city as ""city"",
-                        locationname as ""name"",
-                        street as ""street"",
-                        postcode as ""postcode"",
-                        openinghours as ""openinghours"",
-                        particularities as ""particularities"",
-                        lat as ""lat"",
-                        lon as ""lon""
-                FROM ""Locations"";
-            ";
-
-            DataTable table = new();
-            string sqlDataSource = _configuration.GetConnectionString("LocationAppCon");
-            NpgsqlDataReader myReader;
-            using (NpgsqlConnection myCon = new(sqlDataSource))
-            {
-                myCon.Open();
-                using NpgsqlCommand myCommand = new(query, myCon);
-                myReader = myCommand.ExecuteReader();
-                table.Load(myReader);
-
-                myReader.Close();
-                myCon.Close();
-            }
-            return new JsonResult(table);
-        }
-         */
 
         [HttpPost]
         public IActionResult Register(User user)
@@ -70,14 +33,12 @@ namespace VueJSDotnet51.Controllers
             user.Password = hashsalt.Hash;
             user.StoredSalt = hashsalt.Salt;
             return null;
-            //return View();
         }
 
         //generates a new user with username admin and password admin
         private void ExampleAccountGen()
         {
             // Prepare the command to be executed on the db
-            //connection.Open();
             //the following code registers a user, as an example I used admin as username and as password though ofc this shouldn't be done with the proper implementation
             HashSalt example = LoginController.EncryptPassword("admin");
             string insertXmlQuery = @"insert into users (name,password,storedsalt) Values(@Username,@Password,@StoredSalt)";

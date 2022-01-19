@@ -1,10 +1,5 @@
 ﻿using VueJSDotnet51.Models;
-using System.Net;
-using System.Net.Mail;
-using System.Configuration;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using System.Collections.Generic;
 using Microsoft.Extensions.Configuration;
 using System.IO;
 using Mailjet.Client;
