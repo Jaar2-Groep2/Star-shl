@@ -1,37 +1,24 @@
 <template>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
     <div class="home">
         <div class="img">
             <img src="../assets/star-shl.jpg" />
         </div>
-
-        <iframe width="640" height="360"
-                src="https://www.youtube.com/embed/wk-SGVzx1Os">
-        </iframe>
-
-        <div class="headline">Over Star-shl</div>
-
-        <div class="text_homepage">
-            <editor-content :editor="editor" />
+        <div>
+            <router-link class="sezer btn" :to="{ name: 'Info1' }">Over Star-shl</router-link>
+            <router-link class="sezer btn" :to="{ name: 'Info2' }">Innovatie</router-link>
+        </div>
+        <div>
+            <router-link class="sezer btn" :to="{ name: 'Info3' }">Vrijwilligersbeleid</router-link>
+            <router-link class="sezer btn" :to="{ name: 'Info4' }">Kwaliteit</router-link>
         </div>
 
-
-        <router-link class="homeButtons btn" :to="{ name: 'Info1' }">
-            <i class="bi bi-body-text"></i> Informatie over onderzoeken
-        </router-link>
-
-        <!--<router-link class="homeButtons btn" :to="{ name: 'AddReservation' }">
-            <i class="bi bi-patch-plus"></i> Afspraak maken
-        </router-link>-->
-
-        <router-link class="homeButtons btn" :to="{ name: 'Priklocaties' }">
-            <i class="bi bi-map"></i> Priklokaties
-        </router-link>
-        <br><br>
+        <div class="text_info">
+            <editor-content :editor="editor" />
+        </div>
     </div>
-
-    <footer class="footer">
+    <footer>
         <p class="text-white">
             <strong>Etten-Leur</strong><br>
             Bredaseweg 165, 4872 LA<br>
@@ -42,8 +29,8 @@
             Postbus 8661, 3009 AR<br>
         </p>
     </footer>
-</template>
 
+</template>
 
 <script>
     import axios from 'axios'
@@ -69,7 +56,7 @@
                 axios.get("/api/content")
                     .then((response) => {
                         this.ContentArray = response.data;
-                        this.contentstring = this.ContentArray[0]["content"];
+                        this.contentstring = this.ContentArray[4]["content"];
                         this.editor.commands.setContent(this.contentstring);
                     })
                     .catch(function (error) {
@@ -77,6 +64,7 @@
                         alert(error);
                     }
                     );
+
             },
 
             saveInDB() {
@@ -86,7 +74,7 @@
                     url: "/api/content",
                     data: {
                         content: html,
-                        id: 1
+                        id: 5
                     },
                     headers: {
                         'Content-Type': 'application/json',
@@ -96,6 +84,7 @@
                     },
                 }).then(function (response) {
                     console.log(response);
+                    window.alert("Opgeslagen!");
                 }).catch(function (error) {
                     console.log(error);
                     console.log(error.response);
@@ -122,35 +111,29 @@
     }
 </script>
 
-<style>
-    .btn:hover {
-        opacity: 1.0;
-    }
-
-    .btn {
-        color: white;
-    }
-
-    body {
-        min-height: 100vh;
-        padding-bottom: 0;
-    }
-
-    footer {
-        margin: 8% 0 0 0;
-        background: #142d49;
-        padding: 4% 4% 2% 4%;
-        width: 100%;
-        bottom: 0;
-    }
-
-    footer p {
-        text-align: left;
-        font-size: calc(6px + 0.8vw);
-    }
-</style>
-
 <style scoped>
+    .text_info {
+        /*        font-size: calc(8px + 0.5vw);*/
+        text-align: center;
+        margin-top: 1%;
+        margin-left: 8%;
+        margin-right: 8%;
+    }
+    .sezer {
+        background: #e7334c;
+        border: hidden;
+        padding: 2%;
+        font-size: calc(6px + 1.0vw);
+        font-weight: bold;
+        width: calc(30% + 1.0vw);
+        margin: 1.5%;
+    }
+
+    .ProseMirror p {
+        margin: 10em 0;
+        text-align: center;
+    }
+
     img {
         vertical-align: middle;
         border-style: none;
@@ -158,49 +141,38 @@
         max-width: 90%;
     }
 
-    .text_homepage {
-        /*        font-size: calc(8px + 0.5vw);*/
-        text-align: center;
+    .save_class {
+        margin-bottom: 1%;
         margin-top: 1%;
-        margin-left: 8%;
-        margin-right: 8%;
     }
 
-    .headline {
-        font-size: calc(12px + 1.5vw);
-        margin-top: 3%
+    .blue {
+        background: #2C2B64;
     }
 
-    .text_homepage h6 {
-        cursor: pointer;
-        padding: 3%;
-        margin-right: 10%;
-        margin-left: 10%;
-        margin-bottom: 10%;
-        box-shadow: 0 0 10px 1px black;
-        text-align: left;
-        font-size: calc(8px + 1.0vw)
+    .edit_buttons {
+        margin-top: 1%;
     }
 
-    iframe {
-        margin-top: 10px;
-        width: 800px;
-        max-height:5%;
-        max-width: 90%;
-    }
-
-    .homeButtons {
-        background: #e7334c;
+    .btn_save {
+        background: rgb(111 216 103);
         border: hidden;
-        padding: 2%;
-        font-size: calc(8px + 1.0vw);
-        font-weight: bold;
-        width: calc(50% + 1.0vw);
+        padding: 1%;
+        font-size: calc(60% + 2vw);
+        /*border-radius: 15px;*/
+        width: calc(30% + 1.5vw);
         margin: 1.5%;
+        font-weight: 500;
+        text-decoration-color: white;
+        color: white;
     }
 
-    .btn {
-        opacity: 1.0;
+    .bub {
+        color: rgb(18 33 82);
+    }
+
+    .material-icons {
+        font-size: 10px;
     }
 </style>
 

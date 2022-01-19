@@ -35,7 +35,7 @@
         },
         methods: {
             LoginCall(username, password) {
-                axios.get(("http://145.24.222.238:80/api/login/" + username + '/' + password))
+                axios.get(("/api/login/" + username + '/' + password))
                     .then((response) => {
                         var loginauth = response.data;
                         if (loginauth == true) {
@@ -43,7 +43,7 @@
                             this.$emit("authenticated", true);
                             this.$router.replace({ name: "Secure" });   //changes webpage to /Secure
                         } else {
-                            var logmsg = "The username and/ or password is incorrect";
+                            var logmsg = "Onjuiste gebruikersnaam en/of wachtwoord";
                             window.alert(logmsg);
                             console.log(logmsg);
                         }
@@ -56,74 +56,70 @@
             }
         }
     }
-</script>
+    </script>
 
-<style scoped>
-    body {
-        background: #142d49;
-        width: 100%;
-        height: 100vh;
-        overflow: hidden;
-    }
+    <style scoped>
+        body {
+            background: #142d49;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .plaatje {
+            max-width: 100%;
+            height: auto;
+        }
+        img {
 
-    .plaatje {
-        max-width: 100%;
-        height: auto;
-    }
+            vertical-align: middle;
+            border-style: none;
+            width: 800px;
+            max-width: 80%;
+        }
+        .main_box {
+            margin-top: 200px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            width: 800px;
+            max-width: 90%;
+            height: 350px;
+            /* padding: 1rem; */
+            position: relative;
+            background: #79b9d5;
+            padding: 3px;
+        }
 
-    img {
-        vertical-align: middle;
-        border-style: none;
-        width: 800px;
-        max-width: 80%;
-    }
+        .box {
+            background: #142d49;
+            color: white;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+        }
 
-    .main_box {
-        margin-top: 200px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        -ms-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-        width: 800px;
-        max-width: 90%;
-        height: 350px;
-        /* padding: 1rem; */
-        position: relative;
-        background: #79b9d5;
-        padding: 3px;
-        border-radius: 20px;
-    }
+        h1 {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
 
-    .box {
-        background: #142d49;
-        color: white;
-        padding: 2rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        border-radius: 20px;
-        height: 100%;
-    }
+        .heading {
+            margin-bottom: 20px;
+            margin-top: -10px
+        }
 
-    h1 {
-        font-size: 50px;
-        margin-bottom: 10px;
-    }
-
-    .heading {
-        margin-bottom: 20px;
-        margin-top: -10px
-    }
-
-    .form {
-        margin: 0;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        -ms-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-    }
+        .form {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
 
         .form input {
             margin: 5px 0;
@@ -134,39 +130,37 @@
             text-align: center;
         }
 
-            .form input ::placeholder {
-                color: gray;
-            }
+        .form input ::placeholder {
+            color: gray;
+        }
 
-    .int {
-        border-radius: 5px;
-        font-size: 17px;
-        margin-bottom: 10px;
-        border-color: red;
-    }
+        .int {
+            font-size: 17px;
+            margin-bottom: 10px;
+            border-color: red;
+        }
 
-    .btn {
-        font-size: 20px;
-        color: white;
-        background: #e7334c;
-        border-color: #121212;
-        margin-top: 100px;
-    }
+        .btn {
+            font-size: 20px;
+            color: white;
+            background: #e7334c;
+            border-color: #121212;
+            margin-top: 100px;
+        }
 
-    #login {
-        width: 500px;
-        border: 1px solid #CCCCCC;
-        background-color: white;
-        margin: auto;
-        margin-top: 200px;
-        padding: 20px;
-    }
-
-    img {
-        vertical-align: middle;
-        border-style: none;
-        width: 60%;
-        width: 800px;
-        max-width: 90%;
-    }
-</style>
+        #login {
+            width: 500px;
+            border: 1px solid #CCCCCC;
+            background-color: white;
+            margin: auto;
+            margin-top: 200px;
+            padding: 20px;
+        }
+        img {
+            vertical-align: middle;
+            border-style: none;
+            width: 60%;
+            width: 800px;
+            max-width: 90%;
+        }
+    </style>

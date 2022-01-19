@@ -6,7 +6,7 @@
                     <h1>Certificaat</h1>
                 </div>
                 <div class="form">
-                    <input v-model="message" v-on:keyup="charCount()" maxlength="24" placeholder="Wat is je naam?" data-v-ef68022e />
+                    <input class="text-white" v-model="message" v-on:keyup="charCount()" maxlength="24" placeholder="Wat is je naam?" data-v-ef68022e />
                     <button class="btn" @click="downloadPDF">Download Certificaat</button>
                 </div>
             </div>
@@ -109,7 +109,6 @@
         position: relative;
         background: #79b9d5;
         padding: 3px;
-        border-radius: 20px;
     }
 
     .box {
@@ -119,7 +118,6 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        border-radius: 20px;
         height: 100%;
     }
 </style>

@@ -2,7 +2,7 @@
     <h1>Locaties Star-shl</h1>
     <h5>Vul postcode in: </h5>
     <div class="form">
-        <input v-model="postcodeInput" maxlength="6" placeholder="Postcode, bijv: 1234AB" />
+        <input v-model="postcodeInput" maxlength="6" placeholder="1234AB" />
         <br />
         <button class="btn" @click="submitFunction">Zoek</button>
     </div>
@@ -94,7 +94,7 @@
         },
         methods: {
             GetLocations() {
-                axios.get("http://145.24.222.238:80/api/location")
+                axios.get("/api/location")
                     .then((response) => {
                         this.locations = response.data;
                     })
@@ -253,7 +253,6 @@
         padding: 0.4rem;
         background-color: #fafafa;
         border: 1px solid #555;
-        border-radius: 1rem;
         box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
         transition: all 0.3s cubic-bezier(.25,.8,.25,1);
     }
