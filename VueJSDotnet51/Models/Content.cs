@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using System.Collections.Generic;
 
 namespace VueJSDotnet51.Models
 {

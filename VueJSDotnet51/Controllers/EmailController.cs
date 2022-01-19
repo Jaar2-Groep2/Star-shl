@@ -1,12 +1,12 @@
-﻿using VueJSDotnet51.Models;
+﻿using Mailjet.Client;
+using Mailjet.Client.Resources;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using System.IO;
-using Mailjet.Client;
-using Mailjet.Client.Resources;
-using System;
 using Newtonsoft.Json.Linq;
+using System;
+using System.IO;
 using System.Threading.Tasks;
+using VueJSDotnet51.Models;
 
 namespace VueJSDotnet51.Controllers
 {
@@ -32,7 +32,7 @@ namespace VueJSDotnet51.Controllers
 
             string body = string.Empty;
 
-            using (StreamReader reader = new StreamReader("../VueJSDotnet51/ClientApp/src/assets/EmailTemplate.html"))
+            using (StreamReader reader = new("../VueJSDotnet51/ClientApp/src/assets/EmailTemplate.html"))
             {
 
                 body = reader.ReadToEnd();
@@ -47,7 +47,7 @@ namespace VueJSDotnet51.Controllers
                 .Replace("[GENDER]", reservation.Gender)
                 .Replace("[EMAIL]", reservation.Email);
 
-            MailjetClient client = new MailjetClient("1795ef5cfe11ddbaa735ae32569b3627", "2ea35100ed4a8142341f92560b45313d")
+            MailjetClient client = new("1795ef5cfe11ddbaa735ae32569b3627", "2ea35100ed4a8142341f92560b45313d")
             {
                 Version = ApiVersion.V3_1,
             };

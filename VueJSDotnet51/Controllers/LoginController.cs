@@ -29,7 +29,7 @@ namespace VueJSDotnet51.Controllers
         [HttpPost]
         public IActionResult Register(User user)
         {
-            var hashsalt = EncryptPassword(user.Password);
+            HashSalt hashsalt = EncryptPassword(user.Password);
             user.Password = hashsalt.Hash;
             user.StoredSalt = hashsalt.Salt;
             return null;
@@ -88,7 +88,7 @@ namespace VueJSDotnet51.Controllers
         public static HashSalt EncryptPassword(string password)
         {
             byte[] salt = new byte[128 / 8]; // Generate a 128-bit salt using a secure PRNG
-            using (var rng = System.Security.Cryptography.RandomNumberGenerator.Create())
+            using (System.Security.Cryptography.RandomNumberGenerator rng = System.Security.Cryptography.RandomNumberGenerator.Create())
             {
                 rng.GetBytes(salt);
             }
