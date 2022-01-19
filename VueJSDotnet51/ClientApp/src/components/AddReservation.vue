@@ -317,22 +317,12 @@ effect 3
         height: 100%;
     }
 
-    /*
-=====
-LEVEL 4. SETTINGS
-=====
-*/
 
     .field {
         --fieldBorderColor: #4169E1;
         --fieldBorderColorActive: #191970;
     }
 
-    /*
-=====
-DEMO
-=====
-*/
 
     body {
         font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Open Sans, Ubuntu, Fira Sans, Helvetica Neue, sans-serif;
